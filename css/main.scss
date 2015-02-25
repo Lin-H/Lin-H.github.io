@@ -6,13 +6,20 @@
 
 
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
+$base-font-family: "Source Sans Pro",Helvetica,Arial,sans-serif;
 $base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
+$feature-image-size: cover;
+$border-color: rgba(0, 0, 0, 0.1); // rgba recommended if using feature images
+
+$padding-large: 20%;
+$padding-small: 5%;
+$padding-x-small: 3%;
 
 $spacing-unit:     30px;
 
+$link-color: #1ABC9C;
 $text-color:       #111;
 $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
