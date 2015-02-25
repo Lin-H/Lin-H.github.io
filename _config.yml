@@ -13,3 +13,7 @@ str_continue_reading: "Continue reading"
 
 # Build settings
 markdown: kramdown
+
+sass:
+  sass_dir: _sass
+  style: :compressed
