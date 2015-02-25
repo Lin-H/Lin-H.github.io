@@ -11,7 +11,7 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   font-weight: 300;
@@ -263,19 +263,22 @@ pre {
 .page-heading {
   font-size: 20px; }
 
-.post-list {
-  margin-left: 0;
-  list-style: none; }
-  .post-list > li {
-    margin-bottom: 30px; }
-
 .post-meta {
   font-size: 14px;
   color: #828282; }
 
-.post-link {
-  display: block;
-  font-size: 24px; }
+.posts .post-teaser {
+  width: 100%;
+  margin-bottom: 0;
+  display: inline-block;
+  background-size: cover;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.posts .excerpt {
+  margin-top: 1em; }
+
+.posts .post-teaser p a:hover {
+  text-decoration: underline;
+  color: #117964; }
 
 /**
  * Posts
@@ -308,6 +311,19 @@ pre {
     @media screen and (max-width: 800px) {
       .post-content h4 {
         font-size: 18px; } }
+
+.button {
+  border-radius: 0.3em;
+  border: 1px solid;
+  display: inline-block;
+  margin: 1em 0;
+  padding: 0.5em 0.75em; }
+
+a.button:hover {
+  background: #1ABC9C;
+  border: 1px solid #1ABC9C;
+  color: #fdfdfd;
+  text-decoration: none; }
 
 /**
  * Syntax highlighting styles

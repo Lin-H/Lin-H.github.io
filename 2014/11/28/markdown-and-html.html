@@ -6,13 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>LinH's Blog</title>
-  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-">
+  <title>Markdown and HTML</title>
+  <meta name="description" content="Jeykll supports the use of Markdown with inline HTML tags which makes it easier to quickly write posts with Jekyll, without having to worry too much about te...">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-  <link rel="canonical" href="http://lin-h.github.io//">
+  <link rel="canonical" href="http://lin-h.github.io//2014/11/28/markdown-and-html.html">
   <link rel="alternate" type="application/rss+xml" title="LinH's Blog" href="http://lin-h.github.io//feed.xml" />
 </head>
 
@@ -56,95 +55,56 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <div class="posts">
-    
+  <header class="post-header">
+    <h1 class="post-title">Markdown and HTML</h1>
+    <p class="post-meta">Nov 28, 2014</p>
+  </header>
 
-      <div class="post-teaser">
-    
-      <header>
-        <h1>
-          <a class="post-link" href="/jekyll/update/2015/02/21/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h1>
-        
-        <p class="post-meta">February 21, 2015</p>
-      </header>
+  <article class="post-content">
+    <p>Jeykll supports the use of <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> with inline HTML tags which makes it easier to quickly write posts with Jekyll, without having to worry too much about text formatting. A sample of the formatting follows.</p>
 
-      <div class="excerpt">
-        <p>You’ll find this post in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<p>Tables have also been extended from Markdown:</p>
 
+<table>
+  <thead>
+    <tr>
+      <th>First Header</th>
+      <th>Second Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+    </tr>
+    <tr>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+    </tr>
+  </tbody>
+</table>
 
+<p>Here’s an example of an image, which is included using Markdown:</p>
 
-        <a class="button" href="/jekyll/update/2015/02/21/welcome-to-jekyll.html">Continue reading</a>
-      </div>
-      
-    </div>
-    
+<p><img src="/img/sample_feature_img_2.png" alt="Geometric pattern with fading gradient" /></p>
 
-      <div class="post-teaser">
-    
-      <header>
-        <h1>
-          <a class="post-link" href="/2014/11/30/sample-post.html">Sample post</a>
-        </h1>
-        
-        <p class="post-meta">November 30, 2014</p>
-      </header>
+<p>Highlighting for code in Jekyll is done using Pygments or Rouge. This theme makes use of Pygments by default.</p>
 
-      <div class="excerpt">
-        <p>Consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem.</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// count to ten</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
 
+<span class="c1">// count to twenty</span>
+<span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">j</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">j</span><span class="o">++</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
 
-
-        <a class="button" href="/2014/11/30/sample-post.html">Continue reading</a>
-      </div>
-      
-    </div>
-    
-
-      <div class="post-teaser">
-    
-      <header>
-        <h1>
-          <a class="post-link" href="/2014/11/29/feature-images.html">Feature images</a>
-        </h1>
-        
-        <p class="post-meta">November 29, 2014</p>
-      </header>
-
-      <div class="excerpt">
-        <p>This is an example of a post which includes a feature image specified in the front matter of the post. The feature image spans the full-width of the page, and is shown with the title on permalink pages.</p>
-
-
-
-        <a class="button" href="/2014/11/29/feature-images.html">Continue reading</a>
-      </div>
-      
-    </div>
-    
-
-      <div class="post-teaser">
-    
-      <header>
-        <h1>
-          <a class="post-link" href="/2014/11/28/markdown-and-html.html">Markdown and HTML</a>
-        </h1>
-        
-        <p class="post-meta">November 28, 2014</p>
-      </header>
-
-      <div class="excerpt">
-        <p>Jeykll supports the use of <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> with inline HTML tags which makes it easier to quickly write posts with Jekyll, without having to worry too much about text formatting. A sample of the formatting follows.</p>
-
-
-
-        <a class="button" href="/2014/11/28/markdown-and-html.html">Continue reading</a>
-      </div>
-      
-    </div>
-    
-  </div>
+  </article>
 
 </div>
 
