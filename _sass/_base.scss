@@ -79,8 +79,13 @@ li {
 /**
  * Headings
  */
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
     font-weight: 300;
+}
+
+h1 {
+    color: #1ABC9C;
+    font-weight: bold;
 }
 
 
@@ -97,7 +102,7 @@ a {
     }
 
     &:hover {
-        color: $text-color;
+        color: #2a7ae2;
         text-decoration: underline;
     }
 }

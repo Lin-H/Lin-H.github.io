@@ -190,6 +190,14 @@
   }
 }
 
+.post-link {
+    color: #1ABC9C !important;
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
 %padding-regular {
   padding: $padding-small $padding-large;
   @media (max-width: 1000px) { 
@@ -214,6 +222,7 @@
     font-size: 42px;
     letter-spacing: -1px;
     line-height: 1;
+    color: #1ABC9C;
 
     @include media-query($on-laptop) {
         font-size: 36px;
