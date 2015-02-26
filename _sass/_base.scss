@@ -23,7 +23,11 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-
+@include media-query($on-phone) {
+    body {
+        font-size: $base-font-size * 0.8;
+    }
+}
 
 /**
  * Set `margin-bottom` to maintain vertical rhythm
