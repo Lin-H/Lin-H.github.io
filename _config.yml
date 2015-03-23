@@ -1,14 +1,13 @@
 # Site settings
 title: LinH's Blog
 email: lh04667649@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+description: LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想，哈哈。
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://lin-h.github.io" # the base hostname & protocol for your site
 twitter_username: 
 github_username: Lin-H
+sina_weibo: "http://weibo.com/u/2605326267"
+sina_weibo_name: "7黑林"
 str_continue_reading: "Continue reading"
 
 # Build settings
