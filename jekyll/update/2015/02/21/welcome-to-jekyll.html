@@ -10,10 +10,12 @@
   <meta name="description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...">
   
   <link href="//fonts.useso.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+  <!--
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://lin-h.github.io/jekyll/update/2015/02/21/welcome-to-jekyll.html">
-  <link rel="alternate" type="application/rss+xml" title="LinH's Blog" href="http://lin-h.github.io/feed.xml" />
+  <link rel="canonical" href="https://lin-h.github.io/jekyll/update/2015/02/21/welcome-to-jekyll.html">
+  <link rel="alternate" type="application/rss+xml" title="LinH's Blog" href="https://lin-h.github.io/feed.xml" />
 </head>
 
 
@@ -69,63 +71,108 @@
 <p>To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention <code>YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
 
 <p>Jekyll also offers powerful support for code snippets:</p>
-
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">&quot;Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
-<span class="c1">#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</span></code></pre></div>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">mySingleton</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">isIdCardNo</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">num</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;输入的不是数字！&quot;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="cm">/* 这里声明私有变量和方法 */</span>
+    <span class="kd">var</span> <span class="nx">privateVariable</span> <span class="o">=</span> <span class="s1">'something private'</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">showPrivate</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">privateVariable</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kd">var</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">num</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
-        <span class="nx">re</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">len</span> <span class="o">==</span> <span class="mi">15</span><span class="p">)</span>
-        <span class="nx">re</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="err">/^(/d {</span>
-            <span class="mi">6</span>
-        <span class="p">})()</span> <span class="o">?</span> <span class="p">(</span><span class="err">/d{2})(/d {</span>
-            <span class="mi">2</span>
-        <span class="p">})(</span><span class="err">/d{2})(/d {</span>
-            <span class="mi">3</span>
-        <span class="p">})</span> <span class="nx">$</span> <span class="o">/</span> <span class="p">);</span>
-<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">len</span> <span class="o">==</span> <span class="mi">18</span><span class="p">)</span>
-    <span class="nx">re</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="err">/^(/d {</span>
-        <span class="mi">6</span>
-    <span class="p">})()</span> <span class="o">?</span> <span class="p">(</span><span class="err">/d{4})(/d {</span>
-        <span class="mi">2</span>
-    <span class="p">})(</span><span class="err">/d{2})(/d {</span>
-        <span class="mi">3</span>
-    <span class="p">})(</span><span class="sr">/d)$/</span><span class="p">);</span>
-<span class="k">else</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;输入的数字位数不对！&quot;</span><span class="p">);</span>
-    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+
+    <span class="cm">/* 公有变量和方法（可以访问私有变量和方法） */</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">publicMethod</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">showPrivate</span><span class="p">();</span>
+        <span class="p">},</span>
+        <span class="na">publicVar</span><span class="p">:</span> <span class="s1">'the public can see this!'</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">single</span> <span class="o">=</span> <span class="nx">mySingleton</span><span class="p">();</span>
+<span class="nx">single</span><span class="p">.</span><span class="nx">publicMethod</span><span class="p">();</span>  <span class="c1">// 输出 'something private'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">single</span><span class="p">.</span><span class="nx">publicVar</span><span class="p">);</span> <span class="c1">// 输出 'the public can see this!'</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include&lt;stdio.h&gt; 
+#include&lt;windows.h&gt;//基本型态定义。支援型态定义函数。使用者界面函数 图形装置界面函数。
+#include&lt;conio.h&gt;    //用户通过按键盘产生的对应操作 (控制台） 
+#include&lt;stdlib.h&gt; 
+#include&lt;time.h&gt; //日期和时间头文件 
+#define LEN 30
+#define WID 25 
+</span><span class="kt">int</span> <span class="n">Snake</span><span class="p">[</span><span class="n">LEN</span><span class="p">][</span><span class="n">WID</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">//数组的元素代表蛇的各个部位 
+</span><span class="kt">char</span> <span class="n">Sna_Hea_Dir</span> <span class="o">=</span> <span class="sc">'a'</span><span class="p">;</span><span class="c1">//记录蛇头的移动方向
+</span><span class="kt">int</span> <span class="n">Sna_Hea_X</span><span class="p">,</span> <span class="n">Sna_Hea_Y</span><span class="p">;</span><span class="c1">//记录蛇头的位置
+</span><span class="kt">int</span> <span class="n">Snake_Len</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span><span class="c1">//记录蛇的长度
+</span><span class="kt">clock_t</span> <span class="n">Now_Time</span><span class="p">;</span><span class="c1">//记录当前时间，以便自动移动
+</span><span class="kt">int</span> <span class="n">Wait_Time</span> <span class="p">;</span><span class="c1">//记录自动移动的时间间隔
+</span><span class="kt">int</span> <span class="n">Eat_Apple</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="c1">//吃到苹果表示为1
+</span><span class="kt">int</span> <span class="n">Level</span> <span class="p">;</span>
+<span class="kt">int</span> <span class="n">All_Score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">Apple_Num</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">HANDLE</span> <span class="n">hConsole</span> <span class="o">=</span> <span class="n">GetStdHandle</span><span class="p">(</span><span class="n">STD_OUTPUT_HANDLE</span><span class="p">);</span>  <span class="c1">//获取标准输出的句柄 &lt;windows.h&gt;
+//句柄 ：标志应用程序中的不同对象和同类对象中的不同的实例 方便操控，
+</span><span class="kt">void</span> <span class="nf">gotoxy</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span><span class="c1">//设置光标位置
+</span> <span class="p">{</span>
+     <span class="n">COORD</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">};</span>  <span class="c1">//定义一个字符在控制台屏幕上的坐标POS
+</span>     
+    <span class="n">SetConsoleCursorPosition</span><span class="p">(</span><span class="n">hConsole</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>    <span class="c1">//定位光标位置的函数&lt;windows.h&gt;
+</span> 
 <span class="p">}</span>
-<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">num</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">re</span><span class="p">);</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">len</span> <span class="o">==</span> <span class="mi">15</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">D</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s2">&quot;19&quot;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
-        <span class="kd">var</span> <span class="nx">B</span> <span class="o">=</span> <span class="nx">D</span><span class="p">.</span><span class="nx">getYear</span><span class="p">()</span> <span class="o">==</span> <span class="nx">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">D</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">D</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span> <span class="o">==</span> <span class="nx">a</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">D</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
-        <span class="kd">var</span> <span class="nx">B</span> <span class="o">=</span> <span class="nx">D</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">()</span> <span class="o">==</span> <span class="nx">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">D</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">D</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span> <span class="o">==</span> <span class="nx">a</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;输入的身份证号 &quot;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; 里出生日期不对！&quot;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
+ 
+<span class="kt">void</span> <span class="nf">Hide_Cursor</span><span class="p">()</span><span class="c1">//隐藏光标 固定函数 
+</span> <span class="p">{</span>
+    <span class="n">CONSOLE_CURSOR_INFO</span> <span class="n">cursor_info</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span> 
+    <span class="n">SetConsoleCursorInfo</span><span class="p">(</span><span class="n">hConsole</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cursor_info</span><span class="p">);</span>    
+ <span class="p">}</span>
+ 
+<span class="kt">void</span> <span class="nf">SetColor</span><span class="p">(</span><span class="kt">int</span> <span class="n">color</span><span class="p">)</span><span class="c1">//设置颜色
+</span> <span class="p">{</span>
+     <span class="n">SetConsoleTextAttribute</span><span class="p">(</span><span class="n">hConsole</span><span class="p">,</span> <span class="n">color</span><span class="p">);</span>
+<span class="c1">//是API设置字体颜色和背景色的函数 格式：SetConsoleTextAttribute(句柄,颜色);
+</span> <span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Print_Snake</span><span class="p">()</span><span class="c1">//打印蛇头和蛇的脖子和蛇尾
+</span> <span class="p">{</span>
+     <span class="kt">int</span> <span class="n">iy</span><span class="p">,</span> <span class="n">ix</span><span class="p">,</span> <span class="n">color</span><span class="p">;</span>
+     <span class="k">for</span><span class="p">(</span><span class="n">iy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iy</span> <span class="o">&lt;</span> <span class="n">WID</span><span class="p">;</span> <span class="o">++</span><span class="n">iy</span><span class="p">)</span>
+         <span class="k">for</span><span class="p">(</span><span class="n">ix</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ix</span> <span class="o">&lt;</span> <span class="n">LEN</span><span class="p">;</span> <span class="o">++</span><span class="n">ix</span><span class="p">)</span>
+         <span class="p">{</span>
+ 
+            <span class="k">if</span><span class="p">(</span><span class="n">Snake</span><span class="p">[</span><span class="n">ix</span><span class="p">][</span><span class="n">iy</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="c1">//蛇头
+</span>             <span class="p">{</span>
+                 <span class="n">SetColor</span><span class="p">(</span><span class="mh">0xf</span><span class="p">);</span>            <span class="c1">//oxf代表分配的内存地址  setcolor:34行自定义设置颜色的函数 
+</span>                 <span class="n">gotoxy</span><span class="p">(</span><span class="n">ix</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">iy</span><span class="p">);</span>
+                 <span class="n">printf</span><span class="p">(</span><span class="s">"※"</span><span class="p">);</span>
+             <span class="p">}</span>
+             <span class="k">if</span><span class="p">(</span><span class="n">Snake</span><span class="p">[</span><span class="n">ix</span><span class="p">][</span><span class="n">iy</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span><span class="c1">//蛇的脖子
+</span>             <span class="p">{</span>
+                 <span class="n">color</span> <span class="o">=</span> <span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">15</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">//rand()函数是产生随机数的一个随机函数。C语言里还有 srand()函数等。
+//头文件:stdlib.h 
+</span>                 <span class="k">if</span><span class="p">(</span><span class="n">color</span> <span class="o">==</span> <span class="mi">14</span><span class="p">)</span>
+                     <span class="n">color</span> <span class="o">-=</span> <span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">13</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">//变色 
+</span>                 <span class="n">SetColor</span><span class="p">(</span><span class="n">color</span><span class="p">);</span>
+                 <span class="n">gotoxy</span><span class="p">(</span><span class="n">ix</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">iy</span><span class="p">);</span>
+                 <span class="n">printf</span><span class="p">(</span><span class="s">"■"</span><span class="p">);</span>
+             <span class="p">}</span>
+             <span class="k">if</span><span class="p">(</span><span class="n">Snake</span><span class="p">[</span><span class="n">ix</span><span class="p">][</span><span class="n">iy</span><span class="p">]</span> <span class="o">==</span> <span class="n">Snake_Len</span><span class="p">)</span>
+             <span class="p">{</span>
+                 <span class="n">gotoxy</span><span class="p">(</span><span class="n">ix</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">iy</span><span class="p">);</span>
+                 <span class="n">SetColor</span><span class="p">(</span><span class="mh">0xe</span><span class="p">);</span>
+                 <span class="n">printf</span><span class="p">(</span><span class="s">"≈"</span><span class="p">);</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+ <span class="p">}</span></code></pre></div>
 
 <p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.<a href="http://www.hao123.com">hao123</a></p>
 
 <p><strong>测试中文显示效果</strong></p>
 
 <p>【司汤达说】①若要品尝<code>快乐</code>，不可缺的条件是心无不安；②一个人只要有纯洁的心灵，无愁无恨，他的青春时期定可延长；③恋人永远是胆战心惊的；④不知隐讳，即不知爱。1842年的今天，法国作家司汤达逝世，生前他写下这样的墓志铭：“活过、爱过、写过”。你读过他的《红与黑》吗？</p>
-
 
   </article>
 
