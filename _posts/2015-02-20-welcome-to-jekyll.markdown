@@ -19,7 +19,7 @@ print_hi('Tom')
 ```
 
 ```javascript
-var mySingleton = function () {
+var mySingleton = function (test) {
 
     /* 这里声明私有变量和方法 */
     var privateVariable = 'something private';
@@ -30,14 +30,15 @@ var mySingleton = function () {
     /* 公有变量和方法（可以访问私有变量和方法） */
     return {
         publicMethod: function () {
-            showPrivate();
+            showPrivate(name);
+            console.log(123456);
         },
         publicVar: 'the public can see this!'
     };
 };
 
-var single = mySingleton();
-single.publicMethod();  // 输出 'something private'
+var single = mySingleton(name);
+single.publicMethod("do");  // 输出 'something private'
 console.log(single.publicVar); // 输出 'the public can see this!'
 ```
 
