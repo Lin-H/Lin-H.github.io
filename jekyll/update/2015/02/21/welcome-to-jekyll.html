@@ -76,7 +76,7 @@
 <span class="k">end</span>
 <span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
 <span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span>
-</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">mySingleton</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">mySingleton</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">test</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="cm">/* 这里声明私有变量和方法 */</span>
     <span class="kd">var</span> <span class="nx">privateVariable</span> <span class="o">=</span> <span class="s1">'something private'</span><span class="p">;</span>
@@ -87,14 +87,15 @@
     <span class="cm">/* 公有变量和方法（可以访问私有变量和方法） */</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="na">publicMethod</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="nx">showPrivate</span><span class="p">();</span>
+            <span class="nx">showPrivate</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">123456</span><span class="p">);</span>
         <span class="p">},</span>
         <span class="na">publicVar</span><span class="p">:</span> <span class="s1">'the public can see this!'</span>
     <span class="p">};</span>
 <span class="p">};</span>
 
-<span class="kd">var</span> <span class="nx">single</span> <span class="o">=</span> <span class="nx">mySingleton</span><span class="p">();</span>
-<span class="nx">single</span><span class="p">.</span><span class="nx">publicMethod</span><span class="p">();</span>  <span class="c1">// 输出 'something private'</span>
+<span class="kd">var</span> <span class="nx">single</span> <span class="o">=</span> <span class="nx">mySingleton</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="nx">single</span><span class="p">.</span><span class="nx">publicMethod</span><span class="p">(</span><span class="s2">"do"</span><span class="p">);</span>  <span class="c1">// 输出 'something private'</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">single</span><span class="p">.</span><span class="nx">publicVar</span><span class="p">);</span> <span class="c1">// 输出 'the public can see this!'</span>
 </code></pre></div>
 <div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include&lt;stdio.h&gt; 
@@ -226,7 +227,7 @@
       </div>
 
       <div class="footer-col  footer-col-3">
-        <p class="text">LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想，哈哈。</p>
+        <p class="text">LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想  :)</p>
       </div>
     </div>
 
