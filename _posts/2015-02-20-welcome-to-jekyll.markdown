@@ -10,58 +10,108 @@ To add new posts, simply add a file in the `_posts` directory that follows the c
 
 Jekyll also offers powerful support for code snippets:
 
-{% highlight ruby %}
+```ruby
 def print_hi(name)
   puts "Hi, #{name}"
 end
 print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+```
 
-{% highlight javascript %}
-function isIdCardNo(num) {
-    if (isNaN(num)) {
-        alert("输入的不是数字！");
-        return false;
+```javascript
+var mySingleton = function () {
+
+    /* 这里声明私有变量和方法 */
+    var privateVariable = 'something private';
+    function showPrivate() {
+        console.log(privateVariable);
     }
-    var len = num.length,
-        re;
-    if (len == 15)
-        re = new RegExp(/^(/d {
-            6
-        })() ? (/d{2})(/d {
-            2
-        })(/d{2})(/d {
-            3
-        }) $ / );
-else if (len == 18)
-    re = new RegExp(/^(/d {
-        6
-    })() ? (/d{4})(/d {
-        2
-    })(/d{2})(/d {
-        3
-    })(/d)$/);
-else {
-    alert("输入的数字位数不对！");
-    return false;
+
+    /* 公有变量和方法（可以访问私有变量和方法） */
+    return {
+        publicMethod: function () {
+            showPrivate();
+        },
+        publicVar: 'the public can see this!'
+    };
+};
+
+var single = mySingleton();
+single.publicMethod();  // 输出 'something private'
+console.log(single.publicVar); // 输出 'the public can see this!'
+```
+
+{% highlight c %}
+#include<stdio.h> 
+#include<windows.h>//基本型态定义。支援型态定义函数。使用者界面函数 图形装置界面函数。
+#include<conio.h>    //用户通过按键盘产生的对应操作 (控制台） 
+#include<stdlib.h> 
+#include<time.h> //日期和时间头文件 
+#define LEN 30
+#define WID 25 
+int Snake[LEN][WID] = {0};   //数组的元素代表蛇的各个部位 
+char Sna_Hea_Dir = 'a';//记录蛇头的移动方向
+int Sna_Hea_X, Sna_Hea_Y;//记录蛇头的位置
+int Snake_Len = 3;//记录蛇的长度
+clock_t Now_Time;//记录当前时间，以便自动移动
+int Wait_Time ;//记录自动移动的时间间隔
+int Eat_Apple = 1;//吃到苹果表示为1
+int Level ;
+int All_Score = -1;
+int Apple_Num = -1;
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);  //获取标准输出的句柄 <windows.h>
+//句柄 ：标志应用程序中的不同对象和同类对象中的不同的实例 方便操控，
+void gotoxy(int x, int y)//设置光标位置
+ {
+     COORD pos = {x,y};  //定义一个字符在控制台屏幕上的坐标POS
+     
+    SetConsoleCursorPosition(hConsole, pos);    //定位光标位置的函数<windows.h>
+ 
 }
-var a = num.match(re);
-if (a != null) {
-    if (len == 15) {
-        var D = new Date("19" + a[3] + "/" + a[4] + "/" + a[5]);
-        var B = D.getYear() == a[3] && (D.getMonth() + 1) == a[4] && D.getDate() == a[5];
-    } else {
-        var D = new Date(a[3] + "/" + a[4] + "/" + a[5]);
-        var B = D.getFullYear() == a[3] && (D.getMonth() + 1) == a[4] && D.getDate() == a[5];
-    }
-    if (!B) {
-        alert("输入的身份证号 " + a[0] + " 里出生日期不对！");
-        return false;
-    }
-}
-return true;
-}
+ 
+void Hide_Cursor()//隐藏光标 固定函数 
+ {
+    CONSOLE_CURSOR_INFO cursor_info = {1, 0}; 
+    SetConsoleCursorInfo(hConsole, &cursor_info);    
+ }
+ 
+void SetColor(int color)//设置颜色
+ {
+     SetConsoleTextAttribute(hConsole, color);
+//是API设置字体颜色和背景色的函数 格式：SetConsoleTextAttribute(句柄,颜色);
+ }
+
+void Print_Snake()//打印蛇头和蛇的脖子和蛇尾
+ {
+     int iy, ix, color;
+     for(iy = 0; iy < WID; ++iy)
+         for(ix = 0; ix < LEN; ++ix)
+         {
+ 
+            if(Snake[ix][iy] == 1)//蛇头
+             {
+                 SetColor(0xf);            //oxf代表分配的内存地址  setcolor:34行自定义设置颜色的函数 
+                 gotoxy(ix*2, iy);
+                 printf("※");
+             }
+             if(Snake[ix][iy] == 2)//蛇的脖子
+             {
+                 color = rand()%15 + 1;  //rand()函数是产生随机数的一个随机函数。C语言里还有 srand()函数等。
+//头文件:stdlib.h 
+                 if(color == 14)
+                     color -= rand() % 13 + 1;  //变色 
+                 SetColor(color);
+                 gotoxy(ix*2, iy);
+                 printf("■");
+             }
+             if(Snake[ix][iy] == Snake_Len)
+             {
+                 gotoxy(ix*2, iy);
+                 SetColor(0xe);
+                 printf("≈");
+             }
+         }
+ }
 {% endhighlight %}
 
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help].[hao123](http://www.hao123.com)

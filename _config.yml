@@ -3,7 +3,7 @@ title: LinH's Blog
 email: lh04667649@gmail.com
 description: LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想，哈哈。
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://lin-h.github.io" # the base hostname & protocol for your site
+url: "https://lin-h.github.io" # the base hostname & protocol for your site
 twitter_username: 
 github_username: Lin-H
 sina_weibo: "http://weibo.com/u/2605326267"
@@ -11,7 +11,9 @@ sina_weibo_name: "7黑林"
 str_continue_reading: "Continue reading"
 
 # Build settings
-markdown: kramdown
+highlighter: rouge
+#kramdown
+markdown: redcarpet
 
 sass:
   sass_dir: _sass
