@@ -98,14 +98,14 @@
 <span class="nx">single</span><span class="p">.</span><span class="nx">publicMethod</span><span class="p">(</span><span class="s2">"do"</span><span class="p">);</span>  <span class="c1">// 输出 'something private'</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">single</span><span class="p">.</span><span class="nx">publicVar</span><span class="p">);</span> <span class="c1">// 输出 'the public can see this!'</span>
 </code></pre></div>
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include&lt;stdio.h&gt; 
-#include&lt;windows.h&gt;//基本型态定义。支援型态定义函数。使用者界面函数 图形装置界面函数。
-#include&lt;conio.h&gt;    //用户通过按键盘产生的对应操作 (控制台） 
-#include&lt;stdlib.h&gt; 
-#include&lt;time.h&gt; //日期和时间头文件 
-#define LEN 30
-#define WID 25 
-</span><span class="kt">int</span> <span class="n">Snake</span><span class="p">[</span><span class="n">LEN</span><span class="p">][</span><span class="n">WID</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">//数组的元素代表蛇的各个部位 
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">#include</span><span class="o">&lt;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span> 
+<span class="n">#include</span><span class="o">&lt;</span><span class="n">windows</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span><span class="c1">//基本型态定义。支援型态定义函数。使用者界面函数 图形装置界面函数。
+</span><span class="n">#include</span><span class="o">&lt;</span><span class="n">conio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>    <span class="c1">//用户通过按键盘产生的对应操作 (控制台） 
+</span><span class="n">#include</span><span class="o">&lt;</span><span class="n">stdlib</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span> 
+<span class="n">#include</span><span class="o">&lt;</span><span class="n">time</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span> <span class="c1">//日期和时间头文件 
+</span><span class="n">#define</span> <span class="n">LEN</span> <span class="mi">30</span>
+<span class="n">#define</span> <span class="n">WID</span> <span class="mi">25</span> 
+<span class="kt">int</span> <span class="n">Snake</span><span class="p">[</span><span class="n">LEN</span><span class="p">][</span><span class="n">WID</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>   <span class="c1">//数组的元素代表蛇的各个部位 
 </span><span class="kt">char</span> <span class="n">Sna_Hea_Dir</span> <span class="o">=</span> <span class="sc">'a'</span><span class="p">;</span><span class="c1">//记录蛇头的移动方向
 </span><span class="kt">int</span> <span class="n">Sna_Hea_X</span><span class="p">,</span> <span class="n">Sna_Hea_Y</span><span class="p">;</span><span class="c1">//记录蛇头的位置
 </span><span class="kt">int</span> <span class="n">Snake_Len</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span><span class="c1">//记录蛇的长度
