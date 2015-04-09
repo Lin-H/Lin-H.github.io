@@ -229,6 +229,7 @@
     }
     @include media-query($on-phone) {
         font-size: 2em;
+        line-height: 1.1;
     }
 }
 
