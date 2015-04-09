@@ -5,9 +5,41 @@
     <description>LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想  :)</description>
     <link>https://lin-h.github.io/</link>
     <atom:link href="https://lin-h.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 03 Apr 2015 18:45:23 +0800</pubDate>
-    <lastBuildDate>Fri, 03 Apr 2015 18:45:23 +0800</lastBuildDate>
+    <pubDate>Thu, 09 Apr 2015 16:37:55 +0800</pubDate>
+    <lastBuildDate>Thu, 09 Apr 2015 16:37:55 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>使用Jekyll在Github上搭建个人Blog</title>
+        <description>&lt;p&gt;拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。&lt;code&gt;Jekyll&lt;/code&gt;就是一款生成静态页面(HTML文件)的工具，&lt;code&gt;Jekyll&lt;/code&gt;是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就能搭建出一个Blog来，但如果你还懂得网站前端的知识如&lt;code&gt;HTML&lt;/code&gt;，&lt;code&gt;CSS&lt;/code&gt;，&lt;code&gt;Javascript&lt;/code&gt;的话，你就能完全自定义你自己的Blog。&lt;/p&gt;
+
+&lt;p&gt;在开始之前需要先了解一下&lt;a href=&quot;https://github.com/&quot;&gt;&lt;code&gt;Github&lt;/code&gt;&lt;/a&gt;并搭建好开发环境。&lt;/p&gt;
+
+&lt;h2&gt;Github 代码托管网站&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Github&lt;/code&gt;是一个基于git版本控制工具的代码托管网站。
+以下是&lt;code&gt;Github&lt;/code&gt;网站的官方介绍&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;GitHub is the best place to share code with friends, co-workers, classmates, and complete strangers. Over eight million people use GitHub to build amazing things together.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;简单来说就是一个存放代码的地方，代码按仓库(repository)管理，仓库又分为私人仓库(private repository)和公共仓库(public repository)。私人仓库需要收费，而公共仓库免费，并且不限制数量。而&lt;code&gt;Github&lt;/code&gt;最棒的地方就是多人协作。也就是开源程序，人人都能为代码提交修改。像Linux内核、Node.js 这些著名的程序都在&lt;code&gt;Github&lt;/code&gt;上托管包括&lt;code&gt;Jekyll&lt;/code&gt;。而且在&lt;code&gt;Github&lt;/code&gt;上还能找到很多有意思的项目。所以先注册一个&lt;code&gt;Github&lt;/code&gt;帐号吧。&lt;/p&gt;
+
+&lt;p&gt;完成了帐号注册后就能创建仓库了
+&lt;img src=&quot;https://lin-h.github.io/assets/jekyll/create-a-repository.png&quot; alt=&quot;&quot;&gt;
+创建的仓库名称必须是username.github.io，其中username就是你的用户名。Description可填可不填。&lt;/p&gt;
+
+&lt;p&gt;创建完成之后，就可以把代码上传上去了，这时就需要使用git工具了&lt;/p&gt;
+</description>
+        <pubDate>Fri, 10 Apr 2015 04:32:46 +0800</pubDate>
+        <link>https://lin-h.github.io/jekyll/2015/04/10/build-personal-blog-with-jekyll-on-github.html</link>
+        <guid isPermaLink="true">https://lin-h.github.io/jekyll/2015/04/10/build-personal-blog-with-jekyll-on-github.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll! 中文显示效果</title>

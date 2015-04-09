@@ -6,15 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>LinH's Blog</title>
-  <meta name="description" content="LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想  :)">
+  <title>使用Jekyll在Github上搭建个人Blog</title>
+  <meta name="description" content="拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。Jekyll就是一款生成静态页面(HTML文件)的工具，Jekyll是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就...">
   
   <link href="//fonts.useso.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
   <!--
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://lin-h.github.io/">
+  <link rel="canonical" href="https://lin-h.github.io/jekyll/2015/04/10/build-personal-blog-with-jekyll-on-github.html">
   <link rel="alternate" type="application/rss+xml" title="LinH's Blog" href="https://lin-h.github.io/feed.xml" />
 </head>
 
@@ -58,51 +58,36 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <div class="posts">
-    
+  <header class="post-header">
+    <h1 class="post-title">使用Jekyll在Github上搭建个人Blog</h1>
+    <p class="post-meta">Apr 10, 2015</p>
+  </header>
 
-      <div class="post-teaser">
-    
-      <header>
-        <h1>
-          <a class="post-link" href="/jekyll/2015/04/10/build-personal-blog-with-jekyll-on-github.html">使用Jekyll在Github上搭建个人Blog</a>
-        </h1>
-        
-        <p class="post-meta">April 10, 2015</p>
-      </header>
+  <article class="post-content">
+    <p>拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。<code>Jekyll</code>就是一款生成静态页面(HTML文件)的工具，<code>Jekyll</code>是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就能搭建出一个Blog来，但如果你还懂得网站前端的知识如<code>HTML</code>，<code>CSS</code>，<code>Javascript</code>的话，你就能完全自定义你自己的Blog。</p>
 
-      <div class="excerpt">
-        <p>拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。<code>Jekyll</code>就是一款生成静态页面(HTML文件)的工具，<code>Jekyll</code>是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就能搭建出一个Blog来，但如果你还懂得网站前端的知识如<code>HTML</code>，<code>CSS</code>，<code>Javascript</code>的话，你就能完全自定义你自己的Blog。</p>
+<p>在开始之前需要先了解一下<a href="https://github.com/"><code>Github</code></a>并搭建好开发环境。</p>
 
+<h2>Github 代码托管网站</h2>
 
-        <a class="button" href="/jekyll/2015/04/10/build-personal-blog-with-jekyll-on-github.html">Continue reading</a>
-      </div>
-      
-    </div>
-    
+<p><code>Github</code>是一个基于git版本控制工具的代码托管网站。
+以下是<code>Github</code>网站的官方介绍</p>
 
-      <div class="post-teaser">
-    
-      <header>
-        <h1>
-          <a class="post-link" href="/jekyll/update/2015/02/21/welcome-to-jekyll.html">Welcome to Jekyll! 中文显示效果</a>
-        </h1>
-        
-        <p class="post-meta">February 21, 2015</p>
-      </header>
+<blockquote>
+<p>GitHub is the best place to share code with friends, co-workers, classmates, and complete strangers. Over eight million people use GitHub to build amazing things together.</p>
+</blockquote>
 
-      <div class="excerpt">
-        <p>You’ll find this post in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<p>简单来说就是一个存放代码的地方，代码按仓库(repository)管理，仓库又分为私人仓库(private repository)和公共仓库(public repository)。私人仓库需要收费，而公共仓库免费，并且不限制数量。而<code>Github</code>最棒的地方就是多人协作。也就是开源程序，人人都能为代码提交修改。像Linux内核、Node.js 这些著名的程序都在<code>Github</code>上托管包括<code>Jekyll</code>。而且在<code>Github</code>上还能找到很多有意思的项目。所以先注册一个<code>Github</code>帐号吧。</p>
 
+<p>完成了帐号注册后就能创建仓库了
+<img src="https://lin-h.github.io/assets/jekyll/create-a-repository.png" alt="">
+创建的仓库名称必须是username.github.io，其中username就是你的用户名。Description可填可不填。</p>
 
-        <a class="button" href="/jekyll/update/2015/02/21/welcome-to-jekyll.html">Continue reading</a>
-      </div>
-      
-    </div>
-    
-  </div>
+<p>创建完成之后，就可以把代码上传上去了，这时就需要使用git工具了</p>
+
+  </article>
 
 </div>
 
