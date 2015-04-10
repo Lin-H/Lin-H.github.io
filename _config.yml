@@ -2,7 +2,7 @@
 title: LinHang's Blog
 email: lh04667649@gmail.com
 description: LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想  :)  
-keywords: LinHang,个人博客,技术分享,程序员,IT
+keywords: LinHang,个人博客,技术分享,程序员,IT,Programmer
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://lin-h.github.io" # the base hostname & protocol for your site
 twitter_username: 
