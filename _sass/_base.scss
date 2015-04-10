@@ -160,7 +160,7 @@ pre {
 
 @include media-query($on-phone) {
     code {
-        font-size: 1em * 0.8;
+        font-size: 0.8rem;
     }
 }
 
