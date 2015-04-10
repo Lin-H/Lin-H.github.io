@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LinH&#39;s Blog</title>
+    <title>LinHang&#39;s Blog</title>
     <description>LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想  :)</description>
     <link>https://lin-h.github.io/</link>
     <atom:link href="https://lin-h.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 10 Apr 2015 14:35:34 +0800</pubDate>
-    <lastBuildDate>Fri, 10 Apr 2015 14:35:34 +0800</lastBuildDate>
+    <pubDate>Fri, 10 Apr 2015 17:27:46 +0800</pubDate>
+    <lastBuildDate>Fri, 10 Apr 2015 17:27:46 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
