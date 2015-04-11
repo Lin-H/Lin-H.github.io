@@ -4,6 +4,7 @@ title:  "使用Jekyll在Github上搭建个人Blog"
 date:   2015-04-09 20:32:46
 categories: jekyll
 keywords: "个人博客,jekyll,github,教程,使用,搭建,blog"
+lastModified: 
 ---
 拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。`Jekyll`就是一款生成静态页面(HTML文件)的工具，`Jekyll`是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就能搭建出一个Blog来，但如果你还懂得网站前端的知识如`HTML`，`CSS`，`Javascript`的话，你就能完全自定义你自己的Blog。
 
@@ -226,6 +227,34 @@ git push origin source #将源代码上传到source分支，便于分开管理
 ```
 
 最后在`Github`网站上打开你的远程仓库，应该可以看到两个分支![]({{site.url}}/assets/jekyll/two-branch.png)这时你打开http://username.github.io就能看到你的网站(username为你的用户名)已经发布到网上了: )
+
+##目录结构
+
+为了能够更好地使用`Jekyll`，现在来了解一下生成的网站的目录结构。
+
+![]({{site.url}}/assets/jekyll/mulu-struct.png)
+
+你的网站目录结构应该像上图那样。`.sass-cache`目录是编译sass时的缓存，我们不需要理会它。`_includes`目录包含着整个网站的结构，进入这个目录可以看到有3个文件
+
+```
+footer.html
+head.html
+header.html
+```
+
+`footer.html`是网站的底部内容
+
+![]({{site.url}}/assets/jekyll/website-bottom.png)
+
+`head.html`则是网页结构中的头部，用于对该页面进行说明，和导入静态文件如css、js等，这一部分并不会在网页上显示出来。`header.html`文件中的内容就是网页的标题栏部分。
+
+![]({{site.url}}/assets/jekyll/website-head.png)
+
+这个文件夹的内容相当于是构成网页的基本骨架。`Jekyll`中默认有两种页面布局，一种是page、一种是post，存放在`_layouts`目录中，都是用同一种布局(layout)default，就是目录中的default.html文件。我们写文章就是使用post布局，所以一般情况来说这些文件都不需要改动，除非你想增加别的内容进去。
+
+目录`_sass`和`css`都是网站所使用的样式表默认情况下，这两个目录中的文件都使用`sass`编写，`sass`是一种用来快速编写css的工具相当于另一种`css语言`，详细介绍可以在[sass官网](http://sass-lang.com/)查看。当然如果你不会sass也可以直接用css编写，编辑的方式，直接用文本编辑器打开.scss文件就可以了，属于css的语句`sass`的编译器不会处理。
+
+`_config.yml`文件比较重要，它是整个网站的配置文件，可以设置网站的标题，描述，网址和其他与`jekyll`相关网站参数，详情请看[这里](http://jekyllrb.com/docs/configuration/)
 
 ###参考页面
 
