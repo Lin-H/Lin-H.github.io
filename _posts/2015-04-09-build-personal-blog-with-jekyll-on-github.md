@@ -254,7 +254,22 @@ header.html
 
 目录`_sass`和`css`都是网站所使用的样式表默认情况下，这两个目录中的文件都使用`sass`编写，`sass`是一种用来快速编写css的工具相当于另一种`css语言`，详细介绍可以在[sass官网](http://sass-lang.com/)查看。当然如果你不会sass也可以直接用css编写，编辑的方式，直接用文本编辑器打开.scss文件就可以了，属于css的语句`sass`的编译器不会处理。
 
-`_config.yml`文件比较重要，它是整个网站的配置文件，可以设置网站的标题，描述，网址和其他与`jekyll`相关网站参数，详情请看[这里](http://jekyllrb.com/docs/configuration/)
+`_config.yml`文件比较重要，它是整个网站的配置文件，可以设置网站的标题，描述，网址和其他与`jekyll`相关的网站参数，详情请看[这里](http://jekyllrb.com/docs/configuration/)
+
+`_posts`目录就是我们写文章的地方啦。写文章的时候一般都会用`Markdown`语法。`Markdown`其实就是以一种简易的方式去写HTML，学习起来相当容易。[Github的简易Markdown教程](https://help.github.com/articles/markdown-basics/)
+
+##Jekyll主题风格和配色
+
+既然是个人Blog，那么当然应该更具个人特色，如果你是个懂设计的程序员，制作一个漂亮的网站自然不难。但对于像我这样还不懂设计的人来说只能是到处改改，边改边瞧了。除此之外，也可以直接使用别人已经写好的主题风格。提供两个可以免费下载`Jekyll`主题的网站
+
+- [Jekyll Themes](http://jekyllthemes.org/)
+- [Themes · jekyll/jekyll Wiki](https://github.com/jekyll/jekyll/wiki/Themes)
+
+要使用某个主题只需要把该主题下载下来，直接复制到你的网站站点即可，然后把你的`_posts`目录下的文章复制到同名目录即可。然后在网站当前目录下打开命令行运行`jekyll serve`就能看到你新换的主题了。
+
+###代码配色
+
+
 
 ###参考页面
 
