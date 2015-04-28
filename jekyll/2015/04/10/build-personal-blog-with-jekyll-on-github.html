@@ -287,7 +287,71 @@ header.html
 
 <p>目录<code>_sass</code>和<code>css</code>都是网站所使用的样式表默认情况下，这两个目录中的文件都使用<code>sass</code>编写，<code>sass</code>是一种用来快速编写css的工具相当于另一种<code>css语言</code>，详细介绍可以在<a href="http://sass-lang.com/">sass官网</a>查看。当然如果你不会sass也可以直接用css编写，编辑的方式，直接用文本编辑器打开.scss文件就可以了，属于css的语句<code>sass</code>的编译器不会处理。</p>
 
-<p><code>_config.yml</code>文件比较重要，它是整个网站的配置文件，可以设置网站的标题，描述，网址和其他与<code>jekyll</code>相关网站参数，详情请看<a href="http://jekyllrb.com/docs/configuration/">这里</a></p>
+<p><code>_config.yml</code>文件比较重要，它是整个网站的配置文件，可以设置网站的标题，描述，网址和其他与<code>jekyll</code>相关的网站参数，详情请看<a href="http://jekyllrb.com/docs/configuration/">这里</a></p>
+
+<p><code>_posts</code>目录就是我们写文章的地方啦。写文章的时候一般都会用<code>Markdown</code>语法。<code>Markdown</code>其实就是以一种简易的方式去写HTML，学习起来相当容易。<a href="https://help.github.com/articles/markdown-basics/">Github的简易Markdown教程</a></p>
+
+<h2>Jekyll主题风格和配色</h2>
+
+<p>既然是个人Blog，那么当然应该更具个人特色，如果你是个懂设计的程序员，制作一个漂亮的网站自然不难。但对于像我这样还不懂设计的人来说只能是到处改改，边改边瞧了。除此之外，也可以直接使用别人已经写好的主题风格。提供两个可以免费下载<code>Jekyll</code>主题的网站</p>
+
+<ul>
+<li><a href="http://jekyllthemes.org/">Jekyll Themes</a></li>
+<li><a href="https://github.com/jekyll/jekyll/wiki/Themes">Themes · jekyll/jekyll Wiki</a></li>
+</ul>
+
+<p>要使用某个主题只需要把该主题下载下来，直接复制到你的网站站点即可，然后把你的<code>_posts</code>目录下的文章复制到同名目录即可。然后在网站当前目录下打开命令行运行<code>jekyll serve</code>就能看到你新换的主题了。</p>
+
+<h3>代码配色</h3>
+
+<p><code>Jekyll</code>默认的代码高亮工具是Pygment，对于在Windows环境下不是很稳定，所以推荐使用<code>Rouge</code>。跟安装<code>Jekyll</code>一样，使用<code>gem</code>来下载安装<code>Rouge</code>，在命令行中输入</p>
+<div class="highlight"><pre><code class="language-" data-lang="">gem install rouge
+</code></pre></div>
+<p>安装完成后打开编辑你的Blog根目录下的<code>_config.yml</code>文件，在文件的最后新增一行加上</p>
+<div class="highlight"><pre><code class="language-" data-lang="">highlighter: rouge
+</code></pre></div>
+<p>将代码高亮工具设置为<code>Rouge</code>。这样就完成了。</p>
+
+<p>如果不喜欢<code>Rouge</code>的默认代码配色可以在<a href="http://lin-h.github.io/download/CodeHighlightStyle.zip">这里</a>下载我事先从<code>Rouge</code>中导出的其他代码配色方案。并将文件复制到<code>_sass</code>文件夹中，编辑<code>css</code>文件夹中的<code>main.scss</code>文件，在末尾import你刚添加的配色方案的文件名。比如：</p>
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="k">@import</span>
+        <span class="s2">"base"</span><span class="o">,</span>
+        <span class="s2">"layout"</span><span class="o">,</span>
+        <span class="s2">"monokai.sublime"</span>
+<span class="p">;</span>
+</code></pre></div>
+<p>下面是部分配色方案的截图</p>
+
+<p>base16.solarized.dark<br/>
+<img src="http://lin-h.github.io/assets/jekyll/base16.solarized.dark.png" alt=""></p>
+
+<p>base16.solarized<br/>
+<img src="http://lin-h.github.io/assets/jekyll/base16.solarized.png" alt=""></p>
+
+<p>colorful<br/>
+<img src="http://lin-h.github.io/assets/jekyll/colorful.png" alt=""></p>
+
+<p>default<br/>
+<img src="http://lin-h.github.io/assets/jekyll/default.png" alt=""></p>
+
+<p>manni<br/>
+<img src="http://lin-h.github.io/assets/jekyll/manni.png" alt=""></p>
+
+<p>monokai.sublime<br/>
+<img src="http://lin-h.github.io/assets/jekyll/monokai.sublime.png" alt=""></p>
+
+<p>native<br/>
+<img src="http://lin-h.github.io/assets/jekyll/native.png" alt=""></p>
+
+<p>perldoc<br/>
+<img src="http://lin-h.github.io/assets/jekyll/perldoc.png" alt=""></p>
+
+<p>thankful_eyes<br/>
+<img src="http://lin-h.github.io/assets/jekyll/thankful_eyes.png" alt=""></p>
+
+<p>vim<br/>
+<img src="http://lin-h.github.io/assets/jekyll/vim.png" alt=""></p>
+
+<h2>书写文章</h2>
 
 <h3>参考页面</h3>
 
