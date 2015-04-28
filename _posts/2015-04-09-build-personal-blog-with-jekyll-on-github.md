@@ -4,7 +4,7 @@ title:  "使用Jekyll在Github上搭建个人Blog"
 date:   2015-04-09 20:32:46
 categories: jekyll
 keywords: "个人博客,jekyll,github,教程,使用,搭建,blog"
-lastModified: 
+lastModified: 2015-04-28 22:32:46
 ---
 拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。`Jekyll`就是一款生成静态页面(HTML文件)的工具，`Jekyll`是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就能搭建出一个Blog来，但如果你还懂得网站前端的知识如`HTML`，`CSS`，`Javascript`的话，你就能完全自定义你自己的Blog。
 
@@ -268,6 +268,64 @@ header.html
 要使用某个主题只需要把该主题下载下来，直接复制到你的网站站点即可，然后把你的`_posts`目录下的文章复制到同名目录即可。然后在网站当前目录下打开命令行运行`jekyll serve`就能看到你新换的主题了。
 
 ###代码配色
+
+`Jekyll`默认的代码高亮工具是Pygment，对于在Windows环境下不是很稳定，所以推荐使用`Rouge`。跟安装`Jekyll`一样，使用`gem`来下载安装`Rouge`，在命令行中输入
+
+```
+gem install rouge
+```
+
+安装完成后打开编辑你的Blog根目录下的`_config.yml`文件，在文件的最后新增一行加上
+
+```
+highlighter: rouge
+```
+
+将代码高亮工具设置为`Rouge`。这样就完成了。
+
+如果不喜欢`Rouge`的默认代码配色可以在[这里]({{site.url}}/download/CodeHighlightStyle.zip)下载我事先从`Rouge`中导出的其他代码配色方案。并将文件复制到`_sass`文件夹中，编辑`css`文件夹中的`main.scss`文件，在末尾import你刚添加的配色方案的文件名。比如：
+
+```scss
+@import
+        "base",
+        "layout",
+        "monokai.sublime"
+;
+```
+
+下面是部分配色方案的截图
+
+base16.solarized.dark<br/>
+![]({{site.url}}/assets/jekyll/base16.solarized.dark.png)
+
+base16.solarized<br/>
+![]({{site.url}}/assets/jekyll/base16.solarized.png)
+
+colorful<br/>
+![]({{site.url}}/assets/jekyll/colorful.png)
+
+default<br/>
+![]({{site.url}}/assets/jekyll/default.png)
+
+manni<br/>
+![]({{site.url}}/assets/jekyll/manni.png)
+
+monokai.sublime<br/>
+![]({{site.url}}/assets/jekyll/monokai.sublime.png)
+
+native<br/>
+![]({{site.url}}/assets/jekyll/native.png)
+
+perldoc<br/>
+![]({{site.url}}/assets/jekyll/perldoc.png)
+
+thankful_eyes<br/>
+![]({{site.url}}/assets/jekyll/thankful_eyes.png)
+
+vim<br/>
+![]({{site.url}}/assets/jekyll/vim.png)
+
+##书写文章
 
 
 
