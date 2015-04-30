@@ -5,8 +5,8 @@
     <description>LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想  :)</description>
     <link>http://lin-h.github.io/</link>
     <atom:link href="http://lin-h.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 28 Apr 2015 23:16:23 +0800</pubDate>
-    <lastBuildDate>Tue, 28 Apr 2015 23:16:23 +0800</lastBuildDate>
+    <pubDate>Fri, 01 May 2015 01:32:55 +0800</pubDate>
+    <lastBuildDate>Fri, 01 May 2015 01:32:55 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -256,7 +256,7 @@ header.html
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;将代码高亮工具设置为&lt;code&gt;Rouge&lt;/code&gt;。这样就完成了。&lt;/p&gt;
 
-&lt;p&gt;如果不喜欢&lt;code&gt;Rouge&lt;/code&gt;的默认代码配色可以在&lt;a href=&quot;http://lin-h.github.io/download/CodeHighlightStyle.zip&quot;&gt;这里&lt;/a&gt;下载我事先从&lt;code&gt;Rouge&lt;/code&gt;中导出的其他代码配色方案。并将文件复制到&lt;code&gt;_sass&lt;/code&gt;文件夹中，编辑&lt;code&gt;css&lt;/code&gt;文件夹中的&lt;code&gt;main.scss&lt;/code&gt;文件，在末尾import你刚添加的配色方案的文件名。比如：&lt;/p&gt;
+&lt;p&gt;如果不喜欢&lt;code&gt;Rouge&lt;/code&gt;的默认代码配色可以在&lt;a href=&quot;http://lin-h.github.io/download/codeHighlightStyle.zip&quot;&gt;这里&lt;/a&gt;下载我事先从&lt;code&gt;Rouge&lt;/code&gt;中导出的其他代码配色方案。并将文件复制到&lt;code&gt;_sass&lt;/code&gt;文件夹中，编辑&lt;code&gt;css&lt;/code&gt;文件夹中的&lt;code&gt;main.scss&lt;/code&gt;文件，在末尾import你刚添加的配色方案的文件名。比如：&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt;
         &lt;span class=&quot;s2&quot;&gt;&quot;base&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
         &lt;span class=&quot;s2&quot;&gt;&quot;layout&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
