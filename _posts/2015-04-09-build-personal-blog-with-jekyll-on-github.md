@@ -283,7 +283,7 @@ highlighter: rouge
 
 将代码高亮工具设置为`Rouge`。这样就完成了。
 
-如果不喜欢`Rouge`的默认代码配色可以在[这里]({{site.url}}/download/CodeHighlightStyle.zip)下载我事先从`Rouge`中导出的其他代码配色方案。并将文件复制到`_sass`文件夹中，编辑`css`文件夹中的`main.scss`文件，在末尾import你刚添加的配色方案的文件名。比如：
+如果不喜欢`Rouge`的默认代码配色可以在[这里]({{site.url}}/download/codeHighlightStyle.zip)下载我事先从`Rouge`中导出的其他代码配色方案。并将文件复制到`_sass`文件夹中，编辑`css`文件夹中的`main.scss`文件，在末尾import你刚添加的配色方案的文件名。比如：
 
 ```scss
 @import
