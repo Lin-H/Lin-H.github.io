@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://lin-h.github.io/jekyll/2015/04/10/build-personal-blog-with-jekyll-on-github.html">
-  <link rel="alternate" type="application/rss+xml" title="LinHang's Blog" href="http://lin-h.github.io/feed.xml" />
+  <link rel="canonical" href="http://lin-h.com/jekyll/2015/04/10/build-personal-blog-with-jekyll-on-github.html">
+  <link rel="alternate" type="application/rss+xml" title="LinHang's Blog" href="http://lin-h.com/feed.xml" />
 </head>
 
 
@@ -84,7 +84,7 @@
 
 <p>除了<code>Ruby</code>以外<strong>Windows系统</strong>还需要<a href="http://rubyinstaller.org/downloads/">Ruby DevKit</a></p>
 
-<p><img src="http://lin-h.github.io/assets/jekyll/development-kit.png" alt=""></p>
+<p><img src="http://lin-h.com/assets/jekyll/development-kit.png" alt=""></p>
 
 <p>根据自己所安装的<code>Ruby</code>的版本选择相应的版本。下载之后运行，解压到一个你喜欢的目录。<strong>目录必须不包含空格</strong></p>
 
@@ -140,7 +140,7 @@ C:\Users\Administrator&gt;
 </code></pre></div>
 <p>打开你的浏览器，在地址中输入<code>http://127.0.0.1:4000/</code>就能看到如下页面：</p>
 
-<p><img src="http://lin-h.github.io/assets/jekyll/startup.png" alt=""></p>
+<p><img src="http://lin-h.com/assets/jekyll/startup.png" alt=""></p>
 
 <p>到此为止一个你的Blog站点就搭建好了，其中<code>_site</code>是最终生成的网站代码，别的文件夹中都是网站的源代码。接下来我们要把这个站点发布到网上去。在这里我选择的是<a href="https://github.com/"><code>Github</code></a>，<code>Github</code>只支持静态页面的解析，所以需要生成静态站点的工具。与之类似的还有国内的<a href="http://git.oschina.net/">Git@OSC</a>使用方法与<code>Github</code>类似。但与<code>Github</code>不同的是<code>Git@OSC</code>支持后台语言编写的网站如<code>PHP</code>、<code>Node.js</code>、<code>Java</code>等，还可使用数据库但本人还没测试过。有兴趣的同学可以试试。</p>
 
@@ -156,7 +156,7 @@ C:\Users\Administrator&gt;
 <p>简单来说就是一个存放代码的地方，代码按仓库(repository)管理，仓库又分为私人仓库(private repository)和公共仓库(public repository)。私人仓库需要收费，而公共仓库免费，并且不限制数量。而<code>Github</code>最棒的地方就是多人协作。也就是开源程序，人人都能为代码提交修改。像Linux内核、Node.js 这些著名的程序都在<code>Github</code>上托管包括<code>Jekyll</code>。而且在<code>Github</code>上还能找到很多有意思的项目。所以先注册一个<code>Github</code>帐号吧。
 完成了帐号注册后就能创建仓库了</p>
 
-<p><img src="http://lin-h.github.io/assets/jekyll/create-a-repository.png" alt=""></p>
+<p><img src="http://lin-h.com/assets/jekyll/create-a-repository.png" alt=""></p>
 
 <p>创建的仓库名称必须是username.github.io，其中username就是你的用户名。Description可填可不填。
 创建完成之后，就可以把代码上传上去了，这时就需要使用git工具了</p>
@@ -248,7 +248,7 @@ E:\Project\MyBlog&gt;
 
 <p>首先需要设置远程仓库的地址(即在你的Github账号中创建的仓库的地址)。在网页上打开你之前创建的仓库。在页面右侧找到该仓库的URL(建议先点击SSH切换到SSH链接，方便以后添加SSH KEY)</p>
 
-<p><img src="http://lin-h.github.io/assets/jekyll/where-to-clone.png" alt=""></p>
+<p><img src="http://lin-h.com/assets/jekyll/where-to-clone.png" alt=""></p>
 
 <p>在命令行中运行<code>git remote add origin &lt;server&gt;</code>其中<server>就是你的远程仓库的地址，origin为仓库名字(可以改为其他的名字)。</p>
 
@@ -262,13 +262,13 @@ E:\Project\MyBlog&gt;
 <p>同样的在<code>MyBlog</code>目录中运行</p>
 <div class="highlight"><pre><code class="language-shell" data-lang="shell">git push origin <span class="nb">source</span> <span class="c">#将源代码上传到source分支，便于分开管理</span>
 </code></pre></div>
-<p>最后在<code>Github</code>网站上打开你的远程仓库，应该可以看到两个分支<img src="http://lin-h.github.io/assets/jekyll/two-branch.png" alt="">这时你打开http://username.github.io就能看到你的网站(username为你的用户名)已经发布到网上了: )</p>
+<p>最后在<code>Github</code>网站上打开你的远程仓库，应该可以看到两个分支<img src="http://lin-h.com/assets/jekyll/two-branch.png" alt="">这时你打开http://username.github.io就能看到你的网站(username为你的用户名)已经发布到网上了: )</p>
 
 <h2>目录结构</h2>
 
 <p>为了能够更好地使用<code>Jekyll</code>，现在来了解一下生成的网站的目录结构。</p>
 
-<p><img src="http://lin-h.github.io/assets/jekyll/mulu-struct.png" alt=""></p>
+<p><img src="http://lin-h.com/assets/jekyll/mulu-struct.png" alt=""></p>
 
 <p>你的网站目录结构应该像上图那样。<code>.sass-cache</code>目录是编译sass时的缓存，我们不需要理会它。<code>_includes</code>目录包含着整个网站的结构，进入这个目录可以看到有3个文件</p>
 <div class="highlight"><pre><code class="language-" data-lang="">footer.html
@@ -277,11 +277,11 @@ header.html
 </code></pre></div>
 <p><code>footer.html</code>是网站的底部内容</p>
 
-<p><img src="http://lin-h.github.io/assets/jekyll/website-bottom.png" alt=""></p>
+<p><img src="http://lin-h.com/assets/jekyll/website-bottom.png" alt=""></p>
 
 <p><code>head.html</code>则是网页结构中的头部，用于对该页面进行说明，和导入静态文件如css、js等，这一部分并不会在网页上显示出来。<code>header.html</code>文件中的内容就是网页的标题栏部分。</p>
 
-<p><img src="http://lin-h.github.io/assets/jekyll/website-head.png" alt=""></p>
+<p><img src="http://lin-h.com/assets/jekyll/website-head.png" alt=""></p>
 
 <p>这个文件夹的内容相当于是构成网页的基本骨架。<code>Jekyll</code>中默认有两种页面布局，一种是page、一种是post，存放在<code>_layouts</code>目录中，都是用同一种布局(layout)default，就是目录中的default.html文件。我们写文章就是使用post布局，所以一般情况来说这些文件都不需要改动，除非你想增加别的内容进去。</p>
 
@@ -312,7 +312,7 @@ header.html
 </code></pre></div>
 <p>将代码高亮工具设置为<code>Rouge</code>。这样就完成了。</p>
 
-<p>如果不喜欢<code>Rouge</code>的默认代码配色可以在<a href="http://lin-h.github.io/download/codeHighlightStyle.zip">这里</a>下载我事先从<code>Rouge</code>中导出的其他代码配色方案。并将文件复制到<code>_sass</code>文件夹中，编辑<code>css</code>文件夹中的<code>main.scss</code>文件，在末尾import你刚添加的配色方案的文件名。比如：</p>
+<p>如果不喜欢<code>Rouge</code>的默认代码配色可以在<a href="http://lin-h.com/download/codeHighlightStyle.zip">这里</a>下载我事先从<code>Rouge</code>中导出的其他代码配色方案。并将文件复制到<code>_sass</code>文件夹中，编辑<code>css</code>文件夹中的<code>main.scss</code>文件，在末尾import你刚添加的配色方案的文件名。比如：</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="k">@import</span>
         <span class="s2">"base"</span><span class="o">,</span>
         <span class="s2">"layout"</span><span class="o">,</span>
@@ -322,34 +322,34 @@ header.html
 <p>下面是部分配色方案的截图</p>
 
 <p>base16.solarized.dark<br/>
-<img src="http://lin-h.github.io/assets/jekyll/base16.solarized.dark.png" alt=""></p>
+<img src="http://lin-h.com/assets/jekyll/base16.solarized.dark.png" alt=""></p>
 
 <p>base16.solarized<br/>
-<img src="http://lin-h.github.io/assets/jekyll/base16.solarized.png" alt=""></p>
+<img src="http://lin-h.com/assets/jekyll/base16.solarized.png" alt=""></p>
 
 <p>colorful<br/>
-<img src="http://lin-h.github.io/assets/jekyll/colorful.png" alt=""></p>
+<img src="http://lin-h.com/assets/jekyll/colorful.png" alt=""></p>
 
 <p>default<br/>
-<img src="http://lin-h.github.io/assets/jekyll/default.png" alt=""></p>
+<img src="http://lin-h.com/assets/jekyll/default.png" alt=""></p>
 
 <p>manni<br/>
-<img src="http://lin-h.github.io/assets/jekyll/manni.png" alt=""></p>
+<img src="http://lin-h.com/assets/jekyll/manni.png" alt=""></p>
 
 <p>monokai.sublime<br/>
-<img src="http://lin-h.github.io/assets/jekyll/monokai.sublime.png" alt=""></p>
+<img src="http://lin-h.com/assets/jekyll/monokai.sublime.png" alt=""></p>
 
 <p>native<br/>
-<img src="http://lin-h.github.io/assets/jekyll/native.png" alt=""></p>
+<img src="http://lin-h.com/assets/jekyll/native.png" alt=""></p>
 
 <p>perldoc<br/>
-<img src="http://lin-h.github.io/assets/jekyll/perldoc.png" alt=""></p>
+<img src="http://lin-h.com/assets/jekyll/perldoc.png" alt=""></p>
 
 <p>thankful_eyes<br/>
-<img src="http://lin-h.github.io/assets/jekyll/thankful_eyes.png" alt=""></p>
+<img src="http://lin-h.com/assets/jekyll/thankful_eyes.png" alt=""></p>
 
 <p>vim<br/>
-<img src="http://lin-h.github.io/assets/jekyll/vim.png" alt=""></p>
+<img src="http://lin-h.com/assets/jekyll/vim.png" alt=""></p>
 
 <h2>书写文章</h2>
 
