@@ -316,5 +316,401 @@ fn get_mut<'a>(&'a mut self) -> &'a mut T;
 
 > 以上这3个`Rust`中的概念确实比较难懂，我是根据自己的理解写的，若有不同观点请看官方原文。
 
-##Mutability
+##Structs
 
+与C语言的结构体类似，将某些数据类型组合在一起，形成新的数据结构。
+
+```Rust
+struct Point {  //名称第一个字母大写，采用驼峰命名法
+    x: i32,     //不能写成mut x: i32,
+    y: i32,
+}
+
+fn main() {
+    let origin = Point { x: 0, y: 0 }; //定义一个Point类型的变量绑定，并赋值
+
+    println!("The origin is at ({}, {})", origin.x, origin.y);//struct变量访问
+}
+
+let mut point = Point3d { x: 0, y: 0, z: 0 };
+point = Point3d { y: 1, .. point };
+//新的ponit y为1，x和z使用原来的point的值
+```
+
+###Tuple structs
+
+定义一个类似于`tuple`的结构。
+
+```Rust
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+//以下两个变量不相等
+let black = Color(0, 0, 0);
+let origin = Point(0, 0, 0);
+```
+
+###Unit-like structs
+
+可以定义一个无成员的结构
+
+```Rust
+struct Electron;
+```
+
+##Enums
+
+`Rust`的枚举类型，类型为`Message`的变量绑定可以是`Message`的其中之一
+
+```Rust
+enum Message {
+    Quit,
+    ChangeColor(i32, i32, i32),
+    Move { x: i32, y: i32 },
+    Write(String),
+}
+
+let x: Message = Message::Move { x: 3, y: 4 };
+```
+
+##Match
+
+`match表达式`类似于C语言中的`switch`
+
+```Rust
+let x = 5;
+
+match x {
+    1 => println!("one"),
+    2 => println!("two"),
+    3 => println!("three"),
+    4 => println!("four"),
+    5 => println!("five"),
+    _ => println!("something else"),//当所有值都不匹配时
+}
+
+//x可以为`enum`类型
+enum Message {
+    Quit,
+    ChangeColor(i32, i32, i32),
+    Move { x: i32, y: i32 },
+    Write(String),
+}
+
+fn quit() { /* ... */ }
+fn change_color(r: i32, g: i32, b: i32) { /* ... */ }
+fn move_cursor(x: i32, y: i32) { /* ... */ }
+
+fn process_message(msg: Message) {
+    match msg {
+        Message::Quit => quit(),
+        Message::ChangeColor(r, g, b) => change_color(r, g, b),
+        Message::Move { x: x, y: y } => move_cursor(x, y),
+        Message::Write(s) => println!("{}", s),
+    };
+}
+```
+
+##Patterns
+
+模式，`match`中x所匹配的就是模式
+
+```Rust
+let x = 1;
+
+match x {
+    1 | 2 => println!("one"), //匹配1或2
+    3 ... 7 => println!("two"),//匹配3, 4, 5, 6, 7
+    'a' ... 'j' => println!("three"),//匹配字母a到j
+    e @ 8 ... 10 => println!("got a range element {}", e),//若x为10，e所绑定的值就为10
+    _ => println!("anything"),
+}
+```
+匹配数据结构的一部分
+```Rust
+#[derive(Debug)]
+struct Person {
+    name: Option<String>,
+}
+
+let name = "Steve".to_string();
+let mut x: Option<Person> = Some(Person { name: Some(name) });
+match x {
+    Some(Person { name: ref a @ Some(_), .. }) => println!("{:?}", a),
+    _ => {}
+}
+```
+
+匹配有变量的枚举类型，使用`..`来忽略掉参数
+
+```Rust
+enum OptionalInt {
+    Value(i32),
+    Missing,
+}
+
+let x = OptionalInt::Value(5);
+let mut y = 5;
+
+match x {
+    OptionalInt::Value(i) if i > 5 => println!("Got an int bigger than five!"),//添加if作为判断
+    OptionalInt::Value(..) => println!("Got an int!"),
+    OptionalInt::Missing => println!("No such luck."),
+    ref y => println!("Got a reference to {}", y),//获取引用
+    ref mut mr => println!("Got a mutable reference to {}", mr),
+}//最后输出Got an int!
+```
+
+匹配`struct`类型
+
+```Rust
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+let origin = Point { x: 0, y: 0 };
+
+match origin {
+    Point { x: x, y: y } => println!("({},{})", x, y),
+    Point { x: x, .. } => println!("x is {}", x),
+}
+```
+
+以上列出的匹配可以任意组合在一起。
+
+##Method Syntax
+
+```Rust
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl Circle {
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+}
+
+fn main() {
+    let c = Circle { x: 0.0, y: 0.0, radius: 2.0 };
+    println!("{}", c.area());
+}
+```
+
+先定义一个`struct` 叫`Circle`，再用`impl`往`Circle`中添加一个方法`area`，每个方法都会有一个特殊的参数，可以是`self`，`&self`，`&mut self`其中之一。 传值方式与[Functions](#Functions)一节相同。在上面的代码中`self`指代的就是`c`这个变量(类似于其他语言中的this)，所以在这里我们使用的是引用，而且一般情况下也都是使用引用。
+
+###Chaining method calls(链式调用)
+
+通过返回`self`来达到链式调用的目的
+
+```Rust
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl Circle {
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+
+    fn grow(&mut self, increment: f64) -> &Circle {
+        self.radius += increment;
+		return self;
+    }
+}
+
+fn main() {
+    let mut c = Circle { x: 0.0, y: 0.0, radius: 2.0 };
+    println!("{}", c.area());
+
+    let d = c.grow(2.0).area();
+    println!("{}", d);
+}
+```
+
+官方的代码是返回一个新的`Circle`。此处我做了下修改以更符合返回`self`的一般情况。
+
+###Associated functions
+
+联合函数不需要`self`参数
+
+```Rust
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl Circle {
+    //new方法返回一个Circle
+    fn new(x: f64, y: f64, radius: f64) -> Circle {
+        Circle {
+            x: x,
+            y: y,
+            radius: radius,
+        }
+    }
+}
+
+fn main() {
+    let c = Circle::new(0.0, 0.0, 2.0);//联合函数的调用方法Struct::function()
+    //类似于其他语言中的静态方法
+}
+```
+
+###Builder Pattern
+
+为了使用户只能修改`struct`中特定的属性，需要使用另一个`struct`来作限制，如`Circle`的`CircleBuilder`。
+
+```Rust
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl Circle {
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+}
+
+struct CircleBuilder {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl CircleBuilder {
+    fn new() -> CircleBuilder {
+        CircleBuilder { x: 0.0, y: 0.0, radius: 1.0, }
+    }
+
+    fn x(&mut self, coordinate: f64) -> &mut CircleBuilder {
+        self.x = coordinate;
+        self
+    }
+
+    fn y(&mut self, coordinate: f64) -> &mut CircleBuilder {
+        self.y = coordinate;
+        self
+    }
+
+    fn radius(&mut self, radius: f64) -> &mut CircleBuilder {
+        self.radius = radius;
+        self
+    }
+
+    fn finalize(&self) -> Circle {
+        Circle { x: self.x, y: self.y, radius: self.radius }
+    }
+}
+
+fn main() {
+    let c = CircleBuilder::new()
+                .x(1.0)
+                .y(2.0)
+                .radius(2.0)
+                .finalize();
+
+    println!("area: {}", c.area());
+    println!("x: {}", c.x);
+    println!("y: {}", c.y);
+}
+```
+
+通过使用`CircleBuilder`来创建`Circle`，就可以对`Circle`的创建和修改做出约束。
+
+##Vectors(向量)
+
+向量(`Vec<T>`)是动态可增长的数组，存储在堆上。使用`vec!`宏创建。
+
+```Rust
+let v = vec![1, 2, 3, 4, 5]; // v: Vec<i32>
+let v = vec![0; 10]; // 10 个 0
+println!("The third element of v is {}", v[2]);//下标从0开始
+//遍历向量
+for i in &v {
+    println!("A reference to {}", i);
+}
+
+for i in &mut v {
+    println!("A mutable reference to {}", i);
+}
+
+for i in v {
+    println!("Take ownership of the vector and its element {}", i);
+}
+```
+
+##Strings
+
+`Rust`有两种字符串类型`&str`(`&'static str`)和`String`，都是UTF-8编码(一个字符占4字节)
+
+`&str`类型的字符串如
+
+```Rust
+let string = "Hello there."; // string: &'static str
+```
+
+存在于静态域，整个程序都可以访问，固定长度，无法被修改。
+
+`String`是在堆上创建的字符串，可加长，通常使用`to_string`从`&str`格式化得到。
+
+```Rust
+let mut s = "Hello".to_string(); // mut s: String 使用了to_string()方法才可以修改s
+println!("{}", s);
+
+s.push_str(", world.");
+println!("{}", s);
+```
+
+可以使用`&`将`String`强制格式化为`&str`
+
+```Rust
+fn takes_slice(slice: &str) {
+    println!("Got: {}", slice);
+}
+
+fn main() {
+    let s = "Hello".to_string();
+    takes_slice(&s);
+}
+```
+
+> **注意**:  `String`可以轻易地变成`&str`，但`&str`格式化为`String`需要分配内存(因为是在堆上创建)，所以必要情况下才这么做。
+
+###Indexing
+
+无法通过`s[0]`来访问某个字符，因为字符是UTF-8编码，但可以这样做
+
+```Rust
+let hachiko = "忠犬ハチ公";
+let dog = hachiko.chars().nth(1); // 类似于 hachiko[1]
+```
+
+> **注意**: chars()操作需要遍历整个字符串
+
+###Concatenation
+
+如果你有一个`String`类型的字符串，可以将`&str`类型的字符串连接到末尾。
+
+```Rust
+let hello = "Hello ".to_string();
+let world = "world!";
+let hello_world = hello + world;
+```
+
+如果是两个`String`类型的字符串，连接时第二个需要转换为`&str`类型
+
+```Rust
+let hello = "Hello ".to_string();
+let world = "world!".to_string();
+let hello_world = hello + &world;
+```
+
+##Generics
