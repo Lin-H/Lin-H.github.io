@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Rust快速入门
-date: 2015-05-28
+date: 2015-05-28 18:05:44
 category: Rust
 keywords: "Rust,快速入门,入门"
-last_modified_at: 2015-05-30
+last_modified_at: 2015-06-04 23:29:07
 ---
 ##Rust简介
 
@@ -425,7 +425,9 @@ match x {
     _ => println!("anything"),
 }
 ```
+
 匹配数据结构的一部分
+
 ```Rust
 #[derive(Debug)]
 struct Person {
@@ -713,4 +715,230 @@ let world = "world!".to_string();
 let hello_world = hello + &world;
 ```
 
-##Generics
+##Generics(泛型)
+
+```Rust
+enum Option<T> {//定义中的T可以换成其他大写字母
+    Some(T),
+    None,
+}
+
+let x: Option<i32> = Some(5);
+```
+
+`<T>`说明该类型是泛型。
+
+###Generic functions(泛型函数)
+
+```Rust
+fn takes_anything<T>(x: T) {
+    // do something with x
+}
+fn takes_two_of_the_same_things<T>(x: T, y: T) {
+}
+fn takes_two_things<T, U>(x: T, y: U) {
+}
+```
+###Generic structs(泛型结构)
+```Rust
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+let int_origin = Point { x: 0, y: 0 };
+let float_origin = Point { x: 0.0, y: 0.0 };
+```
+
+##Traits(特性)
+
+`Traits`的作用类似于其他语言的接口，比如Java的Interface类型。在其中定义的函数只写声明部分。用于约束泛型中必须定义了哪些函数。比如：
+
+```Rust
+fn print_area<T>(shape: T) {
+    println!("This shape has an area of {}", shape.area());
+}
+```
+
+编译的时候会发生错误，因为泛型`T`无法保证是否定义了`area()`函数。所以需要使用`Traits`。
+
+```Rust
+trait HasArea {
+    fn area(&self) -> f64;
+}
+
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl HasArea for Circle {   //语法impl Trait for Item
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+}
+
+struct Square {
+    x: f64,
+    y: f64,
+    side: f64,
+}
+
+impl HasArea for Square {
+    fn area(&self) -> f64 {
+        self.side * self.side
+    }
+}
+
+fn print_area<T: HasArea>(shape: T) {//T: HasArea 意思是所有实现了HasArea trait的类型
+    println!("This shape has an area of {}", shape.area());
+}
+
+fn main() {
+    let c = Circle {
+        x: 0.0f64,
+        y: 0.0f64,
+        radius: 1.0f64,
+    };
+
+    let s = Square {
+        x: 0.0f64,
+        y: 0.0f64,
+        side: 1.0f64,
+    };
+
+    print_area(c);
+    print_area(s);
+}
+```
+
+除了自定义的类型外，也可以为基本类型或者其他已有类型实现自己的`Trait`。
+
+```Rust
+trait HasArea {
+    fn area(&self) -> f64;
+}
+
+impl HasArea for i32 {
+    fn area(&self) -> f64 {
+        println!("this is silly");
+
+        *self as f64
+    }
+}
+
+5.area();
+```
+
+> **注意：** `trait`同样有作用域，超出作用域就无法使用。
+
+实现多个`trait`使用`+`符号
+
+```Rust
+use std::fmt::Debug;
+
+fn foo<T: Clone + Debug>(x: T) {
+    x.clone();
+    println!("{:?}", x);
+}
+```
+
+###where从句
+
+为了避免在多`trait`在声明参数时过长，使用`where`从句
+
+```Rust
+use std::fmt::Debug;
+
+fn foo<T: Clone, K: Clone + Debug>(x: T, y: K) {
+    x.clone();
+    y.clone();
+    println!("{:?}", y);
+}
+//上面的写法可以写为
+fn bar<T, K>(x: T, y: K) where T: Clone, K: Clone + Debug {
+    x.clone();
+    y.clone();
+    println!("{:?}", y);
+}
+
+fn main() {
+    foo("Hello", "world");
+    bar("Hello", "workd");
+}
+```
+
+###Default methods
+
+`trait`中也可以包含默认的方法(可以是多个)，即在定义`trait`时就被实现的函数，所以在实现`trait`时就不需要实现已经被实现的函数，但仍可重写该函数。
+
+```Rust
+trait Foo {
+    fn bar(&self);
+    fn baz(&self) { println!("We called baz."); }
+}
+
+struct UseDefault;
+
+impl Foo for UseDefault {//只需要实现bar()，因为baz已经在定义trait Foo时被实现了
+    fn bar(&self) { println!("We called bar."); }
+}
+
+struct OverrideDefault;
+
+impl Foo for OverrideDefault {
+    fn bar(&self) { println!("We called bar."); }
+
+    fn baz(&self) { println!("Override baz!"); }
+}
+```
+
+###Inheritance(继承)
+
+当实现`Foo`时也需要实现`FooBar`
+
+```Rust
+trait Foo {
+    fn foo(&self);
+}
+
+trait FooBar : Foo {  //使用 ":"符号来实现trait的继承
+    fn foobar(&self);
+}
+
+struct Baz;
+
+impl Foo for Baz {
+    fn foo(&self) { println!("foo"); }
+}
+
+impl FooBar for Baz {
+    fn foobar(&self) { println!("foobar"); }
+}
+```
+
+##Drop
+
+`Drop`是`trait`中的一个特殊函数，类似于析构函数，当变量绑定离开作用域后`Drop`方法就会被调用，常用来释放不再使用的资源。
+
+```Rust
+struct HasDrop;
+
+impl Drop for HasDrop {
+    fn drop(&mut self) {
+        println!("Dropping!");
+    }
+}
+
+fn main() {
+    let x = HasDrop;
+
+    // do stuff
+
+} // x 在这里离开main的作用域
+```
+
+> **注意:** 同一作用域中的变量离开作用域后被释放的顺序与被定义的顺序相反。
+
+##if let
