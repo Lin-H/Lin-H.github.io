@@ -10,7 +10,7 @@ github_username: Lin-H
 sina_weibo: "http://weibo.com/u/2605326267"
 sina_weibo_name: "7黑林"
 str_continue_reading: "Continue reading"
-
+timezone: Asia/Chongqing
 # Build settings
 highlighter: rouge
 #kramdown

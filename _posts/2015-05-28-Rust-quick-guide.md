@@ -503,7 +503,7 @@ fn main() {
 
 先定义一个`struct` 叫`Circle`，再用`impl`往`Circle`中添加一个方法`area`，每个方法都会有一个特殊的参数，可以是`self`，`&self`，`&mut self`其中之一。 传值方式与[Functions](#Functions)一节相同。在上面的代码中`self`指代的就是`c`这个变量(类似于其他语言中的this)，所以在这里我们使用的是引用，而且一般情况下也都是使用引用。
 
-###Chaining method calls(链式调用)
+### Chaining method calls(链式调用)
 
 通过返回`self`来达到链式调用的目的
 
@@ -536,7 +536,7 @@ fn main() {
 
 官方的代码是返回一个新的`Circle`。此处我做了下修改以更符合返回`self`的一般情况。
 
-###Associated functions
+### Associated functions
 
 联合函数不需要`self`参数
 
@@ -627,7 +627,7 @@ fn main() {
 
 通过使用`CircleBuilder`来创建`Circle`，就可以对`Circle`的创建和修改做出约束。
 
-##Vectors(向量)
+## Vectors (向量)
 
 向量(`Vec<T>`)是动态可增长的数组，存储在堆上。使用`vec!`宏创建。
 
