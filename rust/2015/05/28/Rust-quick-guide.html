@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://lin-h.com/rust/2015/05/29/Rust-quick-guide.html">
+  <link rel="canonical" href="http://lin-h.com/rust/2015/05/28/Rust-quick-guide.html">
   <link rel="alternate" type="application/rss+xml" title="LinHang's Blog" href="http://lin-h.com/feed.xml" />
 </head>
 
@@ -63,7 +63,7 @@
 
   <header class="post-header">
     <h1 class="post-title">Rust快速入门</h1>
-    <p class="post-meta">May 29, 2015</p>
+    <p class="post-meta">May 28, 2015</p>
   </header>
 
   <article class="post-content">
@@ -602,7 +602,8 @@
 </code></pre></div>
 <p>通过使用<code>CircleBuilder</code>来创建<code>Circle</code>，就可以对<code>Circle</code>的创建和修改做出约束。</p>
 
-<h2>Vectors(向量)
+<h2>Vectors (向量)</h2>
+
 <p>向量(<code>Vec&lt;T&gt;</code>)是动态可增长的数组，存储在堆上。使用<code>vec!</code>宏创建。</p>
 <div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">let</span> <span class="n">v</span> <span class="o">=</span> <span class="nd">vec!</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span> <span class="c">// v: Vec&lt;i32&gt;</span>
 <span class="k">let</span> <span class="n">v</span> <span class="o">=</span> <span class="nd">vec!</span><span class="p">[</span><span class="mi">0</span><span class="p">;</span> <span class="mi">10</span><span class="p">];</span> <span class="c">// 10 个 0</span>
@@ -871,8 +872,7 @@
 <p><strong>注意:</strong> 同一作用域中的变量离开作用域后被释放的顺序与被定义的顺序相反。</p>
 </blockquote>
 
-<h2>if let</h2>
-
+<h2>if let
   </article>
 
 </div>
