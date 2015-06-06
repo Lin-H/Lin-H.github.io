@@ -942,3 +942,140 @@ fn main() {
 > **注意:** 同一作用域中的变量离开作用域后被释放的顺序与被定义的顺序相反。
 
 ##if let
+
+```Rust
+//将
+match option {
+    Some(x) => { foo(x) },
+    None => {},
+}
+//写成
+if let Some(x) = option {
+    foo(x);
+} else {
+    bar();
+}
+
+//使用while let 将
+loop {
+    match option {
+        Some(x) => println!("{}", x),
+        _ => break,
+    }
+}
+//写成
+while let Some(x) = option {
+    println!("{}", x);
+}
+```
+
+##Trait Objects
+
+###Dynamic dispatch
+
+```Rust
+trait Foo {
+    fn method(&self) -> String;
+}
+
+impl Foo for u8 {
+    fn method(&self) -> String { format!("u8: {}", *self) }
+}
+
+impl Foo for String {
+    fn method(&self) -> String { format!("string: {}", *self) }
+}
+
+fn do_something(x: &Foo) {//&Foo可以作为一种类型来使用，x也就是Trait Objects
+    x.method();
+}
+
+fn main() {
+    let x = 5u8;
+    do_something(&x as &Foo);
+}
+```
+
+##Closures (闭包)
+
+```Rust
+let plus_one = |x: i32| x + 1;
+
+assert_eq!(2, plus_one(1));//断言，调试用
+//闭包也可以写成
+let plus_two = |x| {
+    let mut result: i32 = x;
+
+    result += 1;
+    result += 1;
+
+    result
+};
+```
+
+创建了一个绑定`plus_one`，并指派给一个闭包。在`|`之间的是闭包的参数，后面跟着闭包的主体。闭包可以不指定参数和返回值的类型。
+
+将闭包作为函数传递
+
+```Rust
+fn call_with_one<F>(some_closure: F) -> i32
+    where F : Fn(i32) -> i32 {
+
+    some_closure(1)
+}
+
+let answer = call_with_one(|x| x + 2);
+
+assert_eq!(3, answer);
+```
+
+有点像函数式编程的匿名函数。既然能传入，当然也能当做返回值。
+
+##Universal Function Call Syntax
+
+当函数有相同名字时
+
+```Rust
+trait Foo {
+    fn f(&self);
+}
+
+trait Bar {
+    fn f(&self);
+}
+
+struct Baz;
+
+impl Foo for Baz {
+    fn f(&self) { println!("Baz’s impl of Foo"); }
+}
+
+impl Bar for Baz {
+    fn f(&self) { println!("Baz’s impl of Bar"); }
+}
+
+let b = Baz;
+//b.f()会发生错误
+Foo::f(&b);
+Bar::f(&b);
+
+<Type as Trait>::method(args);
+
+trait Foo {
+    fn clone(&self);
+}
+
+#[derive(Clone)]
+struct Bar;
+
+impl Foo for Bar {
+    fn clone(&self) {
+        println!("Making a clone of Bar");
+
+        <Bar as Clone>::clone(self);
+    }
+}
+//调用Clone trait中的 clone()
+```
+
+##Crates and Modules
