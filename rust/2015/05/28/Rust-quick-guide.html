@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rust快速入门</title>
-  <meta name="description" content="Rust简介">
+  <meta name="description" content="Rust简介Rust是一种编译语言，与C和Go一样编译后生成的是二进制文件。Rust专注于安全，速度，并发。并且不需要垃圾回收器，这也让Rust在某些情况下比其他语言更好用。比如与其他语言混合编写嵌入其中、编写底层软件，驱动或操作系统。Rust在编译期间会将语法错误和不安全因素最大程度地找出来，从而避免在程序运行...">
   
-  <meta name="keywords" content="Rust,快速入门,入门">
+  <meta name="keywords" content="Rust,快速入门,入门,quick,guide">
   
   <link href="//fonts.useso.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
   <!--
@@ -69,7 +69,13 @@
   <article class="post-content">
     <h2>Rust简介</h2>
 
-<p><code>Rust</code></p>
+<p><code>Rust</code>是一种编译语言，与<code>C</code>和<code>Go</code>一样编译后生成的是二进制文件。<code>Rust</code>专注于<code>安全</code>，<code>速度</code>，<code>并发</code>。并且不需要垃圾回收器，这也让<code>Rust</code>在某些情况下比其他语言更好用。比如与其他语言混合编写嵌入其中、编写底层软件，驱动或操作系统。<code>Rust</code>在编译期间会将语法错误和不安全因素最大程度地找出来，从而避免在程序运行时出现问题。<code>Rust</code>语言可以胜任三个软件层次的开发。并且在今年5月15号发布了第一个1.0.0正式版本。</p>
+
+<ul>
+<li><p>(底层)系统底层开发：裸金属(bare metal)、操作系统(OS)、内核(kernel)、内核模块(mod)等 ( <a href="https://github.com/charliesome/rustboot">rustboot</a>, <a href="https://github.com/ryanra/RustOS">rustos</a>, <a href="https://github.com/thepowersgang/rust-barebones-kernel">barebones</a>)</p></li>
+<li><p>(中层)系统应用开发：虚拟机(VM)、容器(Container)、数据库/游戏/Web/Ftp/Dns服务器、浏览器引擎、模拟器等 (<a href="https://github.com/servo/servo">Servo浏览器引擎</a>, <a href="https://github.com/PistonDevelopers/piston">Piston游戏引擎</a>, <a href="https://github.com/hyperium/hyper">Hyper</a> HTTP服务器, <a href="https://github.com/pcwalton/sprocketnes">SprocketNES</a> NES模拟器, <a href="https://github.com/nukep/llamadb">LlamaDB</a>数据库)</p></li>
+<li><p>(上层)普通应用开发：编译器、浏览器、消息推送系统、Web应用系统、管理信息系统、其他等等 (<a href="https://github.com/rust-lang/rust/tree/master/src/librustc">Rustc编译器</a>, <a href="https://github.com/rust-lang/cargo">Cargo项目管理</a>, <a href="https://github.com/iron/iron">Iron</a> &amp; <a href="https://github.com/nickel-org/nickel.rs">Nickel</a> Web开发框架, <a href="https://github.com/PistonDevelopers/conrod">Conrod</a> GUI库)</p></li>
+</ul>
 
 <h2>Variable Bindings(变量绑定)</h2>
 
@@ -83,6 +89,20 @@
 <div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>    <span class="c">//类型推导，定义的x类型为i32值为5</span>
     <span class="k">let</span> <span class="k">mut</span> <span class="n">x</span><span class="p">:</span> <span class="nb">i32</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>    <span class="c">//定义一个类型为i32，值为10，可修改的变量绑定</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2>const and static</h2>
+
+<p>定义常量</p>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">const</span> <span class="n">N</span><span class="p">:</span> <span class="nb">i32</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</code></pre></div>
+<p>定义全局(静态)变量绑定</p>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">static</span> <span class="n">N</span><span class="p">:</span> <span class="nb">i32</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="k">static</span> <span class="k">mut</span> <span class="n">N</span><span class="p">:</span> <span class="nb">i32</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="c">//因为是全局变量，修改时需要在unsafe内</span>
+<span class="k">unsafe</span> <span class="p">{</span>
+    <span class="n">N</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"N: {}"</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2>Functions(函数)</h2>
@@ -485,7 +505,7 @@
     <span class="nd">println!</span><span class="p">(</span><span class="s">"{}"</span><span class="p">,</span> <span class="n">c</span><span class="nf">.area</span><span class="p">());</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>先定义一个<code>struct</code> 叫<code>Circle</code>，再用<code>impl</code>往<code>Circle</code>中添加一个方法<code>area</code>，每个方法都会有一个特殊的参数，可以是<code>self</code>，<code>&amp;self</code>，<code>&amp;mut self</code>其中之一。 传值方式与<a href="#Functions">Functions</a>一节相同。在上面的代码中<code>self</code>指代的就是<code>c</code>这个变量(类似于其他语言中的this)，所以在这里我们使用的是引用，而且一般情况下也都是使用引用。</p>
+<p>先定义一个<code>struct</code> 叫<code>Circle</code>，再用<code>impl</code>往<code>Circle</code>中添加一个方法<code>area</code>，每个方法都会有一个特殊的参数，可以是<code>self</code>，<code>&amp;self</code>，<code>&amp;mut self</code>其中之一。 传值方式与<code>Functions</code>一节相同。在上面的代码中<code>self</code>指代的就是<code>c</code>这个变量(类似于其他语言中的this)，所以在这里我们使用的是引用，而且一般情况下也都是使用引用。</p>
 
 <h3>Chaining method calls(链式调用)</h3>
 
@@ -701,7 +721,7 @@
 <span class="k">let</span> <span class="n">int_origin</span> <span class="o">=</span> <span class="n">Point</span> <span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">0</span> <span class="p">};</span>
 <span class="k">let</span> <span class="n">float_origin</span> <span class="o">=</span> <span class="n">Point</span> <span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">0.0</span> <span class="p">};</span>
 </code></pre></div>
-<h2>Traits(特性)</h2>
+<h2>Traits</h2>
 
 <p><code>Traits</code>的作用类似于其他语言的接口，比如Java的Interface类型。在其中定义的函数只写声明部分。用于约束泛型中必须定义了哪些函数。比如：</p>
 <div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">fn</span> <span class="n">print_area</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">shape</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
@@ -807,9 +827,9 @@
     <span class="nf">bar</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"workd"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3>Default methods</h3>
+<h3>Default methods (默认方法)</h3>
 
-<p><code>trait</code>中也可以包含默认的方法(可以是多个)，即在定义<code>trait</code>时就被实现的函数，所以在实现<code>trait</code>时就不需要实现已经被实现的函数，但仍可重写该函数。</p>
+<p>在<code>trait</code>中也可以包含默认的方法(可以是多个)，即在定义<code>trait</code>时就被实现的函数，所以在实现<code>trait</code>时就不需要实现已经被实现的函数，但仍可重写该函数。</p>
 <div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">trait</span> <span class="n">Foo</span> <span class="p">{</span>
     <span class="k">fn</span> <span class="nf">bar</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">);</span>
     <span class="k">fn</span> <span class="nf">baz</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="nd">println!</span><span class="p">(</span><span class="s">"We called baz."</span><span class="p">);</span> <span class="p">}</span>
@@ -829,7 +849,7 @@
     <span class="k">fn</span> <span class="nf">baz</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="nd">println!</span><span class="p">(</span><span class="s">"Override baz!"</span><span class="p">);</span> <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3>Inheritance(继承)</h3>
+<h3>Inheritance (继承)</h3>
 
 <p>当实现<code>Foo</code>时也需要实现<code>FooBar</code></p>
 <div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">trait</span> <span class="n">Foo</span> <span class="p">{</span>
@@ -872,7 +892,207 @@
 <p><strong>注意:</strong> 同一作用域中的变量离开作用域后被释放的顺序与被定义的顺序相反。</p>
 </blockquote>
 
-<h2>if let
+<h2>if let</h2>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="c">//将</span>
+<span class="k">match</span> <span class="n">option</span> <span class="p">{</span>
+    <span class="nf">Some</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">},</span>
+    <span class="nb">None</span> <span class="k">=&gt;</span> <span class="p">{},</span>
+<span class="p">}</span>
+<span class="c">//写成</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nf">Some</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">option</span> <span class="p">{</span>
+    <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">bar</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c">//使用while let 将</span>
+<span class="k">loop</span> <span class="p">{</span>
+    <span class="k">match</span> <span class="n">option</span> <span class="p">{</span>
+        <span class="nf">Some</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="nd">println!</span><span class="p">(</span><span class="s">"{}"</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span>
+        <span class="n">_</span> <span class="k">=&gt;</span> <span class="k">break</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c">//写成</span>
+<span class="k">while</span> <span class="k">let</span> <span class="nf">Some</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">option</span> <span class="p">{</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"{}"</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2>Trait Objects</h2>
+
+<h3>Dynamic dispatch</h3>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">trait</span> <span class="n">Foo</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">method</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">String</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">Foo</span> <span class="k">for</span> <span class="nb">u8</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">method</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">String</span> <span class="p">{</span> <span class="nd">format!</span><span class="p">(</span><span class="s">"u8: {}"</span><span class="p">,</span> <span class="o">*</span><span class="k">self</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">Foo</span> <span class="k">for</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">method</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">String</span> <span class="p">{</span> <span class="nd">format!</span><span class="p">(</span><span class="s">"string: {}"</span><span class="p">,</span> <span class="o">*</span><span class="k">self</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">do_something</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">Foo</span><span class="p">)</span> <span class="p">{</span><span class="c">//&amp;Foo可以作为一种类型来使用，x也就是Trait Objects</span>
+    <span class="n">x</span><span class="nf">.method</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5u8</span><span class="p">;</span>
+    <span class="nf">do_something</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span> <span class="k">as</span> <span class="o">&amp;</span><span class="n">Foo</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2>Closures (闭包)</h2>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">let</span> <span class="n">plus_one</span> <span class="o">=</span> <span class="p">|</span><span class="n">x</span><span class="p">:</span> <span class="nb">i32</span><span class="p">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="nd">assert_eq!</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nf">plus_one</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="c">//断言，调试用</span>
+<span class="c">//闭包也可以写成</span>
+<span class="k">let</span> <span class="n">plus_two</span> <span class="o">=</span> <span class="p">|</span><span class="n">x</span><span class="p">|</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">result</span><span class="p">:</span> <span class="nb">i32</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+
+    <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">result</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>创建了一个绑定<code>plus_one</code>，并指派给一个闭包。在<code>|</code>之间的是闭包的参数，后面跟着闭包的主体。闭包可以不指定参数和返回值的类型。</p>
+
+<p>将闭包作为函数传递</p>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">fn</span> <span class="n">call_with_one</span><span class="o">&lt;</span><span class="n">F</span><span class="o">&gt;</span><span class="p">(</span><span class="n">some_closure</span><span class="p">:</span> <span class="n">F</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">i32</span>
+    <span class="n">where</span> <span class="n">F</span> <span class="p">:</span> <span class="nf">Fn</span><span class="p">(</span><span class="nb">i32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">i32</span> <span class="p">{</span>
+
+    <span class="nf">some_closure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">answer</span> <span class="o">=</span> <span class="nf">call_with_one</span><span class="p">(|</span><span class="n">x</span><span class="p">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="nd">assert_eq!</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">answer</span><span class="p">);</span>
+</code></pre></div>
+<p>有点像函数式编程的匿名函数。既然能传入，当然也能当做返回值。</p>
+
+<h2>Universal Function Call Syntax</h2>
+
+<p>当函数有相同名字时</p>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">trait</span> <span class="n">Foo</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">f</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">trait</span> <span class="n">Bar</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">f</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">struct</span> <span class="n">Baz</span><span class="p">;</span>
+
+<span class="k">impl</span> <span class="n">Foo</span> <span class="k">for</span> <span class="n">Baz</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">f</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="nd">println!</span><span class="p">(</span><span class="s">"Baz’s impl of Foo"</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">Bar</span> <span class="k">for</span> <span class="n">Baz</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">f</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="nd">println!</span><span class="p">(</span><span class="s">"Baz’s impl of Bar"</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Baz</span><span class="p">;</span>
+<span class="c">//b.f()会发生错误</span>
+<span class="nn">Foo</span><span class="p">::</span><span class="nf">f</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+<span class="nn">Bar</span><span class="p">::</span><span class="nf">f</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+
+<span class="o">&lt;</span><span class="n">Type</span> <span class="k">as</span> <span class="n">Trait</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">method</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+
+<span class="k">trait</span> <span class="n">Foo</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">clone</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Clone)]</span>
+<span class="k">struct</span> <span class="n">Bar</span><span class="p">;</span>
+
+<span class="k">impl</span> <span class="n">Foo</span> <span class="k">for</span> <span class="n">Bar</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">clone</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nd">println!</span><span class="p">(</span><span class="s">"Making a clone of Bar"</span><span class="p">);</span>
+
+        <span class="o">&lt;</span><span class="n">Bar</span> <span class="k">as</span> <span class="n">Clone</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">clone</span><span class="p">(</span><span class="k">self</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c">//调用Clone trait中的 clone()</span>
+</code></pre></div>
+<h2>Attributes</h2>
+
+<p>属性的声明，类似于<code>#[]</code>都是属性，属性用于提供某些辅助作用。</p>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="err">#</span><span class="p">[</span><span class="n">foo</span><span class="p">]</span><span class="c">//该属性作用于它的下一条语句</span>
+<span class="k">struct</span> <span class="n">Foo</span><span class="p">;</span>
+
+<span class="k">mod</span> <span class="n">bar</span> <span class="p">{</span>
+    <span class="err">#</span><span class="o">!</span><span class="p">[</span><span class="n">bar</span><span class="p">]</span><span class="c">//该属性作用于包含它的语句，在这里就是mod声明</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2>type Aliases (类型别名)</h2>
+
+<p>类似于C语言的<code>typedef</code></p>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">type</span> <span class="n">Name</span> <span class="o">=</span> <span class="nb">String</span><span class="p">;</span>
+<span class="k">let</span> <span class="n">x</span><span class="p">:</span> <span class="n">Name</span> <span class="o">=</span> <span class="s">"Hello"</span><span class="nf">.to_string</span><span class="p">();</span>
+
+<span class="k">type</span> <span class="n">Result</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">result</span><span class="p">::</span><span class="n">Result</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">ConcreteError</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<h2>Casting Between Types (类型转换)</h2>
+
+<p>一般的类型转换使用<code>as</code>，强制类型转换使用<code>transmute</code>。</p>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">let</span> <span class="n">x</span><span class="p">:</span> <span class="nb">i32</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="k">as</span> <span class="nb">i64</span><span class="p">;</span>
+<span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0u8</span><span class="p">,</span> <span class="mi">0u8</span><span class="p">,</span> <span class="mi">0u8</span><span class="p">,</span> <span class="mi">0u8</span><span class="p">];</span>
+<span class="k">let</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="k">as</span> <span class="nb">u32</span><span class="p">;</span> <span class="c">// 使用as转换将出错</span>
+
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="n">mem</span><span class="p">;</span>
+
+<span class="k">unsafe</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0u8</span><span class="p">,</span> <span class="mi">0u8</span><span class="p">,</span> <span class="mi">0u8</span><span class="p">,</span> <span class="mi">0u8</span><span class="p">];</span>
+
+    <span class="k">let</span> <span class="n">b</span> <span class="o">=</span> <span class="nn">mem</span><span class="p">::</span><span class="nn">transmute</span><span class="p">::</span><span class="o">&lt;</span><span class="p">[</span><span class="nb">u8</span><span class="p">;</span> <span class="mi">4</span><span class="p">],</span> <span class="nb">u32</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2>Operators and Overloading (操作符和重载)</h2>
+
+<p>使用<code>Add</code>trait来对<code>+</code>进行重载</p>
+<div class="highlight"><pre><code class="language-Rust" data-lang="Rust"><span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">ops</span><span class="p">::</span><span class="nb">Add</span><span class="p">;</span>
+
+<span class="cp">#[derive(Debug)]</span>
+<span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">i32</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">i32</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="nb">Add</span> <span class="k">for</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Output</span> <span class="o">=</span> <span class="n">Point</span><span class="p">;</span>
+
+    <span class="k">fn</span> <span class="nf">add</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Point</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Point</span> <span class="p">{</span>
+        <span class="n">Point</span> <span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="k">self</span><span class="py">.x</span> <span class="o">+</span> <span class="n">other</span><span class="py">.x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="k">self</span><span class="py">.y</span> <span class="o">+</span> <span class="n">other</span><span class="py">.y</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">Point</span> <span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">0</span> <span class="p">};</span>
+    <span class="k">let</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">Point</span> <span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">3</span> <span class="p">};</span>
+
+    <span class="k">let</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">p1</span> <span class="o">+</span> <span class="n">p2</span><span class="p">;</span>
+
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"{:?}"</span><span class="p">,</span> <span class="n">p3</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c">//还可以为不同类型之间的数据重载加法运算</span>
+<span class="k">impl</span> <span class="nb">Add</span><span class="o">&lt;</span><span class="nb">i32</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Output</span> <span class="o">=</span> <span class="nb">f64</span><span class="p">;</span>
+
+    <span class="k">fn</span> <span class="nf">add</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="n">rhs</span><span class="p">:</span> <span class="nb">i32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">f64</span> <span class="p">{</span>
+        <span class="c">// add an i32 to a Point and get an f64</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="n">p</span><span class="p">:</span> <span class="n">Point</span> <span class="o">=</span> <span class="c">// ...</span>
+<span class="k">let</span> <span class="n">x</span><span class="p">:</span> <span class="nb">f64</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">2i32</span><span class="p">;</span>
+</code></pre></div>
+<h2>参考页面</h2>
+
+<ul>
+<li><a href="http://doc.rust-lang.org/book/README.html">The Rust Programming Language</a></li>
+<li><a href="http://blog.csdn.net/liigo/article/details/45757123">为什么我说Rust是靠谱的编程语言</a></li>
+</ul>
+
   </article>
 
 </div>
