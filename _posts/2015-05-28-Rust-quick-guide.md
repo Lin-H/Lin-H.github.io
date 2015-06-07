@@ -3,13 +3,19 @@ layout: post
 title: Rust快速入门
 date: 2015-05-28 18:05:44
 category: Rust
-keywords: "Rust,快速入门,入门"
-last_modified_at: 2015-06-04 23:29:07
+keywords: "Rust,快速入门,入门,quick,guide"
+last_modified_at: 2015-06-07 12:49:07
+excerpt: <h2>Rust简介</h2><p><code>Rust</code>是一种编译语言，与<code>C</code>和<code>Go</code>一样编译后生成的是二进制文件。<code>Rust</code>专注于<code>安全</code>，<code>速度</code>，<code>并发</code>。并且不需要垃圾回收器，这也让<code>Rust</code>在某些情况下比其他语言更好用。比如与其他语言混合编写嵌入其中、编写底层软件，驱动或操作系统。<code>Rust</code>在编译期间会将语法错误和不安全因素最大程度地找出来，从而避免在程序运行时出现问题。<code>Rust</code>语言可以胜任三个软件层次的开发。并且在今年5月15号发布了第一个1.0.0正式版本。</p>
 ---
 ##Rust简介
 
-`Rust`
+`Rust`是一种编译语言，与`C`和`Go`一样编译后生成的是二进制文件。`Rust`专注于`安全`，`速度`，`并发`。并且不需要垃圾回收器，这也让`Rust`在某些情况下比其他语言更好用。比如与其他语言混合编写嵌入其中、编写底层软件，驱动或操作系统。`Rust`在编译期间会将语法错误和不安全因素最大程度地找出来，从而避免在程序运行时出现问题。`Rust`语言可以胜任三个软件层次的开发。并且在今年5月15号发布了第一个1.0.0正式版本。
 
+- (底层)系统底层开发：裸金属(bare metal)、操作系统(OS)、内核(kernel)、内核模块(mod)等 ( [rustboot](https://github.com/charliesome/rustboot), [rustos](https://github.com/ryanra/RustOS), [barebones](https://github.com/thepowersgang/rust-barebones-kernel))
+
+- (中层)系统应用开发：虚拟机(VM)、容器(Container)、数据库/游戏/Web/Ftp/Dns服务器、浏览器引擎、模拟器等 ([Servo浏览器引擎](https://github.com/servo/servo), [Piston游戏引擎](https://github.com/PistonDevelopers/piston), [Hyper](https://github.com/hyperium/hyper) HTTP服务器, [SprocketNES](https://github.com/pcwalton/sprocketnes) NES模拟器, [LlamaDB](https://github.com/nukep/llamadb)数据库)
+
+- (上层)普通应用开发：编译器、浏览器、消息推送系统、Web应用系统、管理信息系统、其他等等 ([Rustc编译器](https://github.com/rust-lang/rust/tree/master/src/librustc), [Cargo项目管理](https://github.com/rust-lang/cargo), [Iron](https://github.com/iron/iron) & [Nickel](https://github.com/nickel-org/nickel.rs) Web开发框架, [Conrod](https://github.com/PistonDevelopers/conrod) GUI库)
 
 ##Variable Bindings(变量绑定)
 
@@ -23,6 +29,26 @@ last_modified_at: 2015-06-04 23:29:07
 fn main() {
     let x = 5;    //类型推导，定义的x类型为i32值为5
     let mut x: i32 = 10;    //定义一个类型为i32，值为10，可修改的变量绑定
+}
+```
+
+##const and static
+
+定义常量
+
+```Rust
+const N: i32 = 5;
+```
+
+定义全局(静态)变量绑定
+
+```Rust
+static N: i32 = 5;
+static mut N: i32 = 5;
+//因为是全局变量，修改时需要在unsafe内
+unsafe {
+    N += 1;
+    println!("N: {}", N);
 }
 ```
 
@@ -501,7 +527,7 @@ fn main() {
 }
 ```
 
-先定义一个`struct` 叫`Circle`，再用`impl`往`Circle`中添加一个方法`area`，每个方法都会有一个特殊的参数，可以是`self`，`&self`，`&mut self`其中之一。 传值方式与[Functions](#Functions)一节相同。在上面的代码中`self`指代的就是`c`这个变量(类似于其他语言中的this)，所以在这里我们使用的是引用，而且一般情况下也都是使用引用。
+先定义一个`struct` 叫`Circle`，再用`impl`往`Circle`中添加一个方法`area`，每个方法都会有一个特殊的参数，可以是`self`，`&self`，`&mut self`其中之一。 传值方式与`Functions`一节相同。在上面的代码中`self`指代的就是`c`这个变量(类似于其他语言中的this)，所以在这里我们使用的是引用，而且一般情况下也都是使用引用。
 
 ### Chaining method calls(链式调用)
 
@@ -750,7 +776,7 @@ let int_origin = Point { x: 0, y: 0 };
 let float_origin = Point { x: 0.0, y: 0.0 };
 ```
 
-##Traits(特性)
+## Traits
 
 `Traits`的作用类似于其他语言的接口，比如Java的Interface类型。在其中定义的函数只写声明部分。用于约束泛型中必须定义了哪些函数。比如：
 
@@ -869,9 +895,9 @@ fn main() {
 }
 ```
 
-###Default methods
+<h3>Default methods (默认方法)</h3>
 
-`trait`中也可以包含默认的方法(可以是多个)，即在定义`trait`时就被实现的函数，所以在实现`trait`时就不需要实现已经被实现的函数，但仍可重写该函数。
+在`trait`中也可以包含默认的方法(可以是多个)，即在定义`trait`时就被实现的函数，所以在实现`trait`时就不需要实现已经被实现的函数，但仍可重写该函数。
 
 ```Rust
 trait Foo {
@@ -894,7 +920,7 @@ impl Foo for OverrideDefault {
 }
 ```
 
-###Inheritance(继承)
+###Inheritance (继承)
 
 当实现`Foo`时也需要实现`FooBar`
 
@@ -996,7 +1022,8 @@ fn main() {
 }
 ```
 
-##Closures (闭包)
+
+## Closures (闭包)
 
 ```Rust
 let plus_one = |x: i32| x + 1;
@@ -1078,4 +1105,92 @@ impl Foo for Bar {
 //调用Clone trait中的 clone()
 ```
 
-##Crates and Modules
+##Attributes
+
+属性的声明，类似于`#[]`都是属性，属性用于提供某些辅助作用。
+
+```Rust
+#[foo]//该属性作用于它的下一条语句
+struct Foo;
+
+mod bar {
+    #![bar]//该属性作用于包含它的语句，在这里就是mod声明
+}
+```
+
+##type Aliases (类型别名)
+
+类似于C语言的`typedef`
+
+```Rust
+type Name = String;
+let x: Name = "Hello".to_string();
+
+type Result<T> = result::Result<T, ConcreteError>;
+```
+
+##Casting Between Types (类型转换)
+
+一般的类型转换使用`as`，强制类型转换使用`transmute`。
+
+```Rust
+let x: i32 = 5;
+let y = x as i64;
+let a = [0u8, 0u8, 0u8, 0u8];
+let b = a as u32; // 使用as转换将出错
+
+use std::mem;
+
+unsafe {
+    let a = [0u8, 0u8, 0u8, 0u8];
+
+    let b = mem::transmute::<[u8; 4], u32>(a);
+}
+```
+
+##Operators and Overloading (操作符和重载)
+
+使用`Add`trait来对`+`进行重载
+
+```Rust
+use std::ops::Add;
+
+#[derive(Debug)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl Add for Point {
+    type Output = Point;
+
+    fn add(self, other: Point) -> Point {
+        Point { x: self.x + other.x, y: self.y + other.y }
+    }
+}
+
+fn main() {
+    let p1 = Point { x: 1, y: 0 };
+    let p2 = Point { x: 2, y: 3 };
+
+    let p3 = p1 + p2;
+
+    println!("{:?}", p3);
+}
+//还可以为不同类型之间的数据重载加法运算
+impl Add<i32> for Point {
+    type Output = f64;
+
+    fn add(self, rhs: i32) -> f64 {
+        // add an i32 to a Point and get an f64
+    }
+}
+let p: Point = // ...
+let x: f64 = p + 2i32;
+```
+
+
+##参考页面
+
+- [The Rust Programming Language](http://doc.rust-lang.org/book/README.html)
+- [为什么我说Rust是靠谱的编程语言](http://blog.csdn.net/liigo/article/details/45757123)
