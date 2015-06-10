@@ -8,7 +8,7 @@ published: false
 
 ##R RStudio
 
-所使用的`R`版本为3.2.0，`RStudio`是`R`的IDE，有自动补全，查看API十分方便。
+所使用的`R`版本为3.2.0，`RStudio`是`R`的IDE，有自动补全，查看API，管理包都十分方便。
 
 ##R 基础
 
@@ -87,3 +87,37 @@ f <- function(args1 = 1:6, args2){#1:6为args1的默认参数
 	sample(args1, size = 2) #最后一行的值将会作为返回值返回
 }
 ```
+
+下载包，并使用
+
+```r
+install.packages("ggplot2")#下载ggplot2包
+
+library("ggplot2")#使用ggplot2包
+
+x <- seq(-1, 1, 0.1)#生成序列从-1开始到1，间隔0.1
+y <- x^3
+qplot(x, y)#ggplot2包中的函数，
+```
+
+得到如下的函数图像
+
+![qplot(x, y)]({{site.url}}/assets/my-R-notes/qplot_function.png)
+
+`replicate`函数，用于多次执行一条`R`表达式
+
+```r
+replicate(10, roll())#重复10次roll()
+## 3 7 5 3 6 2 3 8 11 7
+```
+
+重要的`?`符号
+
+```r
+?sqrt
+?sample
+#查看某个函数的使用方法
+??log
+#搜索包含log关键字的帮助页面
+```
+
