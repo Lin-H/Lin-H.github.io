@@ -14,8 +14,13 @@ timezone: Asia/Chongqing
 # Build settings
 highlighter: rouge
 #kramdown
-markdown: redcarpet
-
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  toc_levels: 1..6
+  footnote_nr: 1
+  syntax_highlighter: rouge
 sass:
   sass_dir: _sass
   style: :compressed

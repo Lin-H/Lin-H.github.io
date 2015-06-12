@@ -10,7 +10,7 @@ last_modified_at: 2015-05-18 22:32:46
 
 现在先把`Jekyll`的运行环境搭建好。因为`Jekyll`是Ruby编写的，所以必须先安装Ruby的运行环境。
 
-##安装Ruby和Jekyll
+## 安装Ruby和Jekyll
 
 Windows平台
 在[rubyinstaller](http://rubyinstaller.org/downloads/)网站下载最新的版本即可，根据自己系统的情况选择32位或是64位。安装时注意选择`Add Ruby executable to your PATH`。
@@ -95,7 +95,7 @@ cd MyBlog && jekyll serve #切换到MyBlog目录，并启动jekyll的本地服�
 
 到此为止一个你的Blog站点就搭建好了，其中`_site`是最终生成的网站代码，别的文件夹中都是网站的源代码。接下来我们要把这个站点发布到网上去。在这里我选择的是[`Github`](https://github.com/)，`Github`只支持静态页面的解析，所以需要生成静态站点的工具。与之类似的还有国内的[Git@OSC](http://git.oschina.net/)使用方法与`Github`类似。但与`Github`不同的是`Git@OSC`支持后台语言编写的网站如`PHP`、`Node.js`、`Java`等，还可使用数据库但本人还没测试过。有兴趣的同学可以试试。
 
-##Github 代码托管网站
+## Github 代码托管网站
 
 `Github`是一个基于git版本控制工具的代码托管网站。
 以下是`Github`网站的官方介绍
@@ -109,7 +109,7 @@ cd MyBlog && jekyll serve #切换到MyBlog目录，并启动jekyll的本地服�
 创建的仓库名称必须是username.github.io，其中username就是你的用户名。Description可填可不填。
 创建完成之后，就可以把代码上传上去了，这时就需要使用git工具了
 
-##git 版本控制工具
+## git 版本控制工具
 
 可以在[这里](http://www.git-scm.com/downloads)下载。所谓版本控制系统也就是存放有每个版本的代码。每次修改后的代码commit后会自动记录为一个版本。使用版本控制的好处就是任何时候都可以把修改错误的代码恢复至任一个版本。避免了代码保存了之后无法恢复。
 
@@ -204,7 +204,7 @@ E:\Project\MyBlog>git commit -m "add all the file to repository"
 
 做好了`git`仓库就可以把它上传到`Github`上发布到网上了。
 
-##上传到Github
+## 上传到Github
 
 首先需要设置远程仓库的地址(即在你的Github账号中创建的仓库的地址)。在网页上打开你之前创建的仓库。在页面右侧找到该仓库的URL(建议先点击SSH切换到SSH链接，方便以后添加SSH KEY)
 
@@ -228,7 +228,7 @@ git push origin source #将源代码上传到source分支，便于分开管理
 
 最后在`Github`网站上打开你的远程仓库，应该可以看到两个分支![]({{site.url}}/assets/jekyll/two-branch.png)这时你打开http://username.github.io就能看到你的网站(username为你的用户名)已经发布到网上了: )
 
-##目录结构
+## 目录结构
 
 为了能够更好地使用`Jekyll`，现在来了解一下生成的网站的目录结构。
 
@@ -258,7 +258,7 @@ header.html
 
 `_posts`目录就是我们写文章的地方啦。写文章的时候一般都会用`Markdown`语法。`Markdown`其实就是以一种简易的方式去写HTML，学习起来相当容易。[Github的简易Markdown教程](https://help.github.com/articles/markdown-basics/)
 
-##Jekyll主题风格和配色
+## Jekyll主题风格和配色
 
 既然是个人Blog，那么当然应该更具个人特色，如果你是个懂设计的程序员，制作一个漂亮的网站自然不难。但对于像我这样还不懂设计的人来说只能是到处改改，边改边瞧了。除此之外，也可以直接使用别人已经写好的主题风格。提供两个可以免费下载`Jekyll`主题的网站
 
@@ -267,7 +267,7 @@ header.html
 
 要使用某个主题只需要把该主题下载下来，直接复制到你的网站站点即可，然后把你的`_posts`目录下的文章复制到同名目录即可。然后在网站当前目录下打开命令行运行`jekyll serve`就能看到你新换的主题了。
 
-###代码配色
+### 代码配色
 
 `Jekyll`默认的代码高亮工具是Pygment，对于在Windows环境下不是很稳定，所以推荐使用`Rouge`。跟安装`Jekyll`一样，使用`gem`来下载安装`Rouge`，在命令行中输入
 
@@ -325,7 +325,7 @@ thankful_eyes<br/>
 vim<br/>
 ![]({{site.url}}/assets/jekyll/vim.png)
 
-##书写文章
+## 书写文章
 
 书写文章其实非常简单，在你已经建好的Blog中，`_posts` 文件夹内就默认有一篇文章。文章的命名是有讲究的，以“年-月-日”开头，并用“-”分开，后面再加上标题。打开后可以看到编写文章的相关格式。开头部分是文章的相关设置，可以设置该篇文章使用什么布局，标题，创建时间和分类。接下去就是文章的主要内容，使用`markdown`来编写，在编写文章的时候可以使用
 
@@ -335,7 +335,7 @@ jekyll serve
 
 来一遍写，一遍观察实际效果。一旦编写完成后就push到远程仓库中就算发布了。
 
-###参考页面
+### 参考页面
 
 * [下载 Ruby - Ruby 官方网站](https://www.ruby-lang.org/zh_cn/downloads/)
 * [Home &middot; Run Jekyll on Windows](http://jekyll-windows.juthilo.com/)

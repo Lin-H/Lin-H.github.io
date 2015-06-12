@@ -7,7 +7,7 @@ keywords: "Rust,快速入门,入门,quick,guide"
 last_modified_at: 2015-06-07 12:49:07
 excerpt: <h2>Rust简介</h2><p><code>Rust</code>是一种编译语言，与<code>C</code>和<code>Go</code>一样编译后生成的是二进制文件。<code>Rust</code>专注于<code>安全</code>，<code>速度</code>，<code>并发</code>。并且不需要垃圾回收器，这也让<code>Rust</code>在某些情况下比其他语言更好用。比如与其他语言混合编写嵌入其中、编写底层软件，驱动或操作系统。<code>Rust</code>在编译期间会将语法错误和不安全因素最大程度地找出来，从而避免在程序运行时出现问题。<code>Rust</code>语言可以胜任三个软件层次的开发。并且在今年5月15号发布了第一个1.0.0正式版本。</p>
 ---
-##Rust简介
+## Rust简介
 
 `Rust`是一种编译语言，与`C`和`Go`一样编译后生成的是二进制文件。`Rust`专注于`安全`，`速度`，`并发`。并且不需要垃圾回收器，这也让`Rust`在某些情况下比其他语言更好用。比如与其他语言混合编写嵌入其中、编写底层软件，驱动或操作系统。`Rust`在编译期间会将语法错误和不安全因素最大程度地找出来，从而避免在程序运行时出现问题。`Rust`语言可以胜任三个软件层次的开发。并且在今年5月15号发布了第一个1.0.0正式版本。
 
@@ -17,7 +17,7 @@ excerpt: <h2>Rust简介</h2><p><code>Rust</code>是一种编译语言，与<code
 
 - (上层)普通应用开发：编译器、浏览器、消息推送系统、Web应用系统、管理信息系统、其他等等 ([Rustc编译器](https://github.com/rust-lang/rust/tree/master/src/librustc), [Cargo项目管理](https://github.com/rust-lang/cargo), [Iron](https://github.com/iron/iron) & [Nickel](https://github.com/nickel-org/nickel.rs) Web开发框架, [Conrod](https://github.com/PistonDevelopers/conrod) GUI库)
 
-##Variable Bindings(变量绑定)
+## Variable Bindings(变量绑定)
 
 定义变量绑定使用`let`语句。
 
@@ -32,7 +32,7 @@ fn main() {
 }
 ```
 
-##const and static
+## const and static
 
 定义常量
 
@@ -52,7 +52,7 @@ unsafe {
 }
 ```
 
-##Functions(函数)
+## Functions(函数)
 
 `Rust`使用`fn`关键字来声明函数。
 
@@ -91,7 +91,7 @@ fn diverges() -> ! {
 
 `panic!()`宏(以!结尾的都是宏，类似的还有`println!()`)的作用是使当前线程崩溃退出，并输出信息。因为运行该函数的线程崩溃退出了，所以该函数不会返回。(我暂时不知道这类发散函数有什么用-_-)
 
-##基本类型(Primitive Types)
+## 基本类型(Primitive Types)
 
 - Booleans
 - char Unicode 4字节
@@ -135,7 +135,7 @@ let x: fn(i32) -> i32 = foo;
 // x 为foo函数的指针，函数参数为i32类型，返回类型为i32
 ```
 
-##Comments(注释)
+## Comments(注释)
 
 `Rust`有两种注释，行注释(line comments)和文档注释(doc comments)。行注释跟C语言一样使用`//`，把当前行注释掉。文档注释使用`///`，而且支持`Markdown`语法。你可以使用`rustdoc`将文档注释生成为HTML文档。
 
@@ -154,9 +154,9 @@ fn add_one(x: i32) -> i32 {
 }
 ```
 
-##Control flow statement(控制语句)
+## Control flow statement(控制语句)
 
-###if
+### if
 
 ```Rust
 let x = 5;
@@ -170,7 +170,7 @@ if x == 5 {
 }
 ```
 
-###for
+### for
 
 ```Rust
 for x in 0..10 {
@@ -184,7 +184,7 @@ for var in expression {
 
 跟`Python`的for语句有点像，`expression`是一个迭代器(iterator)即一个可以进行遍历的对象，比如数组。
 
-###while
+### while
 
 ```Rust
 while x > 1 {
@@ -201,7 +201,7 @@ loop {
 }
 ```
 
-##Ownership
+## Ownership
 
 `Ownership`类似于作用域，在`Rust`程序中变量一旦离开作用域就会被释放。在变量绑定中，没有实现`Copy`特性的类型(如Vec<i32>)在进行赋值时，传递的是内存地址，而`Rust`出于安全考虑当两个变量绑定到同一值上时，`Rust`<br/>会将原来的绑定删除，在函数传参时同样如此。而实现了`Copy`的类型(如基本类型i32)在进行赋值时传递的就是值。
 
@@ -215,7 +215,7 @@ let v2 = v;
 println!("v is: {}", v);//在这里就不会报错，因为v是i32类型，传递的是值。
 ```
 
-##Borrowing
+## Borrowing
 
 如果一个变量作为参数传入了函数中，那么该变量的作用域就变了，变为在函数内，所以在函数外该变量就不能使用了。在`Rust`中有`Borrowing`的概念，通过给函数传入变量的引用来达到"借用"的目的，使得变量在函数外还能继续使用(Borrow Ownership)。引用与变量绑定一样，默认是`不可修改`的。引用类似C语言的指针，因为在使用时得加上`*`符号。
 
@@ -274,7 +274,7 @@ let y: &i32;
 y = &x;
 ```
 
-##Lifetimes
+## Lifetimes
 
 寿命(Lifetimes)指变量绑定在作用域内的范围。例如下面的例子中，变量的寿命可以显示或隐式定义。
 
@@ -342,7 +342,7 @@ fn get_mut<'a>(&'a mut self) -> &'a mut T;
 
 > 以上这3个`Rust`中的概念确实比较难懂，我是根据自己的理解写的，若有不同观点请看官方原文。
 
-##Structs
+## Structs
 
 与C语言的结构体类似，将某些数据类型组合在一起，形成新的数据结构。
 
@@ -363,7 +363,7 @@ point = Point3d { y: 1, .. point };
 //新的ponit y为1，x和z使用原来的point的值
 ```
 
-###Tuple structs
+### Tuple structs
 
 定义一个类似于`tuple`的结构。
 
@@ -375,7 +375,7 @@ let black = Color(0, 0, 0);
 let origin = Point(0, 0, 0);
 ```
 
-###Unit-like structs
+### Unit-like structs
 
 可以定义一个无成员的结构
 
@@ -383,7 +383,7 @@ let origin = Point(0, 0, 0);
 struct Electron;
 ```
 
-##Enums
+## Enums
 
 `Rust`的枚举类型，类型为`Message`的变量绑定可以是`Message`的其中之一
 
@@ -398,7 +398,7 @@ enum Message {
 let x: Message = Message::Move { x: 3, y: 4 };
 ```
 
-##Match
+## Match
 
 `match表达式`类似于C语言中的`switch`
 
@@ -436,7 +436,7 @@ fn process_message(msg: Message) {
 }
 ```
 
-##Patterns
+## Patterns
 
 模式，`match`中x所匹配的就是模式
 
@@ -506,7 +506,7 @@ match origin {
 
 以上列出的匹配可以任意组合在一起。
 
-##Method Syntax
+## Method Syntax
 
 ```Rust
 struct Circle {
@@ -590,7 +590,7 @@ fn main() {
 }
 ```
 
-###Builder Pattern
+### Builder Pattern
 
 为了使用户只能修改`struct`中特定的属性，需要使用另一个`struct`来作限制，如`Circle`的`CircleBuilder`。
 
@@ -675,7 +675,7 @@ for i in v {
 }
 ```
 
-##Strings
+## Strings
 
 `Rust`有两种字符串类型`&str`(`&'static str`)和`String`，都是UTF-8编码(一个字符占4字节)
 
@@ -712,7 +712,7 @@ fn main() {
 
 > **注意**:  `String`可以轻易地变成`&str`，但`&str`格式化为`String`需要分配内存(因为是在堆上创建)，所以必要情况下才这么做。
 
-###Indexing
+### Indexing
 
 无法通过`s[0]`来访问某个字符，因为字符是UTF-8编码，但可以这样做
 
@@ -723,7 +723,7 @@ let dog = hachiko.chars().nth(1); // 类似于 hachiko[1]
 
 > **注意**: chars()操作需要遍历整个字符串
 
-###Concatenation
+### Concatenation
 
 如果你有一个`String`类型的字符串，可以将`&str`类型的字符串连接到末尾。
 
@@ -741,7 +741,7 @@ let world = "world!".to_string();
 let hello_world = hello + &world;
 ```
 
-##Generics(泛型)
+## Generics(泛型)
 
 ```Rust
 enum Option<T> {//定义中的T可以换成其他大写字母
@@ -754,7 +754,7 @@ let x: Option<i32> = Some(5);
 
 `<T>`说明该类型是泛型。
 
-###Generic functions(泛型函数)
+### Generic functions(泛型函数)
 
 ```Rust
 fn takes_anything<T>(x: T) {
@@ -765,7 +765,9 @@ fn takes_two_of_the_same_things<T>(x: T, y: T) {
 fn takes_two_things<T, U>(x: T, y: U) {
 }
 ```
-###Generic structs(泛型结构)
+
+### Generic structs(泛型结构)
+
 ```Rust
 struct Point<T> {
     x: T,
@@ -870,7 +872,7 @@ fn foo<T: Clone + Debug>(x: T) {
 }
 ```
 
-###where从句
+### where从句
 
 为了避免在多`trait`在声明参数时过长，使用`where`从句
 
@@ -895,7 +897,7 @@ fn main() {
 }
 ```
 
-<h3>Default methods (默认方法)</h3>
+### Default methods (默认方法)
 
 在`trait`中也可以包含默认的方法(可以是多个)，即在定义`trait`时就被实现的函数，所以在实现`trait`时就不需要实现已经被实现的函数，但仍可重写该函数。
 
@@ -920,7 +922,7 @@ impl Foo for OverrideDefault {
 }
 ```
 
-###Inheritance (继承)
+### Inheritance (继承)
 
 当实现`Foo`时也需要实现`FooBar`
 
@@ -944,7 +946,7 @@ impl FooBar for Baz {
 }
 ```
 
-##Drop
+## Drop
 
 `Drop`是`trait`中的一个特殊函数，类似于析构函数，当变量绑定离开作用域后`Drop`方法就会被调用，常用来释放不再使用的资源。
 
@@ -967,7 +969,7 @@ fn main() {
 
 > **注意:** 同一作用域中的变量离开作用域后被释放的顺序与被定义的顺序相反。
 
-##if let
+## if let
 
 ```Rust
 //将
@@ -995,9 +997,9 @@ while let Some(x) = option {
 }
 ```
 
-##Trait Objects
+## Trait Objects
 
-###Dynamic dispatch
+### Dynamic dispatch
 
 ```Rust
 trait Foo {
@@ -1058,7 +1060,7 @@ assert_eq!(3, answer);
 
 有点像函数式编程的匿名函数。既然能传入，当然也能当做返回值。
 
-##Universal Function Call Syntax
+## Universal Function Call Syntax
 
 当函数有相同名字时
 
@@ -1105,7 +1107,7 @@ impl Foo for Bar {
 //调用Clone trait中的 clone()
 ```
 
-##Attributes
+## Attributes
 
 属性的声明，类似于`#[]`都是属性，属性用于提供某些辅助作用。
 
@@ -1118,7 +1120,7 @@ mod bar {
 }
 ```
 
-##type Aliases (类型别名)
+## type Aliases (类型别名)
 
 类似于C语言的`typedef`
 
@@ -1129,7 +1131,7 @@ let x: Name = "Hello".to_string();
 type Result<T> = result::Result<T, ConcreteError>;
 ```
 
-##Casting Between Types (类型转换)
+## Casting Between Types (类型转换)
 
 一般的类型转换使用`as`，强制类型转换使用`transmute`。
 
@@ -1148,7 +1150,7 @@ unsafe {
 }
 ```
 
-##Operators and Overloading (操作符和重载)
+## Operators and Overloading (操作符和重载)
 
 使用`Add`trait来对`+`进行重载
 
@@ -1190,7 +1192,7 @@ let x: f64 = p + 2i32;
 ```
 
 
-##参考页面
+## 参考页面
 
 - [The Rust Programming Language](http://doc.rust-lang.org/book/README.html)
 - [为什么我说Rust是靠谱的编程语言](http://blog.csdn.net/liigo/article/details/45757123)
