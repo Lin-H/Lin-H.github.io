@@ -67,47 +67,54 @@
   </header>
 
   <article class="post-content">
-    <p>拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。<code>Jekyll</code>就是一款生成静态页面(HTML文件)的工具，<code>Jekyll</code>是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就能搭建出一个Blog来，但如果你还懂得网站前端的知识如<code>HTML</code>，<code>CSS</code>，<code>Javascript</code>的话，你就能完全自定义你自己的Blog。</p>
+    <p>拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。<code class="highlighter-rouge">Jekyll</code>就是一款生成静态页面(HTML文件)的工具，<code class="highlighter-rouge">Jekyll</code>是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就能搭建出一个Blog来，但如果你还懂得网站前端的知识如<code class="highlighter-rouge">HTML</code>，<code class="highlighter-rouge">CSS</code>，<code class="highlighter-rouge">Javascript</code>的话，你就能完全自定义你自己的Blog。</p>
 
-<p>现在先把<code>Jekyll</code>的运行环境搭建好。因为<code>Jekyll</code>是Ruby编写的，所以必须先安装Ruby的运行环境。</p>
+<p>现在先把<code class="highlighter-rouge">Jekyll</code>的运行环境搭建好。因为<code class="highlighter-rouge">Jekyll</code>是Ruby编写的，所以必须先安装Ruby的运行环境。</p>
 
-<h2>安装Ruby和Jekyll</h2>
+<h2 id="rubyjekyll">安装Ruby和Jekyll</h2>
 
-<p>Windows平台
-在<a href="http://rubyinstaller.org/downloads/">rubyinstaller</a>网站下载最新的版本即可，根据自己系统的情况选择32位或是64位。安装时注意选择<code>Add Ruby executable to your PATH</code>。</p>
+<p>Windows平台<br />
+在<a href="http://rubyinstaller.org/downloads/">rubyinstaller</a>网站下载最新的版本即可，根据自己系统的情况选择32位或是64位。安装时注意选择<code class="highlighter-rouge">Add Ruby executable to your PATH</code>。</p>
 
 <p>Linux平台在命令行中运行</p>
 
-<p><code>$ sudo apt-get install ruby</code></p>
+<p><code class="highlighter-rouge">$ sudo apt-get install ruby</code></p>
 
-<p>安装完成后打开命令行输入<code>ruby -v</code>，能输出ruby版本就说明安装成功。</p>
+<p>安装完成后打开命令行输入<code class="highlighter-rouge">ruby -v</code>，能输出ruby版本就说明安装成功。</p>
 
-<p>除了<code>Ruby</code>以外<strong>Windows系统</strong>还需要<a href="http://rubyinstaller.org/downloads/">Ruby DevKit</a></p>
+<p>除了<code class="highlighter-rouge">Ruby</code>以外<strong>Windows系统</strong>还需要<a href="http://rubyinstaller.org/downloads/">Ruby DevKit</a></p>
 
-<p><img src="http://lin-h.com/assets/jekyll/development-kit.png" alt=""></p>
+<p><img src="http://lin-h.com/assets/jekyll/development-kit.png" alt="" /></p>
 
-<p>根据自己所安装的<code>Ruby</code>的版本选择相应的版本。下载之后运行，解压到一个你喜欢的目录。<strong>目录必须不包含空格</strong></p>
+<p>根据自己所安装的<code class="highlighter-rouge">Ruby</code>的版本选择相应的版本。下载之后运行，解压到一个你喜欢的目录。<strong>目录必须不包含空格</strong></p>
 
-<p>解压完成之后打开命令行，将路径切换到<code>RubyDevKit</code>的目录。如：<code>cd E:\RubyDevKit</code></p>
+<p>解压完成之后打开命令行，将路径切换到<code class="highlighter-rouge">RubyDevKit</code>的目录。如：<code class="highlighter-rouge">cd E:\RubyDevKit</code></p>
 
-<p>运行<code>ruby dk.rb init</code>，这条命令会自动检测<code>Ruby</code>的安装路径，并添加到配置文件中。</p>
+<p>运行<code class="highlighter-rouge">ruby dk.rb init</code>，这条命令会自动检测<code class="highlighter-rouge">Ruby</code>的安装路径，并添加到配置文件中。</p>
 
-<p>运行<code>ruby dk.rb install</code>，将<code>DevKit</code>安装到<code>Ruby</code>中。至此，<code>Ruby</code>的运行环境总算的搭建好了，接下来使用<code>gem</code>安装<code>Jekyll</code>。</p>
+<p>运行<code class="highlighter-rouge">ruby dk.rb install</code>，将<code class="highlighter-rouge">DevKit</code>安装到<code class="highlighter-rouge">Ruby</code>中。至此，<code class="highlighter-rouge">Ruby</code>的运行环境总算的搭建好了，接下来使用<code class="highlighter-rouge">gem</code>安装<code class="highlighter-rouge">Jekyll</code>。</p>
 
 <p>为了使下载速度更快，我们将下载源替换为淘宝的RubyGems 镜像。在命令行中运行</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>gem sources --remove https://rubygems.org/
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>gem sources --remove https://rubygems.org/
 <span class="gp">$ </span>gem sources -a https://ruby.taobao.org/
 <span class="gp">$ </span>gem sources -l
 <span class="k">***</span> CURRENT SOURCES <span class="k">***</span>
 
 https://ruby.taobao.org
 <span class="c"># 请确保只有 ruby.taobao.org</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>然后在命令行中运行：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">gem install jekyll --platform<span class="o">=</span>ruby <span class="c">#Linux 中只需 gem install jekyll</span>
-</code></pre></div>
-<p>经过漫长的等待之后安装完成，在命令行中运行<code>jekyll -h</code>将会显示如下命令(Windows环境下,Linux环境下的命令大同小异)：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">C:\Users\Administrator&gt;jekyll -h
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gem install jekyll --platform<span class="o">=</span>ruby <span class="c">#Linux 中只需 gem install jekyll</span>
+</code></pre>
+</div>
+
+<p>经过漫长的等待之后安装完成，在命令行中运行<code class="highlighter-rouge">jekyll -h</code>将会显示如下命令(Windows环境下,Linux环境下的命令大同小异)：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>C:\Users\Administrator&gt;jekyll -h
 jekyll 2.5.3 -- Jekyll is a blog-aware, static site generator in Ruby
 
 Usage:
@@ -133,44 +140,50 @@ Subcommands:
   serve, server, s      Serve your site locally
 
 C:\Users\Administrator&gt;
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>接下来新建一个自己的Blog，运行下面命令：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">jekyll new MyBlog <span class="c">#在当前目录新建一个名为“MyBlog”的站点</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>jekyll new MyBlog <span class="c">#在当前目录新建一个名为“MyBlog”的站点</span>
 <span class="nb">cd </span>MyBlog <span class="o">&amp;&amp;</span> jekyll serve <span class="c">#切换到MyBlog目录，并启动jekyll的本地服务器</span>
-</code></pre></div>
-<p>打开你的浏览器，在地址中输入<code>http://127.0.0.1:4000/</code>就能看到如下页面：</p>
+</code></pre>
+</div>
 
-<p><img src="http://lin-h.com/assets/jekyll/startup.png" alt=""></p>
+<p>打开你的浏览器，在地址中输入<code class="highlighter-rouge">http://127.0.0.1:4000/</code>就能看到如下页面：</p>
 
-<p>到此为止一个你的Blog站点就搭建好了，其中<code>_site</code>是最终生成的网站代码，别的文件夹中都是网站的源代码。接下来我们要把这个站点发布到网上去。在这里我选择的是<a href="https://github.com/"><code>Github</code></a>，<code>Github</code>只支持静态页面的解析，所以需要生成静态站点的工具。与之类似的还有国内的<a href="http://git.oschina.net/">Git@OSC</a>使用方法与<code>Github</code>类似。但与<code>Github</code>不同的是<code>Git@OSC</code>支持后台语言编写的网站如<code>PHP</code>、<code>Node.js</code>、<code>Java</code>等，还可使用数据库但本人还没测试过。有兴趣的同学可以试试。</p>
+<p><img src="http://lin-h.com/assets/jekyll/startup.png" alt="" /></p>
 
-<h2>Github 代码托管网站</h2>
+<p>到此为止一个你的Blog站点就搭建好了，其中<code class="highlighter-rouge">_site</code>是最终生成的网站代码，别的文件夹中都是网站的源代码。接下来我们要把这个站点发布到网上去。在这里我选择的是<a href="https://github.com/"><code class="highlighter-rouge">Github</code></a>，<code class="highlighter-rouge">Github</code>只支持静态页面的解析，所以需要生成静态站点的工具。与之类似的还有国内的<a href="http://git.oschina.net/">Git@OSC</a>使用方法与<code class="highlighter-rouge">Github</code>类似。但与<code class="highlighter-rouge">Github</code>不同的是<code class="highlighter-rouge">Git@OSC</code>支持后台语言编写的网站如<code class="highlighter-rouge">PHP</code>、<code class="highlighter-rouge">Node.js</code>、<code class="highlighter-rouge">Java</code>等，还可使用数据库但本人还没测试过。有兴趣的同学可以试试。</p>
 
-<p><code>Github</code>是一个基于git版本控制工具的代码托管网站。
-以下是<code>Github</code>网站的官方介绍</p>
+<h2 id="github-">Github 代码托管网站</h2>
 
-<blockquote>
-<p>GitHub is the best place to share code with friends, co-workers, classmates, and complete strangers. Over eight million people use GitHub to build amazing things together.</p>
-</blockquote>
+<p><code class="highlighter-rouge">Github</code>是一个基于git版本控制工具的代码托管网站。<br />
+以下是<code class="highlighter-rouge">Github</code>网站的官方介绍<br />
+&gt; GitHub is the best place to share code with friends, co-workers, classmates, and complete strangers. Over eight million people use GitHub to build amazing things together.</p>
 
-<p>简单来说就是一个存放代码的地方，代码按仓库(repository)管理，仓库又分为私人仓库(private repository)和公共仓库(public repository)。私人仓库需要收费，而公共仓库免费，并且不限制数量。而<code>Github</code>最棒的地方就是多人协作。也就是开源程序，人人都能为代码提交修改。像Linux内核、Node.js 这些著名的程序都在<code>Github</code>上托管包括<code>Jekyll</code>。而且在<code>Github</code>上还能找到很多有意思的项目。所以先注册一个<code>Github</code>帐号吧。
+<p>简单来说就是一个存放代码的地方，代码按仓库(repository)管理，仓库又分为私人仓库(private repository)和公共仓库(public repository)。私人仓库需要收费，而公共仓库免费，并且不限制数量。而<code class="highlighter-rouge">Github</code>最棒的地方就是多人协作。也就是开源程序，人人都能为代码提交修改。像Linux内核、Node.js 这些著名的程序都在<code class="highlighter-rouge">Github</code>上托管包括<code class="highlighter-rouge">Jekyll</code>。而且在<code class="highlighter-rouge">Github</code>上还能找到很多有意思的项目。所以先注册一个<code class="highlighter-rouge">Github</code>帐号吧。<br />
 完成了帐号注册后就能创建仓库了</p>
 
-<p><img src="http://lin-h.com/assets/jekyll/create-a-repository.png" alt=""></p>
+<p><img src="http://lin-h.com/assets/jekyll/create-a-repository.png" alt="" /></p>
 
-<p>创建的仓库名称必须是username.github.io，其中username就是你的用户名。Description可填可不填。
+<p>创建的仓库名称必须是username.github.io，其中username就是你的用户名。Description可填可不填。<br />
 创建完成之后，就可以把代码上传上去了，这时就需要使用git工具了</p>
 
-<h2>git 版本控制工具</h2>
+<h2 id="git-">git 版本控制工具</h2>
 
 <p>可以在<a href="http://www.git-scm.com/downloads">这里</a>下载。所谓版本控制系统也就是存放有每个版本的代码。每次修改后的代码commit后会自动记录为一个版本。使用版本控制的好处就是任何时候都可以把修改错误的代码恢复至任一个版本。避免了代码保存了之后无法恢复。</p>
 
-<p>下载安装<code>git</code>并添加到PATH中之后，打开命令行，切换到我们之前新建的MyBlog目录中并运行<code>git init .</code>将当前目录初始化成一个<code>git</code>仓库其中<code>.</code>代表当前目录。</p>
-<div class="highlight"><pre><code class="language-" data-lang="">E:\Project\MyBlog&gt;git init .
+<p>下载安装<code class="highlighter-rouge">git</code>并添加到PATH中之后，打开命令行，切换到我们之前新建的MyBlog目录中并运行<code class="highlighter-rouge">git init .</code>将当前目录初始化成一个<code class="highlighter-rouge">git</code>仓库其中<code class="highlighter-rouge">.</code>代表当前目录。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>E:\Project\MyBlog&gt;git init .
 Initialized empty Git repository in E:/Project/MyBlog/.git/
-</code></pre></div>
-<p>可以看到新建的是一个空的仓库，运行命令<code>git status</code>(下面的所有命令都是在MyBlog目录中运行)查看当前仓库的状态。</p>
-<div class="highlight"><pre><code class="language-" data-lang="">E:\Project\MyBlog&gt;git status
+</code></pre>
+</div>
+
+<p>可以看到新建的是一个空的仓库，运行命令<code class="highlighter-rouge">git status</code>(下面的所有命令都是在MyBlog目录中运行)查看当前仓库的状态。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>E:\Project\MyBlog&gt;git status
 On branch master
 
 Initial commit
@@ -190,9 +203,12 @@ Untracked files:
         index.html
 
 nothing added to commit but untracked files present (use "git add" to track)
-</code></pre></div>
-<p>可以看到仓库检测到了变动，Untracked files为没有被记录的文件。运行命令<code>git add -A</code>记录所有发生变动的文件。然后再运行一次<code>git status</code></p>
-<div class="highlight"><pre><code class="language-" data-lang="">E:\Project\MyBlog&gt;git status
+</code></pre>
+</div>
+
+<p>可以看到仓库检测到了变动，Untracked files为没有被记录的文件。运行命令<code class="highlighter-rouge">git add -A</code>记录所有发生变动的文件。然后再运行一次<code class="highlighter-rouge">git status</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>E:\Project\MyBlog&gt;git status
 On branch master
 
 Initial commit
@@ -218,9 +234,12 @@ Changes to be committed:
         new file:   index.html
 
 E:\Project\MyBlog&gt;
-</code></pre></div>
-<p>看到输出的第5行<code>Changes to be committed</code>表明这些文件可以被commit了，一旦commit后文件的修改就会被记录到仓库中，并自动生成一个新版本。运行<code>git commit -m &quot;add all the file to repository&quot;</code>。其中commit命令必须有<code>-m</code>参数并跟着一个字符串，用于说明该commit做了什么变动，字符串可以是中文。</p>
-<div class="highlight"><pre><code class="language-" data-lang="">E:\Project\MyBlog&gt;git commit -m "add all the file to repository"
+</code></pre>
+</div>
+
+<p>看到输出的第5行<code class="highlighter-rouge">Changes to be committed</code>表明这些文件可以被commit了，一旦commit后文件的修改就会被记录到仓库中，并自动生成一个新版本。运行<code class="highlighter-rouge">git commit -m "add all the file to repository"</code>。其中commit命令必须有<code class="highlighter-rouge">-m</code>参数并跟着一个字符串，用于说明该commit做了什么变动，字符串可以是中文。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>E:\Project\MyBlog&gt;git commit -m "add all the file to repository"
 [master (root-commit) e0954d0] add all the file to repository
  16 files changed, 807 insertions(+)
  create mode 100644 .gitignore
@@ -239,133 +258,156 @@ E:\Project\MyBlog&gt;
  create mode 100644 css/main.scss
  create mode 100644 feed.xml
  create mode 100644 index.html
-</code></pre></div>
-<p>这样所有的变动都记录到仓库中了: )。注意<code>[master (root-commit) e0954d0]</code>每一次commit都会生成一个序号类似<code>e0954d0</code>，就像版本号的ID，若要恢复到以前的版本就需要使用这个序号。</p>
+</code></pre>
+</div>
 
-<p>做好了<code>git</code>仓库就可以把它上传到<code>Github</code>上发布到网上了。</p>
+<p>这样所有的变动都记录到仓库中了: )。注意<code class="highlighter-rouge">[master (root-commit) e0954d0]</code>每一次commit都会生成一个序号类似<code class="highlighter-rouge">e0954d0</code>，就像版本号的ID，若要恢复到以前的版本就需要使用这个序号。</p>
 
-<h2>上传到Github</h2>
+<p>做好了<code class="highlighter-rouge">git</code>仓库就可以把它上传到<code class="highlighter-rouge">Github</code>上发布到网上了。</p>
+
+<h2 id="github">上传到Github</h2>
 
 <p>首先需要设置远程仓库的地址(即在你的Github账号中创建的仓库的地址)。在网页上打开你之前创建的仓库。在页面右侧找到该仓库的URL(建议先点击SSH切换到SSH链接，方便以后添加SSH KEY)</p>
 
-<p><img src="http://lin-h.com/assets/jekyll/where-to-clone.png" alt=""></p>
+<p><img src="http://lin-h.com/assets/jekyll/where-to-clone.png" alt="" /></p>
 
-<p>在命令行中运行<code>git remote add origin &lt;server&gt;</code>其中<server>就是你的远程仓库的地址，origin为仓库名字(可以改为其他的名字)。</p>
+<p>在命令行中运行<code class="highlighter-rouge">git remote add origin &lt;server&gt;</code>其中<server>就是你的远程仓库的地址，origin为仓库名字(可以改为其他的名字)。</server></p>
 
 <blockquote>
-<p>注意：Github解析静态页面所使用的就是Jekyll所以你可以直接上传网站的源代码到远程仓库的master分支中，或将源代码上传到其他分支如source中，把最终生成的网站代码(_site文件夹中的内容)上传到master分支中。分开两个分支的好处是你可以现在本地使用Jekyll插件，Jekyll插件包括自动归档，分类等等功能，然后将生成的网站上传到master分支。因为Github出于安全考虑禁止使用插件。接下去的教程将代码上传至两个分支。</p>
+  <p>注意：Github解析静态页面所使用的就是Jekyll所以你可以直接上传网站的源代码到远程仓库的master分支中，或将源代码上传到其他分支如source中，把最终生成的网站代码(_site文件夹中的内容)上传到master分支中。分开两个分支的好处是你可以现在本地使用Jekyll插件，Jekyll插件包括自动归档，分类等等功能，然后将生成的网站上传到master分支。因为Github出于安全考虑禁止使用插件。接下去的教程将代码上传至两个分支。</p>
 </blockquote>
 
-<p>将网站源代码和生成的代码上传到两个分支。需要现在命令行中将当前目录切换至<code>MyBlog</code>中的<code>_site</code>文件夹中。重复上面的<code>git</code>命令将<code>_site</code>文件夹变成另一个<code>git</code>仓库，并添加远程仓库(为同一个远程仓库地址)。在命令行中运行</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">git push origin master <span class="c">#master 即为上传分支的名字，若远程仓库中还没有该分支，则会被创建</span>
-</code></pre></div>
-<p>同样的在<code>MyBlog</code>目录中运行</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">git push origin <span class="nb">source</span> <span class="c">#将源代码上传到source分支，便于分开管理</span>
-</code></pre></div>
-<p>最后在<code>Github</code>网站上打开你的远程仓库，应该可以看到两个分支<img src="http://lin-h.com/assets/jekyll/two-branch.png" alt="">这时你打开http://username.github.io就能看到你的网站(username为你的用户名)已经发布到网上了: )</p>
+<p>将网站源代码和生成的代码上传到两个分支。需要现在命令行中将当前目录切换至<code class="highlighter-rouge">MyBlog</code>中的<code class="highlighter-rouge">_site</code>文件夹中。重复上面的<code class="highlighter-rouge">git</code>命令将<code class="highlighter-rouge">_site</code>文件夹变成另一个<code class="highlighter-rouge">git</code>仓库，并添加远程仓库(为同一个远程仓库地址)。在命令行中运行</p>
 
-<h2>目录结构</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code>git push origin master <span class="c">#master 即为上传分支的名字，若远程仓库中还没有该分支，则会被创建</span>
+</code></pre>
+</div>
 
-<p>为了能够更好地使用<code>Jekyll</code>，现在来了解一下生成的网站的目录结构。</p>
+<p>同样的在<code class="highlighter-rouge">MyBlog</code>目录中运行</p>
 
-<p><img src="http://lin-h.com/assets/jekyll/mulu-struct.png" alt=""></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git push origin <span class="nb">source</span> <span class="c">#将源代码上传到source分支，便于分开管理</span>
+</code></pre>
+</div>
 
-<p>你的网站目录结构应该像上图那样。<code>.sass-cache</code>目录是编译sass时的缓存，我们不需要理会它。<code>_includes</code>目录包含着整个网站的结构，进入这个目录可以看到有3个文件</p>
-<div class="highlight"><pre><code class="language-" data-lang="">footer.html
+<p>最后在<code class="highlighter-rouge">Github</code>网站上打开你的远程仓库，应该可以看到两个分支<img src="http://lin-h.com/assets/jekyll/two-branch.png" alt="" />这时你打开http://username.github.io就能看到你的网站(username为你的用户名)已经发布到网上了: )</p>
+
+<h2 id="section">目录结构</h2>
+
+<p>为了能够更好地使用<code class="highlighter-rouge">Jekyll</code>，现在来了解一下生成的网站的目录结构。</p>
+
+<p><img src="http://lin-h.com/assets/jekyll/mulu-struct.png" alt="" /></p>
+
+<p>你的网站目录结构应该像上图那样。<code class="highlighter-rouge">.sass-cache</code>目录是编译sass时的缓存，我们不需要理会它。<code class="highlighter-rouge">_includes</code>目录包含着整个网站的结构，进入这个目录可以看到有3个文件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>footer.html
 head.html
 header.html
-</code></pre></div>
-<p><code>footer.html</code>是网站的底部内容</p>
+</code></pre>
+</div>
 
-<p><img src="http://lin-h.com/assets/jekyll/website-bottom.png" alt=""></p>
+<p><code class="highlighter-rouge">footer.html</code>是网站的底部内容</p>
 
-<p><code>head.html</code>则是网页结构中的头部，用于对该页面进行说明，和导入静态文件如css、js等，这一部分并不会在网页上显示出来。<code>header.html</code>文件中的内容就是网页的标题栏部分。</p>
+<p><img src="http://lin-h.com/assets/jekyll/website-bottom.png" alt="" /></p>
 
-<p><img src="http://lin-h.com/assets/jekyll/website-head.png" alt=""></p>
+<p><code class="highlighter-rouge">head.html</code>则是网页结构中的头部，用于对该页面进行说明，和导入静态文件如css、js等，这一部分并不会在网页上显示出来。<code class="highlighter-rouge">header.html</code>文件中的内容就是网页的标题栏部分。</p>
 
-<p>这个文件夹的内容相当于是构成网页的基本骨架。<code>Jekyll</code>中默认有两种页面布局，一种是page、一种是post，存放在<code>_layouts</code>目录中，都是用同一种布局(layout)default，就是目录中的default.html文件。我们写文章就是使用post布局，所以一般情况来说这些文件都不需要改动，除非你想增加别的内容进去。</p>
+<p><img src="http://lin-h.com/assets/jekyll/website-head.png" alt="" /></p>
 
-<p>目录<code>_sass</code>和<code>css</code>都是网站所使用的样式表默认情况下，这两个目录中的文件都使用<code>sass</code>编写，<code>sass</code>是一种用来快速编写css的工具相当于另一种<code>css语言</code>，详细介绍可以在<a href="http://sass-lang.com/">sass官网</a>查看。当然如果你不会sass也可以直接用css编写，编辑的方式，直接用文本编辑器打开.scss文件就可以了，属于css的语句<code>sass</code>的编译器不会处理。</p>
+<p>这个文件夹的内容相当于是构成网页的基本骨架。<code class="highlighter-rouge">Jekyll</code>中默认有两种页面布局，一种是page、一种是post，存放在<code class="highlighter-rouge">_layouts</code>目录中，都是用同一种布局(layout)default，就是目录中的default.html文件。我们写文章就是使用post布局，所以一般情况来说这些文件都不需要改动，除非你想增加别的内容进去。</p>
 
-<p><code>_config.yml</code>文件比较重要，它是整个网站的配置文件，可以设置网站的标题，描述，网址和其他与<code>jekyll</code>相关的网站参数，详情请看<a href="http://jekyllrb.com/docs/configuration/">这里</a></p>
+<p>目录<code class="highlighter-rouge">_sass</code>和<code class="highlighter-rouge">css</code>都是网站所使用的样式表默认情况下，这两个目录中的文件都使用<code class="highlighter-rouge">sass</code>编写，<code class="highlighter-rouge">sass</code>是一种用来快速编写css的工具相当于另一种<code class="highlighter-rouge">css语言</code>，详细介绍可以在<a href="http://sass-lang.com/">sass官网</a>查看。当然如果你不会sass也可以直接用css编写，编辑的方式，直接用文本编辑器打开.scss文件就可以了，属于css的语句<code class="highlighter-rouge">sass</code>的编译器不会处理。</p>
 
-<p><code>_posts</code>目录就是我们写文章的地方啦。写文章的时候一般都会用<code>Markdown</code>语法。<code>Markdown</code>其实就是以一种简易的方式去写HTML，学习起来相当容易。<a href="https://help.github.com/articles/markdown-basics/">Github的简易Markdown教程</a></p>
+<p><code class="highlighter-rouge">_config.yml</code>文件比较重要，它是整个网站的配置文件，可以设置网站的标题，描述，网址和其他与<code class="highlighter-rouge">jekyll</code>相关的网站参数，详情请看<a href="http://jekyllrb.com/docs/configuration/">这里</a></p>
 
-<h2>Jekyll主题风格和配色</h2>
+<p><code class="highlighter-rouge">_posts</code>目录就是我们写文章的地方啦。写文章的时候一般都会用<code class="highlighter-rouge">Markdown</code>语法。<code class="highlighter-rouge">Markdown</code>其实就是以一种简易的方式去写HTML，学习起来相当容易。<a href="https://help.github.com/articles/markdown-basics/">Github的简易Markdown教程</a></p>
 
-<p>既然是个人Blog，那么当然应该更具个人特色，如果你是个懂设计的程序员，制作一个漂亮的网站自然不难。但对于像我这样还不懂设计的人来说只能是到处改改，边改边瞧了。除此之外，也可以直接使用别人已经写好的主题风格。提供两个可以免费下载<code>Jekyll</code>主题的网站</p>
+<h2 id="jekyll">Jekyll主题风格和配色</h2>
+
+<p>既然是个人Blog，那么当然应该更具个人特色，如果你是个懂设计的程序员，制作一个漂亮的网站自然不难。但对于像我这样还不懂设计的人来说只能是到处改改，边改边瞧了。除此之外，也可以直接使用别人已经写好的主题风格。提供两个可以免费下载<code class="highlighter-rouge">Jekyll</code>主题的网站</p>
 
 <ul>
-<li><a href="http://jekyllthemes.org/">Jekyll Themes</a></li>
-<li><a href="https://github.com/jekyll/jekyll/wiki/Themes">Themes · jekyll/jekyll Wiki</a></li>
+  <li><a href="http://jekyllthemes.org/">Jekyll Themes</a></li>
+  <li><a href="https://github.com/jekyll/jekyll/wiki/Themes">Themes · jekyll/jekyll Wiki</a></li>
 </ul>
 
-<p>要使用某个主题只需要把该主题下载下来，直接复制到你的网站站点即可，然后把你的<code>_posts</code>目录下的文章复制到同名目录即可。然后在网站当前目录下打开命令行运行<code>jekyll serve</code>就能看到你新换的主题了。</p>
+<p>要使用某个主题只需要把该主题下载下来，直接复制到你的网站站点即可，然后把你的<code class="highlighter-rouge">_posts</code>目录下的文章复制到同名目录即可。然后在网站当前目录下打开命令行运行<code class="highlighter-rouge">jekyll serve</code>就能看到你新换的主题了。</p>
 
-<h3>代码配色</h3>
+<h3 id="section-1">代码配色</h3>
 
-<p><code>Jekyll</code>默认的代码高亮工具是Pygment，对于在Windows环境下不是很稳定，所以推荐使用<code>Rouge</code>。跟安装<code>Jekyll</code>一样，使用<code>gem</code>来下载安装<code>Rouge</code>，在命令行中输入</p>
-<div class="highlight"><pre><code class="language-" data-lang="">gem install rouge
-</code></pre></div>
-<p>安装完成后打开编辑你的Blog根目录下的<code>_config.yml</code>文件，在文件的最后新增一行加上</p>
-<div class="highlight"><pre><code class="language-" data-lang="">highlighter: rouge
-</code></pre></div>
-<p>将代码高亮工具设置为<code>Rouge</code>。这样就完成了。</p>
+<p><code class="highlighter-rouge">Jekyll</code>默认的代码高亮工具是Pygment，对于在Windows环境下不是很稳定，所以推荐使用<code class="highlighter-rouge">Rouge</code>。跟安装<code class="highlighter-rouge">Jekyll</code>一样，使用<code class="highlighter-rouge">gem</code>来下载安装<code class="highlighter-rouge">Rouge</code>，在命令行中输入</p>
 
-<p>如果不喜欢<code>Rouge</code>的默认代码配色可以在<a href="http://lin-h.com/download/codeHighlightStyle.zip">这里</a>下载我事先从<code>Rouge</code>中导出的其他代码配色方案。并将文件复制到<code>_sass</code>文件夹中，编辑<code>css</code>文件夹中的<code>main.scss</code>文件，在末尾import你刚添加的配色方案的文件名。比如：</p>
-<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="k">@import</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>gem install rouge
+</code></pre>
+</div>
+
+<p>安装完成后打开编辑你的Blog根目录下的<code class="highlighter-rouge">_config.yml</code>文件，在文件的最后新增一行加上</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>highlighter: rouge
+</code></pre>
+</div>
+
+<p>将代码高亮工具设置为<code class="highlighter-rouge">Rouge</code>。这样就完成了。</p>
+
+<p>如果不喜欢<code class="highlighter-rouge">Rouge</code>的默认代码配色可以在<a href="http://lin-h.com/download/codeHighlightStyle.zip">这里</a>下载我事先从<code class="highlighter-rouge">Rouge</code>中导出的其他代码配色方案。并将文件复制到<code class="highlighter-rouge">_sass</code>文件夹中，编辑<code class="highlighter-rouge">css</code>文件夹中的<code class="highlighter-rouge">main.scss</code>文件，在末尾import你刚添加的配色方案的文件名。比如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@import</span>
         <span class="s2">"base"</span><span class="o">,</span>
         <span class="s2">"layout"</span><span class="o">,</span>
         <span class="s2">"monokai.sublime"</span>
 <span class="p">;</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>下面是部分配色方案的截图</p>
 
-<p>base16.solarized.dark<br/>
-<img src="http://lin-h.com/assets/jekyll/base16.solarized.dark.png" alt=""></p>
+<p>base16.solarized.dark<br /><br />
+<img src="http://lin-h.com/assets/jekyll/base16.solarized.dark.png" alt="" /></p>
 
-<p>base16.solarized<br/>
-<img src="http://lin-h.com/assets/jekyll/base16.solarized.png" alt=""></p>
+<p>base16.solarized<br /><br />
+<img src="http://lin-h.com/assets/jekyll/base16.solarized.png" alt="" /></p>
 
-<p>colorful<br/>
-<img src="http://lin-h.com/assets/jekyll/colorful.png" alt=""></p>
+<p>colorful<br /><br />
+<img src="http://lin-h.com/assets/jekyll/colorful.png" alt="" /></p>
 
-<p>default<br/>
-<img src="http://lin-h.com/assets/jekyll/default.png" alt=""></p>
+<p>default<br /><br />
+<img src="http://lin-h.com/assets/jekyll/default.png" alt="" /></p>
 
-<p>manni<br/>
-<img src="http://lin-h.com/assets/jekyll/manni.png" alt=""></p>
+<p>manni<br /><br />
+<img src="http://lin-h.com/assets/jekyll/manni.png" alt="" /></p>
 
-<p>monokai.sublime<br/>
-<img src="http://lin-h.com/assets/jekyll/monokai.sublime.png" alt=""></p>
+<p>monokai.sublime<br /><br />
+<img src="http://lin-h.com/assets/jekyll/monokai.sublime.png" alt="" /></p>
 
-<p>native<br/>
-<img src="http://lin-h.com/assets/jekyll/native.png" alt=""></p>
+<p>native<br /><br />
+<img src="http://lin-h.com/assets/jekyll/native.png" alt="" /></p>
 
-<p>perldoc<br/>
-<img src="http://lin-h.com/assets/jekyll/perldoc.png" alt=""></p>
+<p>perldoc<br /><br />
+<img src="http://lin-h.com/assets/jekyll/perldoc.png" alt="" /></p>
 
-<p>thankful_eyes<br/>
-<img src="http://lin-h.com/assets/jekyll/thankful_eyes.png" alt=""></p>
+<p>thankful_eyes<br /><br />
+<img src="http://lin-h.com/assets/jekyll/thankful_eyes.png" alt="" /></p>
 
-<p>vim<br/>
-<img src="http://lin-h.com/assets/jekyll/vim.png" alt=""></p>
+<p>vim<br /><br />
+<img src="http://lin-h.com/assets/jekyll/vim.png" alt="" /></p>
 
-<h2>书写文章</h2>
+<h2 id="section-2">书写文章</h2>
 
-<p>书写文章其实非常简单，在你已经建好的Blog中，<code>_posts</code> 文件夹内就默认有一篇文章。文章的命名是有讲究的，以“年-月-日”开头，并用“-”分开，后面再加上标题。打开后可以看到编写文章的相关格式。开头部分是文章的相关设置，可以设置该篇文章使用什么布局，标题，创建时间和分类。接下去就是文章的主要内容，使用<code>markdown</code>来编写，在编写文章的时候可以使用</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">jekyll serve
-</code></pre></div>
+<p>书写文章其实非常简单，在你已经建好的Blog中，<code class="highlighter-rouge">_posts</code> 文件夹内就默认有一篇文章。文章的命名是有讲究的，以“年-月-日”开头，并用“-”分开，后面再加上标题。打开后可以看到编写文章的相关格式。开头部分是文章的相关设置，可以设置该篇文章使用什么布局，标题，创建时间和分类。接下去就是文章的主要内容，使用<code class="highlighter-rouge">markdown</code>来编写，在编写文章的时候可以使用</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>jekyll serve
+</code></pre>
+</div>
+
 <p>来一遍写，一遍观察实际效果。一旦编写完成后就push到远程仓库中就算发布了。</p>
 
-<h3>参考页面</h3>
+<h3 id="section-3">参考页面</h3>
 
 <ul>
-<li><a href="https://www.ruby-lang.org/zh_cn/downloads/">下载 Ruby - Ruby 官方网站</a></li>
-<li><a href="http://jekyll-windows.juthilo.com/">Home &middot; Run Jekyll on Windows</a></li>
-<li><a href="https://github.com/jekyll/jekyll">jekyll</a></li>
-<li><a href="https://github.com/oneclick/rubyinstaller/wiki/Development-Kit">Development Kit · oneclick/rubyinstaller Wiki</a></li>
-<li><a href="http://www.bootcss.com/p/git-guide/">git 使用简易指南</a></li>
+  <li><a href="https://www.ruby-lang.org/zh_cn/downloads/">下载 Ruby - Ruby 官方网站</a></li>
+  <li><a href="http://jekyll-windows.juthilo.com/">Home · Run Jekyll on Windows</a></li>
+  <li><a href="https://github.com/jekyll/jekyll">jekyll</a></li>
+  <li><a href="https://github.com/oneclick/rubyinstaller/wiki/Development-Kit">Development Kit · oneclick/rubyinstaller Wiki</a></li>
+  <li><a href="http://www.bootcss.com/p/git-guide/">git 使用简易指南</a></li>
 </ul>
 
   </article>
