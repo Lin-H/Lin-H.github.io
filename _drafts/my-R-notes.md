@@ -329,5 +329,11 @@ df
 
 还可以使用`str()`函数来查看数据框或列表中都有哪些类型的数据。默认情况下`R`会将所有字符串全都以因子`factor`来存储。可以使用`stringsAsFactors = FALSE`关掉。
 
-###Loading Data
+###Loading and Saving Data
 
+使用`RStudio`的`Import Dataset`可以导入`CSV`之类格式的文件，本地或网络。
+
+```r
+read.csv()#读取文件
+write.csv(deck, file = "cards.csv", row.names = FALSE)#写入文件到working directory. getwd()
+```
