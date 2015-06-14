@@ -5,17 +5,17 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LinHang's Blog</title>
-  <meta name="description" content="LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想  :)">
+  <title>Git的各种撤销操作</title>
+  <meta name="description" content="使用版本控制工具Git最大的好处就是，发生错误操作、修改后可以恢复到原来最后一次正确的状态">
   
-  <meta name="keywords" content="LinHang,个人博客,技术分享,程序员,IT,Programmer">
+  <meta name="keywords" content="git,undo,撤销">
   
   <link href="//fonts.useso.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
   <!--
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://lin-h.com/">
+  <link rel="canonical" href="http://lin-h.com/git/2015/06/14/git-undo-operation.html">
   <link rel="alternate" type="application/rss+xml" title="LinHang's Blog" href="http://lin-h.com/feed.xml" />
 </head>
 
@@ -59,91 +59,79 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <div class="posts">
-    
+  <header class="post-header">
+    <h1 class="post-title">Git的各种撤销操作</h1>
+    <p class="post-meta">Jun 14, 2015</p>
+  </header>
 
-      <div class="post-teaser">
-    
-      <header>
-        <h1>
-          <a class="post-link" href="/git/2015/06/14/git-undo-operation.html">Git的各种撤销操作</a>
-        </h1>
-        
-        <p class="post-meta">June 14, 2015</p>
-      </header>
+  <article class="post-content">
+    <p>使用版本控制工具<code class="highlighter-rouge">Git</code>最大的好处就是，发生错误操作、修改后可以恢复到原来最后一次正确的状态</p>
 
-      <div class="excerpt">
-        <p>使用版本控制工具<code class="highlighter-rouge">Git</code>最大的好处就是，发生错误操作、修改后可以恢复到原来最后一次正确的状态</p>
+<h3 id="git-push">撤销git push操作</h3>
 
+<p>运行<code class="highlighter-rouge">git push</code>后，会将新的<code class="highlighter-rouge">commit</code>提交到远程仓库。可以使用<code class="highlighter-rouge">git revert</code>来撤销操作</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>git revert &lt;SHA&gt;
+</code></pre>
+</div>
 
-        <a class="button" href="/git/2015/06/14/git-undo-operation.html">Continue reading</a>
-      </div>
-      
-    </div>
-    
+<p><code class="highlighter-rouge">git revert</code>会创建一个新的<code class="highlighter-rouge">commit</code>，其中的修改与<code class="highlighter-rouge">&lt;SHA&gt;</code>的<code class="highlighter-rouge">commit</code>相反，以此来达到撤销之前操作的目的。</p>
 
-      <div class="post-teaser">
-    
-      <header>
-        <h1>
-          <a class="post-link" href="/go/2015/06/13/my-Go-notes.html">Go语言学习笔记</a>
-        </h1>
-        
-        <p class="post-meta">June 13, 2015</p>
-      </header>
+<h3 id="commit">修改commit信息</h3>
 
-      <div class="excerpt">
-        <p><code class="highlighter-rouge">Go</code>是一种并发的、带垃圾回收的、快速编译的静态语言，用于编写简单、可靠、高效的软件。多用在云计算方面。</p>
+<p>当使用<code class="highlighter-rouge">git commit -m "Fxies bug #42"</code>提交了一个<code class="highlighter-rouge">commit</code>后发现信息写错了，可以使用<code class="highlighter-rouge">git commit --amend -m "Fixes bug #42"</code>来修改。这条命令会将最近提交的<code class="highlighter-rouge">commit</code>信息修改</p>
 
-        <a class="button" href="/go/2015/06/13/my-Go-notes.html">Continue reading</a>
-      </div>
-      
-    </div>
-    
+<h3 id="section">撤销当前编辑的内容</h3>
 
-      <div class="post-teaser">
-    
-      <header>
-        <h1>
-          <a class="post-link" href="/rust/2015/05/28/Rust-quick-guide.html">Rust快速入门</a>
-        </h1>
-        
-        <p class="post-meta">May 28, 2015</p>
-      </header>
+<p>当编辑了代码并保存后，发现写错了，但是没有<code class="highlighter-rouge">commit</code>，想要把文件恢复成原来的样子，使用</p>
 
-      <div class="excerpt">
-        <h2>Rust简介</h2><p><code>Rust</code>是一种编译语言，与<code>C</code>和<code>Go</code>一样编译后生成的是二进制文件。<code>Rust</code>专注于<code>安全</code>，<code>速度</code>，<code>并发</code>。并且不需要垃圾回收器，这也让<code>Rust</code>在某些情况下比其他语言更好用。比如与其他语言混合编写嵌入其中、编写底层软件，驱动或操作系统。<code>Rust</code>在编译期间会将语法错误和不安全因素最大程度地找出来，从而避免在程序运行时出现问题。<code>Rust</code>语言可以胜任三个软件层次的开发。并且在今年5月15号发布了第一个1.0.0正式版本。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git checkout -- &lt;bad filename&gt;
+</code></pre>
+</div>
 
-        <a class="button" href="/rust/2015/05/28/Rust-quick-guide.html">Continue reading</a>
-      </div>
-      
-    </div>
-    
+<p><code class="highlighter-rouge">&lt;bad filename&gt;</code>可以是分支名或指定的<code class="highlighter-rouge">SHA</code>，默认下会回到最近的一次<code class="highlighter-rouge">commit</code></p>
 
-      <div class="post-teaser">
-    
-      <header>
-        <h1>
-          <a class="post-link" href="/jekyll/2015/04/09/build-personal-blog-with-jekyll-on-github.html">使用Jekyll在Github上搭建个人Blog</a>
-        </h1>
-        
-        <p class="post-meta">April 9, 2015</p>
-      </header>
+<h3 id="commit-1">撤销commit</h3>
 
-      <div class="excerpt">
-        <p>拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。<code class="highlighter-rouge">Jekyll</code>就是一款生成静态页面(HTML文件)的工具，<code class="highlighter-rouge">Jekyll</code>是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就能搭建出一个Blog来，但如果你还懂得网站前端的知识如<code class="highlighter-rouge">HTML</code>，<code class="highlighter-rouge">CSS</code>，<code class="highlighter-rouge">Javascript</code>的话，你就能完全自定义你自己的Blog。</p>
+<p>在提交了几次<code class="highlighter-rouge">commit</code>后，觉得都不好，想要把这几次<code class="highlighter-rouge">commit</code>全都撤销掉</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>git reset &lt;last good SHA&gt; 
+git reset --hard &lt;last good SHA&gt;
+</code></pre>
+</div>
 
+<p><code class="highlighter-rouge">&lt;last good SHA&gt;</code>指想要恢复到的<code class="highlighter-rouge">commit</code>。<code class="highlighter-rouge">git reset</code>将<code class="highlighter-rouge">commit</code>撤消后代码的变动还在，但没有被<code class="highlighter-rouge">commit</code>；加上<code class="highlighter-rouge">--hard</code>会将代码的变动一并撤销</p>
 
-        <a class="button" href="/jekyll/2015/04/09/build-personal-blog-with-jekyll-on-github.html">Continue reading</a>
-      </div>
-      
-    </div>
-    
-  </div>
+<h3 id="commit-2">恢复撤销的commit</h3>
+
+<p>在使用<code class="highlighter-rouge">git reset --hard</code>撤销了<code class="highlighter-rouge">commit</code>后，又想要恢复，可以使用<code class="highlighter-rouge">git reflog</code> 和 <code class="highlighter-rouge">git reset</code>或<code class="highlighter-rouge">git checkout</code></p>
+
+<ul>
+  <li><code class="highlighter-rouge">git reflog</code>只能当<code class="highlighter-rouge">HEAD</code>发生改变后使用，运行<code class="highlighter-rouge">git reflog</code>后可以看到能够恢复的<code class="highlighter-rouge">commit</code></li>
+  <li>如果是想要恢复<code class="highlighter-rouge">git</code>工程的历史，使用<code class="highlighter-rouge">git reset --hard &lt;SHA&gt;</code></li>
+  <li>如果是想要重新创建删除的文件，并且不修改历史记录，使用<code class="highlighter-rouge">git checkout &lt;SHA&gt; -- &lt;filename&gt;</code></li>
+  <li>如果是想重做某个<code class="highlighter-rouge">commit</code>使用<code class="highlighter-rouge">git cherry-pick &lt;SHA&gt;</code></li>
+</ul>
+
+<h3 id="master">撤销提交到master分支的修改</h3>
+
+<p>在提交了几个<code class="highlighter-rouge">commit</code>后发现是<code class="highlighter-rouge">master</code>分支，想要把这些<code class="highlighter-rouge">commit</code>提交到其他分支上去，可以使用<code class="highlighter-rouge">git branch feature</code>, <code class="highlighter-rouge">git reset --hard origin/master</code>, 和 <code class="highlighter-rouge">git checkout feature</code><br /><br />
+<code class="highlighter-rouge">git branch feature</code>创建一个新的分支叫<code class="highlighter-rouge">feature</code>，<code class="highlighter-rouge">git reset --hard origin/master</code>撤销对<code class="highlighter-rouge">master</code>分支的修改，<code class="highlighter-rouge">git checkout feature</code>将当前分支切换到<code class="highlighter-rouge">feature</code></p>
+
+<h3 id="section-1">撤销已记录的文件</h3>
+
+<p>不小心将<code class="highlighter-rouge">application.log</code>添加到了仓库中(tracked file)，撤销这个操作可以使用<code class="highlighter-rouge">git rm --cached application.log</code></p>
+
+<h2 id="section-2">参考链接</h2>
+
+<ul>
+  <li><a href="https://github.com/blog/2019-how-to-undo-almost-anything-with-git">How to undo (almost) anything with Git</a></li>
+  <li><a href="http://git-scm.com/docs">Git - Reference</a></li>
+</ul>
+
+  </article>
 
 </div>
 

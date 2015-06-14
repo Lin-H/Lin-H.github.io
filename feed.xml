@@ -5,9 +5,84 @@
     <description>LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想  :)</description>
     <link>http://lin-h.com/</link>
     <atom:link href="http://lin-h.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 12 Jun 2015 16:23:59 +0000</pubDate>
-    <lastBuildDate>Fri, 12 Jun 2015 16:23:59 +0000</lastBuildDate>
+    <pubDate>Sun, 14 Jun 2015 04:35:09 +0000</pubDate>
+    <lastBuildDate>Sun, 14 Jun 2015 04:35:09 +0000</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Git的各种撤销操作</title>
+        <description>&lt;p&gt;使用版本控制工具&lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt;最大的好处就是，发生错误操作、修改后可以恢复到原来最后一次正确的状态&lt;/p&gt;
+
+&lt;h3 id=&quot;git-push&quot;&gt;撤销git push操作&lt;/h3&gt;
+
+&lt;p&gt;运行&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;后，会将新的&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;提交到远程仓库。可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git revert&lt;/code&gt;来撤销操作&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git revert &amp;lt;SHA&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git revert&lt;/code&gt;会创建一个新的&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，其中的修改与&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;SHA&amp;gt;&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;相反，以此来达到撤销之前操作的目的。&lt;/p&gt;
+
+&lt;h3 id=&quot;commit&quot;&gt;修改commit信息&lt;/h3&gt;
+
+&lt;p&gt;当使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m &quot;Fxies bug #42&quot;&lt;/code&gt;提交了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;后发现信息写错了，可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit --amend -m &quot;Fixes bug #42&quot;&lt;/code&gt;来修改。这条命令会将最近提交的&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;信息修改&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;撤销当前编辑的内容&lt;/h3&gt;
+
+&lt;p&gt;当编辑了代码并保存后，发现写错了，但是没有&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，想要把文件恢复成原来的样子，使用&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout -- &amp;lt;bad filename&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;bad filename&amp;gt;&lt;/code&gt;可以是分支名或指定的&lt;code class=&quot;highlighter-rouge&quot;&gt;SHA&lt;/code&gt;，默认下会回到最近的一次&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;commit-1&quot;&gt;撤销commit&lt;/h3&gt;
+
+&lt;p&gt;在提交了几次&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;后，觉得都不好，想要把这几次&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;全都撤销掉&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git reset &amp;lt;last good SHA&amp;gt; 
+git reset --hard &amp;lt;last good SHA&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;last good SHA&amp;gt;&lt;/code&gt;指想要恢复到的&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;git reset&lt;/code&gt;将&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;撤消后代码的变动还在，但没有被&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;；加上&lt;code class=&quot;highlighter-rouge&quot;&gt;--hard&lt;/code&gt;会将代码的变动一并撤销&lt;/p&gt;
+
+&lt;h3 id=&quot;commit-2&quot;&gt;恢复撤销的commit&lt;/h3&gt;
+
+&lt;p&gt;在使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git reset --hard&lt;/code&gt;撤销了&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;后，又想要恢复，可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git reflog&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;git reset&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git reflog&lt;/code&gt;只能当&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;发生改变后使用，运行&lt;code class=&quot;highlighter-rouge&quot;&gt;git reflog&lt;/code&gt;后可以看到能够恢复的&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;如果是想要恢复&lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt;工程的历史，使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git reset --hard &amp;lt;SHA&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;如果是想要重新创建删除的文件，并且不修改历史记录，使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout &amp;lt;SHA&amp;gt; -- &amp;lt;filename&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;如果是想重做某个&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git cherry-pick &amp;lt;SHA&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;master&quot;&gt;撤销提交到master分支的修改&lt;/h3&gt;
+
+&lt;p&gt;在提交了几个&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;后发现是&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支，想要把这些&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;提交到其他分支上去，可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch feature&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git reset --hard origin/master&lt;/code&gt;, 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout feature&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch feature&lt;/code&gt;创建一个新的分支叫&lt;code class=&quot;highlighter-rouge&quot;&gt;feature&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;git reset --hard origin/master&lt;/code&gt;撤销对&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支的修改，&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout feature&lt;/code&gt;将当前分支切换到&lt;code class=&quot;highlighter-rouge&quot;&gt;feature&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;撤销已记录的文件&lt;/h3&gt;
+
+&lt;p&gt;不小心将&lt;code class=&quot;highlighter-rouge&quot;&gt;application.log&lt;/code&gt;添加到了仓库中(tracked file)，撤销这个操作可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git rm --cached application.log&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;参考链接&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/blog/2019-how-to-undo-almost-anything-with-git&quot;&gt;How to undo (almost) anything with Git&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://git-scm.com/docs&quot;&gt;Git - Reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 14 Jun 2015 12:32:48 +0000</pubDate>
+        <link>http://lin-h.com/git/2015/06/14/git-undo-operation.html</link>
+        <guid isPermaLink="true">http://lin-h.com/git/2015/06/14/git-undo-operation.html</guid>
+        
+        
+        <category>git</category>
+        
+      </item>
     
       <item>
         <title>Go语言学习笔记</title>
