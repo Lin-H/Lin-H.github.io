@@ -6,16 +6,19 @@ keywords: "R语言,R,快速,quick,notes,笔记"
 published: false
 ---
 
-##R RStudio
+## R RStudio
 
 所使用的`R`版本为3.2.0，`RStudio`是`R`的IDE，有自动补全，查看API，管理包都十分方便。
 
-##R 基础
+## R 基础
 
 `#`符号在`R`的代码中是注释符，跟在后面的代码不做处理直接显示。在此使用`##`代表代码运行后的结果。
 
 ```r
 #基本运算符 > , < , <= , >= , ==
+
+%in%   #a %in% c(a, b, c)   a是否在c(a, b, c)中?
+
 1 + 1
 1 - 1
 1 * 1
@@ -63,7 +66,7 @@ die %o% die
 ## [6,] 6    12   18   24   30   36
 ```
 
-###函数调用
+### 函数调用
 
 ```r
 round(3.1415)
@@ -79,7 +82,7 @@ sample(x = 1:4, size = 2)#从x中随机选择size个元素
 ## 3 2
 ```
 
-###函数定义
+### 函数定义
 
 ```r
 f <- function(args1 = 1:6, args2){#1:6为args1的默认参数
@@ -121,7 +124,7 @@ replicate(10, roll())#重复10次roll()
 #搜索包含log关键字的帮助页面
 ```
 
-###向量
+### 向量
 
 向量中的数据必须是同一类型，若不是，则会自动转换(元素下标从0开始)
 
@@ -167,7 +170,7 @@ typeof(raw(3))
 ## "raw"
 ```
 
-###属性
+### 属性
 
 属性相当于元数据(metadata)附着在向量上，一般情况下不会显示，也不会对向量的值产生变化，但有些函数需要使用一些属性来进行特殊的操作。默认下向量都没有属性。
 
@@ -207,7 +210,7 @@ die
 ## [2,] 2    4    6
 ```
 
-###矩阵
+### 矩阵
 
 ```r
 m <- matrix(die, nrow = 2, byrow = FALSE)#按列将die向量填入2行的矩阵中
@@ -217,7 +220,7 @@ m
 ## [2,] 2    4    6
 ```
 
-###数组
+### 数组
 
 ```r
 ar <- array(c(11:14, 21:24, 31:34), dim = c(2, 2, 3))#第一个参数是向量，第二个参数dim，为3维数组
@@ -241,7 +244,7 @@ class(die)
 ## "matrix"
 ```
 
-###日期和时间
+### 日期和时间
 
 日期以字符串方式显示，但却是浮点类型，代表从12:00 AM January 1st 1970到现在的秒数
 
@@ -264,7 +267,7 @@ mil
 ## "1970-01-12 13:46:40 UTC"
 ```
 
-###因子
+### 因子
 
 因子用来储存拥有固定值的信息，如人的性别只有两种，男和女。因此因子的值是几个值中之一。
 
@@ -289,7 +292,7 @@ unclass(gender)
 ## [1] "female" "male"
 ```
 
-###List列表
+### List列表
 
 list可以以数组的方式储存不同类型的数据(元素下标从1开始)
 
@@ -312,7 +315,7 @@ list1
 ## [1]   FALSE
 ```
 
-###数据框
+### 数据框
 
 数据框就像是2维的列表，就像是Excel中的表格，所以每一列都有一个名称，接着就是相应的数据。但每一列的数据长度必须相同。
 
@@ -329,7 +332,9 @@ df
 
 还可以使用`str()`函数来查看数据框或列表中都有哪些类型的数据。默认情况下`R`会将所有字符串全都以因子`factor`来存储。可以使用`stringsAsFactors = FALSE`关掉。
 
-###Loading and Saving Data
+可以通过`df[ , ]`来获取数据库中的数值，正数从头开始取，负数从尾开始取
+
+### Loading and Saving Data
 
 使用`RStudio`的`Import Dataset`可以导入`CSV`之类格式的文件，本地或网络。
 
@@ -337,3 +342,54 @@ df
 read.csv()#读取文件
 write.csv(deck, file = "cards.csv", row.names = FALSE)#写入文件到working directory. getwd()
 ```
+
+### 数据表，向量，矩阵的选值
+
+例如`deck`是一个数据表，可以通过`deck[ , ]`来选择指定的数据。正数是顺数，负数是倒数。还可以通过`Name`属性选择
+
+```r
+deck[1:2, 1:2]
+## face suit
+## king spades
+## queen spades
+
+deck[-(2:52), 1:3]
+## face suit value
+## king spades 13
+
+deck[1, c("face", "suit", "value")]
+## face suit value
+## king spades 13
+```
+
+可以使用`$`来选择某一列，`deck$value`,所以可以认为`deck$value`专门用来操作列。也可以添加、删除列。总是**先选行再选列**。
+
+除了数字外，还可以使用TRUE来选择。
+
+```r
+vec
+## 1 0 1 1 2 1 0
+vec[c(FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE)]
+## 2
+```
+
+### 逻辑运算
+
+向量和数字，向量和向量之间可以进行逻辑运算。
+
+```r
+1 > 2
+## FALSE
+1 > c(0, 1, 2)
+## TRUE FALSE FALSE
+c(1, 2, 3) == c(3, 2, 1)
+## FALSE TRUE FALSE
+```
+
+- `&` 两个条件同时满足
+- `|` 满足至少一个条件
+- `xor` 只满足两个条件的其中之一
+- `!` 求反
+- `any` any(cond1, cond2, cond3, …) 满足任意条件
+- `all` all(cond1, cond2, cond3, …) 满足所有条件
+
