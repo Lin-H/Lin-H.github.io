@@ -4,7 +4,7 @@ title: Rust快速入门
 date: 2015-05-28 18:05:44
 category: Rust
 keywords: "Rust,快速入门,入门,quick,guide"
-last_modified_at: 2015-06-07 12:49:07
+last_modified_at: 2015-09-29 23:40:28
 excerpt: <h2>Rust简介</h2><p><code>Rust</code>是一种编译语言，与<code>C</code>和<code>Go</code>一样编译后生成的是二进制文件。<code>Rust</code>专注于<code>安全</code>，<code>速度</code>，<code>并发</code>。并且不需要垃圾回收器，这也让<code>Rust</code>在某些情况下比其他语言更好用。比如与其他语言混合编写嵌入其中、编写底层软件，驱动或操作系统。<code>Rust</code>在编译期间会将语法错误和不安全因素最大程度地找出来，从而避免在程序运行时出现问题。<code>Rust</code>语言可以胜任三个软件层次的开发。并且在今年5月15号发布了第一个1.0.0正式版本。</p>
 ---
 ## Rust简介
@@ -17,6 +17,35 @@ excerpt: <h2>Rust简介</h2><p><code>Rust</code>是一种编译语言，与<code
 
 - (上层)普通应用开发：编译器、浏览器、消息推送系统、Web应用系统、管理信息系统、其他等等 ([Rustc编译器](https://github.com/rust-lang/rust/tree/master/src/librustc), [Cargo项目管理](https://github.com/rust-lang/cargo), [Iron](https://github.com/iron/iron) & [Nickel](https://github.com/nickel-org/nickel.rs) Web开发框架, [Conrod](https://github.com/PistonDevelopers/conrod) GUI库)
 
+# 目录
+
+- [Variable Bindings](#variable-bindings)
+- [Const and Static](#const-and-static)
+- [Functions](#functions)
+- [Primitive-types](#primitive-types)
+- [Comments](#comments)
+- [Control flow statement](#control-flow-statement)
+- [Ownership](#ownership)
+- [Borrowing](#borrowing)
+- [Lifetimes](#lifetimes)
+- [Structs](#structs)
+- [Enums](#enums)
+- [Match](#match)
+- [Patterns](#patterns)
+- [Method Syntax](#method-syntax)
+- [Vectors](#vectors)
+- [Strings](#strings)
+- [Generics](#generics)
+- [Traits](#traits)
+- [Drop](#drop)
+- [Trait Objects](#trait-objects)
+- [Closures](#closures)
+- [Universal Function Call Syntax](#universal-function-call-syntax)
+- [Attributes](#attributes)
+- [type Aliases](#type-aliases)
+- [Casting Between Types](#casting-between-types)
+- [Operators and Overloading](#operators-and-overloading)
+
 ## Variable Bindings(变量绑定)
 
 定义变量绑定使用`let`语句。
@@ -25,7 +54,7 @@ excerpt: <h2>Rust简介</h2><p><code>Rust</code>是一种编译语言，与<code
 
 `Rust`是静态类型语言(statically typed language)，在定义变量时若不指定变量类型，`Rust`会自动进行类型推导(type inference)。
 
-```Rust
+```rust
 fn main() {
     let x = 5;    //类型推导，定义的x类型为i32值为5
     let mut x: i32 = 10;    //定义一个类型为i32，值为10，可修改的变量绑定
@@ -36,13 +65,13 @@ fn main() {
 
 定义常量
 
-```Rust
+```rust
 const N: i32 = 5;
 ```
 
 定义全局(静态)变量绑定
 
-```Rust
+```rust
 static N: i32 = 5;
 static mut N: i32 = 5;
 //因为是全局变量，修改时需要在unsafe内
@@ -56,7 +85,7 @@ unsafe {
 
 `Rust`使用`fn`关键字来声明函数。
 
-```Rust
+```rust
 //定义一个无参数的函数
 fn foo() {
     println!("Hello Rust");
@@ -72,7 +101,7 @@ fn print_sum(x: i32, y: i32) {
 
 函数返回值，在函数声明中使用`->`指定返回的值的类型。函数的最后一行指定了要返回的值，而且这一行不能以分号`;`结尾，否则报错。当然你也可以使用`return`关键字来返回一个值。但如果需要返回的值在函数最后一行，通常不使用`return`。
 
-```Rust
+```rust
 //返回一个32位整数类型
 fn add_one(x: i32) -> i32 {
     x + 1  //return x + 1;
@@ -83,7 +112,7 @@ fn add_one(x: i32) -> i32 {
 
 若函数的返回值是`!`，称为`发散函数(Diverging functions)`，代表该函数不会返回。如
 
-```Rust
+```rust
 fn diverges() -> ! {
     panic!("This function never returns!");
 }
@@ -102,7 +131,7 @@ fn diverges() -> ! {
 - Tuples 元组与数组相似，但元素可以是不同的类型
 - Functions 函数指针类型
 
-```Rust
+```rust
 // Booleans
 let x = true;
 let y: bool = false;
@@ -139,7 +168,7 @@ let x: fn(i32) -> i32 = foo;
 
 `Rust`有两种注释，行注释(line comments)和文档注释(doc comments)。行注释跟C语言一样使用`//`，把当前行注释掉。文档注释使用`///`，而且支持`Markdown`语法。你可以使用`rustdoc`将文档注释生成为HTML文档。
 
-```Rust
+```rust
 /// Adds one to the number given.
 ///
 /// # Examples
@@ -158,7 +187,7 @@ fn add_one(x: i32) -> i32 {
 
 ### if
 
-```Rust
+```rust
 let x = 5;
 
 if x == 5 {
@@ -172,7 +201,7 @@ if x == 5 {
 
 ### for
 
-```Rust
+```rust
 for x in 0..10 {
     println!("{}", x); // x: i32
 }
@@ -186,7 +215,7 @@ for var in expression {
 
 ### while
 
-```Rust
+```rust
 while x > 1 {
     doSomething();
     if done == true {
@@ -205,7 +234,7 @@ loop {
 
 `Ownership`类似于作用域，在`Rust`程序中变量一旦离开作用域就会被释放。在变量绑定中，没有实现`Copy`特性的类型(如Vec<i32>)在进行赋值时，传递的是内存地址，而`Rust`出于安全考虑当两个变量绑定到同一值上时，`Rust`<br/>会将原来的绑定删除，在函数传参时同样如此。而实现了`Copy`的类型(如基本类型i32)在进行赋值时传递的就是值。
 
-```Rust
+```rust
 let v = vec![1, 2, 3];
 let v2 = v;
 println!(v)//在这里就会报错，因为v的值([1, 2, 3]的地址)已经传给v2了
@@ -219,7 +248,7 @@ println!("v is: {}", v);//在这里就不会报错，因为v是i32类型，传�
 
 如果一个变量作为参数传入了函数中，那么该变量的作用域就变了，变为在函数内，所以在函数外该变量就不能使用了。在`Rust`中有`Borrowing`的概念，通过给函数传入变量的引用来达到"借用"的目的，使得变量在函数外还能继续使用(Borrow Ownership)。引用与变量绑定一样，默认是`不可修改`的。引用类似C语言的指针，因为在使用时得加上`*`符号。
 
-```Rust
+```rust
 //在类型前加上&符号表示该类型的引用
 //在变量前加上&符号辨识变量的引用
 fn foo(v1: &Vec<i32>, v2: &Vec<i32>) -> i32 {
@@ -233,7 +262,7 @@ let answer = foo(&v1, &v2);
 
 若要创建可修改的引用，需要使用`&mut`，而且被引用的变量也必须是可修改的。修改变量的引用，变量也会被修改。
 
-```Rust
+```rust
 let mut x = 5;
 {
     let y = &mut x;
@@ -245,7 +274,7 @@ println!("{}", x);
 
 一个变量可以有多个引用(不可修改的引用)，但同一时间(前一个可修改引用未被释放)只能有一个可修改引用。而且当作用域(scope)中存在变量的可修改引用(&mut T)时，无法创建该变量的引用。
 
-```Rust
+```rust
 let mut x = 5;
 
 {                   
@@ -262,7 +291,7 @@ println!("{}", x);  // <- try to borrow x here
 
 变量的定义必须在引用之前。
 
-```Rust
+```rust
 let y: &i32;
 let x = 5;
 y = &x;
@@ -278,7 +307,7 @@ y = &x;
 
 寿命(Lifetimes)指变量绑定在作用域内的范围。例如下面的例子中，变量的寿命可以显示或隐式定义。
 
-```Rust
+```rust
 // 隐式定义
 fn foo(x: &i32, y: &mut i32) {
 }
@@ -290,7 +319,7 @@ fn bar<'a, 'b>(x: &'a i32, y: &'b mut i32) {//定义可修改引用的寿命&'b 
 
 定义变量的寿命主要是为了防止某个被引用的资源释放后，引用出错。(类似C中的野指针)
 
-```Rust
+```rust
 struct Foo<'a> {
     x: &'a i32,
 }
@@ -312,7 +341,7 @@ fn main() {
 
 有一个特殊的变量寿命`'static`。也就是静态域，类似C++类中的静态变量。寿命为`'static`的变量绑定会在整个程序中都存在。
 
-```Rust
+```rust
 static FOO: i32 = 5;
 let x: &'static i32 = &FOO;
 ```
@@ -321,21 +350,21 @@ let x: &'static i32 = &FOO;
 
 - 函数的每个参数若省略定义寿命名则每个参数都有一个独立的寿命名。(只有引用类型的参数才需要寿命名)
 
-```Rust
+```rust
 fn args<T:ToCStr>(&mut self, args: &[T]) -> &mut Command // 省略
 fn args<'a, 'b, T:ToCStr>(&'a mut self, args: &'b [T]) -> &'a mut Command // 显示定义
 ```
 
 - 如果只有一个输入寿命(无论是否省略)，该寿命应用于函数的所有返回值。
 
-```Rust
+```rust
 fn new(buf: &mut [u8]) -> BufWriter; 
 fn new<'a>(buf: &'a mut [u8]) -> BufWriter<'a> 
 ```
 
 - 如果有多个输入寿命，其中一个为`&self` 或 `&mut self`，`self`的寿命将应用于所有省略了寿命的返回值。
 
-```Rust
+```rust
 fn get_mut(&mut self) -> &mut T; 
 fn get_mut<'a>(&'a mut self) -> &'a mut T; 
 ```
@@ -346,7 +375,7 @@ fn get_mut<'a>(&'a mut self) -> &'a mut T;
 
 与C语言的结构体类似，将某些数据类型组合在一起，形成新的数据结构。
 
-```Rust
+```rust
 struct Point {  //名称第一个字母大写，采用驼峰命名法
     x: i32,     //不能写成mut x: i32,
     y: i32,
@@ -367,7 +396,7 @@ point = Point3d { y: 1, .. point };
 
 定义一个类似于`tuple`的结构。
 
-```Rust
+```rust
 struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 //以下两个变量不相等
@@ -379,7 +408,7 @@ let origin = Point(0, 0, 0);
 
 可以定义一个无成员的结构
 
-```Rust
+```rust
 struct Electron;
 ```
 
@@ -387,7 +416,7 @@ struct Electron;
 
 `Rust`的枚举类型，类型为`Message`的变量绑定可以是`Message`的其中之一
 
-```Rust
+```rust
 enum Message {
     Quit,
     ChangeColor(i32, i32, i32),
@@ -402,7 +431,7 @@ let x: Message = Message::Move { x: 3, y: 4 };
 
 `match表达式`类似于C语言中的`switch`
 
-```Rust
+```rust
 let x = 5;
 
 match x {
@@ -440,7 +469,7 @@ fn process_message(msg: Message) {
 
 模式，`match`中x所匹配的就是模式
 
-```Rust
+```rust
 let x = 1;
 
 match x {
@@ -454,7 +483,7 @@ match x {
 
 匹配数据结构的一部分
 
-```Rust
+```rust
 #[derive(Debug)]
 struct Person {
     name: Option<String>,
@@ -470,7 +499,7 @@ match x {
 
 匹配有变量的枚举类型，使用`..`来忽略掉参数
 
-```Rust
+```rust
 enum OptionalInt {
     Value(i32),
     Missing,
@@ -490,7 +519,7 @@ match x {
 
 匹配`struct`类型
 
-```Rust
+```rust
 struct Point {
     x: i32,
     y: i32,
@@ -508,7 +537,7 @@ match origin {
 
 ## Method Syntax
 
-```Rust
+```rust
 struct Circle {
     x: f64,
     y: f64,
@@ -533,7 +562,7 @@ fn main() {
 
 通过返回`self`来达到链式调用的目的
 
-```Rust
+```rust
 struct Circle {
     x: f64,
     y: f64,
@@ -566,7 +595,7 @@ fn main() {
 
 联合函数不需要`self`参数
 
-```Rust
+```rust
 struct Circle {
     x: f64,
     y: f64,
@@ -594,7 +623,7 @@ fn main() {
 
 为了使用户只能修改`struct`中特定的属性，需要使用另一个`struct`来作限制，如`Circle`的`CircleBuilder`。
 
-```Rust
+```rust
 struct Circle {
     x: f64,
     y: f64,
@@ -657,7 +686,7 @@ fn main() {
 
 向量(`Vec<T>`)是动态可增长的数组，存储在堆上。使用`vec!`宏创建。
 
-```Rust
+```rust
 let v = vec![1, 2, 3, 4, 5]; // v: Vec<i32>
 let v = vec![0; 10]; // 10 个 0
 println!("The third element of v is {}", v[2]);//下标从0开始
@@ -681,7 +710,7 @@ for i in v {
 
 `&str`类型的字符串如
 
-```Rust
+```rust
 let string = "Hello there."; // string: &'static str
 ```
 
@@ -689,7 +718,7 @@ let string = "Hello there."; // string: &'static str
 
 `String`是在堆上创建的字符串，可加长，通常使用`to_string`从`&str`格式化得到。
 
-```Rust
+```rust
 let mut s = "Hello".to_string(); // mut s: String 使用了to_string()方法才可以修改s
 println!("{}", s);
 
@@ -699,7 +728,7 @@ println!("{}", s);
 
 可以使用`&`将`String`强制格式化为`&str`
 
-```Rust
+```rust
 fn takes_slice(slice: &str) {
     println!("Got: {}", slice);
 }
@@ -716,7 +745,7 @@ fn main() {
 
 无法通过`s[0]`来访问某个字符，因为字符是UTF-8编码，但可以这样做
 
-```Rust
+```rust
 let hachiko = "忠犬ハチ公";
 let dog = hachiko.chars().nth(1); // 类似于 hachiko[1]
 ```
@@ -727,7 +756,7 @@ let dog = hachiko.chars().nth(1); // 类似于 hachiko[1]
 
 如果你有一个`String`类型的字符串，可以将`&str`类型的字符串连接到末尾。
 
-```Rust
+```rust
 let hello = "Hello ".to_string();
 let world = "world!";
 let hello_world = hello + world;
@@ -735,7 +764,7 @@ let hello_world = hello + world;
 
 如果是两个`String`类型的字符串，连接时第二个需要转换为`&str`类型
 
-```Rust
+```rust
 let hello = "Hello ".to_string();
 let world = "world!".to_string();
 let hello_world = hello + &world;
@@ -743,7 +772,7 @@ let hello_world = hello + &world;
 
 ## Generics(泛型)
 
-```Rust
+```rust
 enum Option<T> {//定义中的T可以换成其他大写字母
     Some(T),
     None,
@@ -756,7 +785,7 @@ let x: Option<i32> = Some(5);
 
 ### Generic functions(泛型函数)
 
-```Rust
+```rust
 fn takes_anything<T>(x: T) {
     // do something with x
 }
@@ -768,7 +797,7 @@ fn takes_two_things<T, U>(x: T, y: U) {
 
 ### Generic structs(泛型结构)
 
-```Rust
+```rust
 struct Point<T> {
     x: T,
     y: T,
@@ -782,7 +811,7 @@ let float_origin = Point { x: 0.0, y: 0.0 };
 
 `Traits`的作用类似于其他语言的接口，比如Java的Interface类型。在其中定义的函数只写声明部分。用于约束泛型中必须定义了哪些函数。比如：
 
-```Rust
+```rust
 fn print_area<T>(shape: T) {
     println!("This shape has an area of {}", shape.area());
 }
@@ -790,7 +819,7 @@ fn print_area<T>(shape: T) {
 
 编译的时候会发生错误，因为泛型`T`无法保证是否定义了`area()`函数。所以需要使用`Traits`。
 
-```Rust
+```rust
 trait HasArea {
     fn area(&self) -> f64;
 }
@@ -843,7 +872,7 @@ fn main() {
 
 除了自定义的类型外，也可以为基本类型或者其他已有类型实现自己的`Trait`。
 
-```Rust
+```rust
 trait HasArea {
     fn area(&self) -> f64;
 }
@@ -863,7 +892,7 @@ impl HasArea for i32 {
 
 实现多个`trait`使用`+`符号
 
-```Rust
+```rust
 use std::fmt::Debug;
 
 fn foo<T: Clone + Debug>(x: T) {
@@ -876,7 +905,7 @@ fn foo<T: Clone + Debug>(x: T) {
 
 为了避免在多`trait`在声明参数时过长，使用`where`从句
 
-```Rust
+```rust
 use std::fmt::Debug;
 
 fn foo<T: Clone, K: Clone + Debug>(x: T, y: K) {
@@ -901,7 +930,7 @@ fn main() {
 
 在`trait`中也可以包含默认的方法(可以是多个)，即在定义`trait`时就被实现的函数，所以在实现`trait`时就不需要实现已经被实现的函数，但仍可重写该函数。
 
-```Rust
+```rust
 trait Foo {
     fn bar(&self);
     fn baz(&self) { println!("We called baz."); }
@@ -926,7 +955,7 @@ impl Foo for OverrideDefault {
 
 当实现`Foo`时也需要实现`FooBar`
 
-```Rust
+```rust
 trait Foo {
     fn foo(&self);
 }
@@ -950,7 +979,7 @@ impl FooBar for Baz {
 
 `Drop`是`trait`中的一个特殊函数，类似于析构函数，当变量绑定离开作用域后`Drop`方法就会被调用，常用来释放不再使用的资源。
 
-```Rust
+```rust
 struct HasDrop;
 
 impl Drop for HasDrop {
@@ -971,7 +1000,7 @@ fn main() {
 
 ## if let
 
-```Rust
+```rust
 //将
 match option {
     Some(x) => { foo(x) },
@@ -1001,7 +1030,7 @@ while let Some(x) = option {
 
 ### Dynamic dispatch
 
-```Rust
+```rust
 trait Foo {
     fn method(&self) -> String;
 }
@@ -1027,7 +1056,7 @@ fn main() {
 
 ## Closures (闭包)
 
-```Rust
+```rust
 let plus_one = |x: i32| x + 1;
 
 assert_eq!(2, plus_one(1));//断言，调试用
@@ -1046,7 +1075,7 @@ let plus_two = |x| {
 
 将闭包作为函数传递
 
-```Rust
+```rust
 fn call_with_one<F>(some_closure: F) -> i32
     where F : Fn(i32) -> i32 {
 
@@ -1064,7 +1093,7 @@ assert_eq!(3, answer);
 
 当函数有相同名字时
 
-```Rust
+```rust
 trait Foo {
     fn f(&self);
 }
@@ -1111,7 +1140,7 @@ impl Foo for Bar {
 
 属性的声明，类似于`#[]`都是属性，属性用于提供某些辅助作用。
 
-```Rust
+```rust
 #[foo]//该属性作用于它的下一条语句
 struct Foo;
 
@@ -1124,7 +1153,7 @@ mod bar {
 
 类似于C语言的`typedef`
 
-```Rust
+```rust
 type Name = String;
 let x: Name = "Hello".to_string();
 
@@ -1135,7 +1164,7 @@ type Result<T> = result::Result<T, ConcreteError>;
 
 一般的类型转换使用`as`，强制类型转换使用`transmute`。
 
-```Rust
+```rust
 let x: i32 = 5;
 let y = x as i64;
 let a = [0u8, 0u8, 0u8, 0u8];
@@ -1154,7 +1183,7 @@ unsafe {
 
 使用`Add`trait来对`+`进行重载
 
-```Rust
+```rust
 use std::ops::Add;
 
 #[derive(Debug)]
