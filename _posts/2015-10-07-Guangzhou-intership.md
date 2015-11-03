@@ -132,4 +132,41 @@ function(err, results) {
 
 ## MongoDB
 
-未完。。。。
+非关系型数据库，说直接点就是存储`JSON`格式数据的数据库，没有表的概念，只有`集合Collection`，就相当于SQL中的表。数据叫做一个文档
+
+项目中使用的库是[`Mongoose`](http://mongoosejs.com/)，使用起来还是挺简单的
+
+```js
+//查询name为john，age大于等于18的数据
+MyModel.find({ name: 'john', age: { $gte: 18 }});
+
+//插入
+MyModel.create({ type: 'jelly bean' } function (err, jellybean, snickers) {
+  if (err) // ...
+});
+
+//修改age大于18的数据，设置oldEnough字段为true
+MyModel.update({ age: { $gt: 18 } }, { oldEnough: true }, callback);
+
+//删除title为baby born from alien father的json
+Comment.remove({ title: 'baby born from alien father' }, function (err) {
+});
+```
+
+基本操作都没有什么难度，但在关联表查询的时候就复杂一点，需要手动设置条件，因为非关系型数据库没有表关联。所以许多复杂的操作都是通过MongoDB中的操作符来实现的。
+
+比如像前面看到的`$gt`就是大于的意思，`$gte`大于等于，列举一些比较常用的
+
+- $in {a: {$in: [1, 2, 3]}}满足条件a的值为1或2或3的文档
+- $or 或条件 {$or: [{a: {$gt: 0}}, {b: $lg: 0}]}满足a大于0或是b小于0
+- $regex 对某个字段进行正则匹配，通过即为满足条件
+- $inc 增加某个字段指定数量{a: {$inc: 1}}a字段加1
+- $currentDate 当前时间，相当于SQL的now()
+- $pop 删除一个数组字段的元素
+- $push 插入一个数组类型的字段
+- $sort 排序，常用的是{$sort: "desc"}降序排列
+- $limit 只取指定数量的文档
+- $skip 跳过指定数量的文档
+
+还有其他很多操作符[Operators &mdash; MongoDB Manual 3.0](https://docs.mongodb.org/manual/reference/operator/)
+
