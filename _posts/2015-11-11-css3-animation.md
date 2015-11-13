@@ -1,6 +1,8 @@
 ---
 layout: post
 title: CSS3 Animation
+date: 2015-11-11 21:22:45
+last_modified_at: 
 category: CSS
 keywords: "css3,animation"
 excerpt: <p>CSS3 动画不需要写一行代码，简单的动画仅需要定义一个<code class="highlighter-rouge">@keyframes</code>并设置基本的参数就能动了。对比使用<code class="highlighter-rouge">Javascript</code>编写的动画，CSS3 动画更简单也更高效，使用<code class="highlighter-rouge">sprite</code>还能做出gif图片的效果。也可以搭配<a href="https://developer.mozilla.org/en-US/docs/Web/SVG"><code class="highlighter-rouge">SVG</code></a>使用。</p>
@@ -25,6 +27,24 @@ CSS3 动画不需要写一行代码，简单的动画仅需要定义一个`@keyf
         left: 300px;
     }
 }
+/*兼容webkit内核浏览器*/
+@-webkit-keyframes slidein {
+    from {
+        left: 0;
+    }
+    to {
+        left: 300px;
+    }
+}
+/*兼容火狐浏览器*/
+@-moz-keyframes slidein {
+    from {
+        left: 0;
+    }
+    to {
+        left: 300px;
+    }
+}
 ```
 
 创建一个button然后，并设置动画参数，然后应用到这个button上
@@ -41,8 +61,14 @@ CSS3 动画不需要写一行代码，简单的动画仅需要定义一个`@keyf
 .slidein {
   position: absolute;
   animation-duration: 3s;   /*整个动画持续时间*/
+  -moz-animation-duration: 3s;
+  -webkit-animation-duration: 3s;
   animation-iteration-count: 3; /*动画重复次数*/
+  -moz-animation-iteration-count: 3;
+  -webkit-animation-iteration-count: 3;
   animation-name: slidein;  /*动画的名称@keyframe定义的slidein*/
+  -moz-animation-name: slidein;
+  -webkit-animation-name: slidein;
 }
 ```
 <style type="text/css">
@@ -54,15 +80,42 @@ CSS3 动画不需要写一行代码，简单的动画仅需要定义一个`@keyf
         left: 300px;
     }
 }
+@-webkit-keyframes slidein {
+    from {
+        left: 0;
+    }
+    to {
+        left: 300px;
+    }
+}
+/*兼容火狐浏览器*/
+@-moz-keyframes slidein {
+    from {
+        left: 0;
+    }
+    to {
+        left: 300px;
+    }
+}
 .slidein {
   position: absolute;
   animation-duration: 3s;   /*整个动画持续时间*/
+  -moz-animation-duration: 3s;
+  -webkit-animation-duration: 3s;
   animation-iteration-count: 3; /*动画重复次数*/
+  -moz-animation-iteration-count: 3;
+  -webkit-animation-iteration-count: 3;
   animation-name: slidein;  /*动画的名称@keyframe定义的slidein*/
+  -moz-animation-name: slidein;
+  -webkit-animation-name: slidein;
 }
 .infinite.slidein {
     animation-direction: alternate;
+    -moz-animation-direction: alternate;
+    -webkit-animation-direction: alternate;
     animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
 }
 </style>
 <div style="height: 30px; position: relative;"><button class="slidein">WATCH ME</button></div>
