@@ -82,6 +82,15 @@ plugins:
 # DuoShuo
 duoshuo_shortname: lin-h
 
+#Image minify
+imagemin:
+  enable     : true
+  interlaced : false
+  multipass  : false
+  optimizationLevel: 2
+  pngquant   : false
+  progressive: false
+
 #Markdown parser
 marked:
   gfm: true
@@ -99,5 +108,6 @@ sitemap:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:Lin-H/Lin-H.github.io.git
+  repo: git@github.com:Lin-H/Lin-H.github.io.git
   branch: master
+  message: update blog
