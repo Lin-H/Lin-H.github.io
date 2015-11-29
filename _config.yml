@@ -13,7 +13,7 @@ avatar: css/images/avatar.png
 location: 'Guangzhou, China'
 follow: https://github.com/Lin-H/
 email: lh04667649@gmail.com# Your email (Used to show Gravatar).
-language: zh
+language: en
 timezone: Asia/Chongqing
 since: 2015 # The start year showing in your copyright section.
 
@@ -71,16 +71,33 @@ pagination_dir: page
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
 theme: icarus
 
+#Plugins
+plugins:
+- hexo-generator-feed
+
+
 # Disqus
 # disqus_shortname: hexo-theme-icarus
 
 # DuoShuo
-# duoshuo_shortname: hexo-theme-icarus
+duoshuo_shortname: lin-h
 
+#Markdown parser
+marked:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: true
+  smartLists: true
+
+#Sitemap
+sitemap:
+  path: sitemap.xml
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/ppoffice/hexo-theme-icarus.git
-  branch: gh-pages
+  repository: git@github.com:Lin-H/Lin-H.github.io.git
+  branch: master
