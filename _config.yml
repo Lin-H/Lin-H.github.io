@@ -83,13 +83,17 @@ plugins:
 duoshuo_shortname: lin-h
 
 #Image minify
-imagemin:
-  enable     : true
-  interlaced : false
-  multipass  : false
-  optimizationLevel: 2
-  pngquant   : false
-  progressive: false
+# imagemin:
+#   enable     : true
+#   interlaced : false
+#   multipass  : false
+#   optimizationLevel: 2
+#   pngquant   : false
+#   progressive: false
+
+#stylus
+stylus:
+  compress: true
 
 #Markdown parser
 marked:
