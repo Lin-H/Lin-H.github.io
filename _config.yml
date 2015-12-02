@@ -24,7 +24,7 @@ root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 # 腾讯云 万象优图
-image_domain: linhsblog-10013469.image.myqcloud.com
+image_domain: http://linhsblog-10013469.image.myqcloud.com
 
 # Directory
 source_dir: source
