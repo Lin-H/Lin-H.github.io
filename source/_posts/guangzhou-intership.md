@@ -8,7 +8,7 @@ tag:
 - life
 keywords: "intership,note,广州,实习,node.js,javascript"
 last_modified_at: 2015-11-02 23:47:58
-banner: /images/guangzhou.jpg
+banner: linhsblog-10013469.image.myqcloud.com/images/guangzhou.jpg
 ---
 
 从9月份开始在广州实习，主要从事`Node.js`的开发，使用`MongoDB`数据库，`Express`框架。在后台主要提供的是`RESTful`的接口，前端使用`Angular`框架进行数据整合。以下做一个简单的总结。(部分代码来自于[npmjs.org](https://www.npmjs.com))

@@ -11,7 +11,7 @@ author: Lin-H
 author_title: 'Web Developer'
 avatar: css/images/avatar.png
 location: 'Guangzhou, China'
-follow: https://github.com/Lin-H/
+follow: https://github.com/Lin-H/\
 email: lh04667649@gmail.com# Your email (Used to show Gravatar).
 language: en
 timezone: Asia/Chongqing
@@ -23,6 +23,8 @@ url: http://lin-h.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
+# 腾讯云 万象优图
+image_domain: linhsblog-10013469.image.myqcloud.com
 
 # Directory
 source_dir: source
