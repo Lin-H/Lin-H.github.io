@@ -7,7 +7,7 @@ tag:
 - git
 date: 2015-06-14 12:32:48
 last_modified_at: 2015-06-14 12:32:48
-banner: http://linhsblog-10013469.image.myqcloud.com/images/git.jpg
+banner: http://linhsblog-10013469.image.myqcloud.com/images/git.png
 ---
 使用版本控制工具`Git`最大的好处就是，发生错误操作、修改后可以恢复到原来最后一次正确的状态
 
