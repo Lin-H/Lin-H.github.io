@@ -4,6 +4,8 @@ title: Rust快速入门
 date: 2015-05-28 18:05:44
 category: Rust
 keywords: "Rust,快速入门,入门,quick,guide"
+tag: 
+- Rust
 last_modified_at: 2015-09-29 23:40:28
 banner: http://linhsblog-10013469.image.myqcloud.com/images/rust-icon.png
 ---
@@ -19,12 +21,12 @@ banner: http://linhsblog-10013469.image.myqcloud.com/images/rust-icon.png
 
 # 目录
 
-- [Variable Bindings](#variable-bindings)
+- [Variable Bindings](#variable-bindings-变量绑定)
 - [Const and Static](#const-and-static)
-- [Functions](#functions)
-- [Primitive-types](#primitive-types)
-- [Comments](#comments)
-- [Control flow statement](#control-flow-statement)
+- [Functions](#functions-函数)
+- [Primitive-types](#基本类型-primitive-types)
+- [Comments](#comments-注释)
+- [Control flow statement](#control-flow-statement-控制语句)
 - [Ownership](#ownership)
 - [Borrowing](#borrowing)
 - [Lifetimes](#lifetimes)
@@ -33,18 +35,18 @@ banner: http://linhsblog-10013469.image.myqcloud.com/images/rust-icon.png
 - [Match](#match)
 - [Patterns](#patterns)
 - [Method Syntax](#method-syntax)
-- [Vectors](#vectors)
+- [Vectors](#vectors-向量)
 - [Strings](#strings)
-- [Generics](#generics)
+- [Generics](#generics-泛型)
 - [Traits](#traits)
 - [Drop](#drop)
 - [Trait Objects](#trait-objects)
-- [Closures](#closures)
+- [Closures](#closures-闭包)
 - [Universal Function Call Syntax](#universal-function-call-syntax)
 - [Attributes](#attributes)
-- [type Aliases](#type-aliases)
-- [Casting Between Types](#casting-between-types)
-- [Operators and Overloading](#operators-and-overloading)
+- [type Aliases](#type-aliases-类型别名)
+- [Casting Between Types](#casting-between-types-类型转换)
+- [Operators and Overloading](#operators-and-overloading-操作符和重载)
 
 ## Variable Bindings(变量绑定)
 
@@ -168,20 +170,20 @@ let x: fn(i32) -> i32 = foo;
 
 `Rust`有两种注释，行注释(line comments)和文档注释(doc comments)。行注释跟C语言一样使用`//`，把当前行注释掉。文档注释使用`///`，而且支持`Markdown`语法。你可以使用`rustdoc`将文档注释生成为HTML文档。
 
-```rust
-/// Adds one to the number given.
+````rust
+///Adds one to the number given.
 ///
-/// # Examples
+///# Examples
 ///
-/// ```
-/// let five = 5;
+///```
+///let five = 5;
 ///
-/// assert_eq!(6, add_one(5));
-/// ```
+///assert_eq!(6, add_one(5));
+///```
 fn add_one(x: i32) -> i32 {
     x + 1
 }
-```
+````
 
 ## Control flow statement(控制语句)
 
