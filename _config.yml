@@ -1,28 +1,134 @@
-# Site settings
-title: LinHang's Blog
-email: lh04667649@gmail.com
-description: LinHang的个人Blog，记录自己的想法，分享技术、经验。总的来说能写进来的都会写。也欢迎一起交流技术，谈人生，聊理想  :)  
-keywords: LinHang,个人博客,技术分享,程序员,IT,Programmer
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://lin-h.com" # the base hostname & protocol for your site
-twitter_username: 
-github_username: Lin-H
-sina_weibo: "http://weibo.com/u/2605326267"
-sina_weibo_name: "7黑林"
-str_continue_reading: "Continue reading"
+# Hexo Configuration
+## Docs: http://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: Lin-H's Blog
+subtitle: Share some experience and thoughts
+description: LinHang的个人Blog，记录自己的想法，分享技术、经验。
+keywords: 'LinHang,Web Developer,前端,技术分享,程序员,IT,Programmer'
+author: Lin-H
+author_title: 'Web Developer'
+avatar: css/images/avatar.png
+location: 'Guangzhou, China'
+follow: https://github.com/Lin-H/
+email: lh04667649@gmail.com # Your email (Used to show Gravatar).
+language: en
 timezone: Asia/Chongqing
-# Build settings
-highlighter: rouge
-#kramdown
-markdown: kramdown
-kramdown:
-  input: GFM
-  auto_ids: true
-  toc_levels: 1..6
-  footnote_nr: 1
-  syntax_highlighter: rouge
-sass:
-  sass_dir: _sass
-  style: :compressed
-gems:
-  - jekyll-sitemap
+since: 2015 # The start year showing in your copyright section.
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://lin-h.com
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+# 腾讯云 万象优图
+image_domain: http://linhsblog-10013469.image.myqcloud.com
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+highlight:
+  auto_detect: true
+  enable: true
+  line_number: true
+  tab_replace:
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 6
+pagination_dir: page
+
+# Extensions
+## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
+## Themes: https://github.com/hexojs/hexo/wiki/Themes
+theme: icarus
+
+#Plugins
+plugins:
+- hexo-generator-feed
+
+
+# Disqus
+# disqus_shortname: hexo-theme-icarus
+
+# DuoShuo
+duoshuo_shortname: lin-h
+
+#Image minify
+# imagemin:
+#   enable     : true
+#   interlaced : false
+#   multipass  : false
+#   optimizationLevel: 2
+#   pngquant   : false
+#   progressive: false
+
+#stylus
+stylus:
+  compress: true
+
+#Markdown parser
+# marked:
+#   gfm: true
+#   pedantic: false
+#   sanitize: false
+#   tables: true
+#   breaks: true
+#   smartLists: true
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: false
+    linkify: false
+    typographer: false
+    quotes: '“”‘’'
+  anchors:
+    level: 2
+    collisionSuffix: 'v'
+    permalink: false
+    permalinkClass: header-anchor
+
+#Sitemap
+sitemap:
+  path: sitemap.xml
+  otherPath: sitemap_common.xml #修改hexo-generator-sitemap中的代码
+
+# Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: git@github.com:Lin-H/Lin-H.github.io.git
+  branch: master
+  message: update blog
