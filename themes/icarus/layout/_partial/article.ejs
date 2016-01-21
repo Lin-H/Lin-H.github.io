@@ -10,6 +10,14 @@
         <div class="article-meta">
           <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
           <%- partial('post/category') %>
+          <% if (!index) { %>
+          <div class="article-date">
+            <span id="busuanzi_container_page_pv" style="display: none">
+              <i class="fa fa-eye"></i>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          </div>
+          <% } %>
         </div>
       </header>
     <% } %>
