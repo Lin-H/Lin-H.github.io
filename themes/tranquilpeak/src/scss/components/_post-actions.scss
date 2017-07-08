@@ -1,3 +1,11 @@
+.post-action-btn {
+    display: inline;
+    &.btn--disabled {
+        &::after {
+            display: none;
+        }
+    }
+}
 .post-actions-wrap {
     height:      60px;
     padding:     0;
@@ -41,7 +49,9 @@
         width:   55%;
         // On very small screen `.post-actions-nav` will be above `.post-actions-share`
         z-index: map-get($z-indexes, c-post-bottom-bar) + 1;
-
+        .post-action-btn::after {
+            display: none;
+        }
         li.post-action {
             float: right;
 

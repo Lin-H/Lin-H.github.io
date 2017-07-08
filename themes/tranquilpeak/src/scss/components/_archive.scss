@@ -18,9 +18,9 @@
                 margin-left: 10px;
                 color:       $font-color-base;
 
-                &:hover {
-                    text-decoration: underline;
-                }
+                // &:hover {
+                //     text-decoration: underline;
+                // }
             }
             .archive-post-date {
                 color: map-get($colors, light);

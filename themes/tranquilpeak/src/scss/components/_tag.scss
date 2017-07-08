@@ -10,6 +10,9 @@ a.tag,
     margin:         0;
     margin-right:   4px;
     margin-bottom:  7px;
+    &::after {
+        display: none;
+    }
 }
 
 // Colors variant

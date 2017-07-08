@@ -5,26 +5,9 @@
 <script src="//cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js"></script>
 <!--EXTERNAL SCRIPTS END-->
 <!--SCRIPTS-->
-<script src="/js/script-lbyubedhh8njzbz1bemz0dxyfvrcur966najq77jpjzgd6amjkfjp2igoald.min.js"></script>
+<script src="/js/script-cm8rbm47qqnaayfznkmevsptucf9kfkuq7uzbkwihpdzhf5snhfrq83ajmv5.min.js"></script>
 <!--SCRIPTS END-->
-<script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight').each(function(i, block) {
-    var code = "";
-    hljs.highlightAuto(block.innerText).value.split(/\r\n|\r|\n/).forEach(function(line) {
-      code += "<span class=\"line\">" + line + "</span><br>";
-    });
-    if (code.length > 0) {
-      block.innerHTML = code;
-    }
-  });
-  $('pre > code').each(function(i, block) {
-    $(this).addClass('codeblock');
-    hljs.highlightBlock(block);
-  });
-});
-</script>
+<script>hljs.initHighlightingOnLoad();</script>
 {{ if .IsPage }}
   {{ if not (eq .Params.comments false) }}
     {{ if .Site.DisqusShortname }}

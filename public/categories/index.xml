@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on LinH&#39;s Blog</title>
-    <link>http://lin-h.com/categories/</link>
-    <description>Recent content in Categories on LinH&#39;s Blog</description>
+    <title>Categories on Lin-H&#39;s Blog</title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on Lin-H&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     
-	<atom:link href="http://lin-h.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Features</title>
+      <link>/categories/features/</link>
+      <pubDate>Wed, 02 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/features/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tranquilpeak</title>
+      <link>/categories/tranquilpeak/</link>
+      <pubDate>Wed, 02 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/tranquilpeak/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
