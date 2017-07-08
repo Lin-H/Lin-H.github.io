@@ -181,8 +181,8 @@ main {
 
 header {
   background-color: #263d36;
-  background-image: url("header.jpg");
-  background-position: center top;
+  background-image: url("https://unsplash.it/640/360/?random");
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   line-height: 1.2;
@@ -202,6 +202,7 @@ header h1 {
   color: white;
   font-size: 2.5em;
   font-weight: 300;
+  text-shadow: 0 0 11px black;
 }
 
 header a {
@@ -405,4 +406,39 @@ footer .button {
   .resource-icon {
     margin: 0 auto 1em;
   }
+}
+
+.index__article p {
+  margin-top: 2px;
+}
+.index__content {
+  width: 100%;
+  display: inline-block;
+}
+.has-image .index__content {
+  float: right;
+  width: calc(100% - 150px);
+}
+.has-image .index__img {
+  display: inline-block;
+}
+.index__content a {
+  cursor: pointer;
+}
+.index__img {
+  display: none;
+  width: 140px;
+  height: 140px;
+}
+.index__title {
+  margin: 0;
+  padding: 0
+}
+
+.page__header {
+  padding: 0;
+}
+.page__header img {
+  display: block;
+  width: 100%;
 }

@@ -1,4 +1,10 @@
 {{ partial "header.html" . }}
+<header id="header" class="page__header">
+{{if isset .Params "banner"}}
+    <img src="{{.Page.Params.Banner}}" alt="">
+{{end}}
+</header>
+<main>
 <h1>{{.Title}}</h1>
 {{.Content}}
 

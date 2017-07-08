@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="{{ .Keywords }} | {{ .Site.Params.Keywords }}">
+    <meta name="description" content="{{.Page.Summary }} | {{ .Site.Params.Description}}">
     <title>{{ .Title }} | {{ .Site.Title }}</title>
     <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
@@ -11,4 +13,3 @@
     <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
-<main>

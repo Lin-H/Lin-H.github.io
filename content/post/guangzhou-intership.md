@@ -7,18 +7,19 @@ tag:
 - life
 keywords: "intership,note,广州,实习,node.js,javascript"
 last_modified_at: 2015-11-02 23:47:58
-banner: http://linhsblog-10013469.image.myqcloud.com/images/guangzhou.jpg
+// banner: http://linhsblog-10013469.image.myqcloud.com/images/guangzhou.jpg
 ---
 
 从9月份开始在广州实习，主要从事`Node.js`的开发，使用`MongoDB`数据库，`Express`框架。在后台主要提供的是`RESTful`的接口，前端使用`Angular`框架进行数据整合。以下做一个简单的总结。(部分代码来自于[npmjs.org](https://www.npmjs.com))
-<!-- more -->
+<!--more-->
+
 ## [urllib](https://www.npmjs.com/package/urllib)
 
 `urllib`是一个用于发送HTTP请求的库，功能强大，使用简单。当时有个项目需要将对方已有的，针对web页面的api接口重新封装成适用于app端的接口。并且还需要添加一些额外数据。当时就用到了这个库。
 
 ```js
 var urllib = require('urllib');
- 
+
 urllib.request('http://cnodejs.org/', function (err, data, res) {
   if (err) {
     throw err; //错误处理
@@ -38,20 +39,20 @@ urllib.request('http://cnodejs.org/', function (err, data, res) {
 ```js
 var formstream = require('formstream');
 var http = require('http');
- 
+
 var form = formstream();
- 
-// form.file('file', filepath, filename); 
+
+// form.file('file', filepath, filename);
 // 向表单中添加文件
 form.file('file', './logo.png', 'upload-logo.png');
- 
+
 // 添加其他的值form 中的 field
 form.field('foo', 'fengmk2').field('love', 'aerdeng');
- 
+
 // 直接添加而二进制的流
-// form.buffer(name, buffer, filename, mimeType) 
+// form.buffer(name, buffer, filename, mimeType)
 form.buffer('file2', new Buffer('This is file2 content.'), 'foo.txt');
- 
+
 var options = {
   method: 'POST',
   host: 'upload.cnodejs.net',
@@ -84,12 +85,12 @@ moment([2100]).isLeapYear() // 是否是闰年
 async.auto({
     get_data: function(callback){
         console.log('in get_data');
-        // 这里是异步运行的代码 
+        // 这里是异步运行的代码
         callback(null, 'data', 'converted to array');
     },
     make_folder: function(callback){
         console.log('in make_folder');
-        // 异步代码，创建一个文件夹来存储文件 
+        // 异步代码，创建一个文件夹来存储文件
         // 这一函数与get_data函数一同运行
         callback(null, 'folder');
     },
@@ -126,7 +127,7 @@ async.series([{
     }
 }],
 function(err, results) {
-    // results is now equal to: {one: 1, two: 2} 
+    // results is now equal to: {one: 1, two: 2}
 });
 ```
 

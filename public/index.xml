@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LinH&#39;s Blog</title>
+    <link>http://lin-h.com/</link>
+    <description>Recent content on LinH&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 07 Oct 2015 18:36:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://lin-h.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>广州实习</title>
+      <link>http://lin-h.com/post/guangzhou-intership/</link>
+      <pubDate>Wed, 07 Oct 2015 18:36:00 +0000</pubDate>
+      
+      <guid>http://lin-h.com/post/guangzhou-intership/</guid>
+      <description>从9月份开始在广州实习，主要从事Node.js的开发，使用MongoDB数据库，Express框架。在后台主要提供的是RESTful的接口，前端使用Angular框架进行数据整合。以下做一个简单的总结。(部分代码来自于npmjs.org) urllib urllib是一个用于发送HTTP请求的库，功能强大，使用简单。当时有个项目需要将对方已有的，针对web页面的api接口重新封装成适用于app端的接口。并且还需要添加一些额外数据。当时就用到了这个库。
+var urllib = require(&#39;urllib&#39;); urllib.request(&#39;http://cnodejs.org/&#39;, function (err, data, res) { if (err) { throw err; //错误处理 } //res是请求成功后得到的HTTP回复 console.log(res.statusCode); console.log(res.headers); //data就是实际得到的数据内容 console.log(data.toString()); });  formstream 使用Node.js提交表单，表单在从前端发送至后端的时候并不是使用明文传输，在同时传输文件和其他value时，使用的是multipart/form-data，会以二进制的形式发送所有数据。Express框架在接收到提交过来的表单的时候可以保留文件的二进制形式，然后使用formstream往这个二进制流中添加额外的数据(formstream中有相应的方法),最后得到的也是一个二进制流，在urllib中设置好头部后，添加表单数据就能发送了。
+var formstream = require(&#39;formstream&#39;); var http = require(&#39;http&#39;); var form = formstream(); // form.file(&#39;file&#39;, filepath, filename); // 向表单中添加文件 form.file(&#39;file&#39;, &#39;./logo.png&#39;, &#39;upload-logo.png&#39;); // 添加其他的值form 中的 field form.field(&#39;foo&#39;, &#39;fengmk2&#39;).field(&#39;love&#39;, &#39;aerdeng&#39;); // 直接添加而二进制的流 // form.buffer(name, buffer, filename, mimeType) form.buffer(&#39;file2&#39;, new Buffer(&#39;This is file2 content.</description>
+    </item>
+    
+  </channel>
+</rss>

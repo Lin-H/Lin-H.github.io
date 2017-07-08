@@ -1,3 +1,34 @@
-{{ partial "header.html" . }}
-hello
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="{{ .Site.Params.Keywords }}">
+    <meta name="description" content="{{ .Site.Params.Description}}">
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<header id="header">
+    <!--<img id="logo" src="https://unsplash.it/200/300/?blur">-->
+    <h1>{{.Site.Title}}</h1>
+</header>
+<main>
+  {{ range (where .Data.Pages "Section" "!=" "") }}
+  <article class="index__article {{if isset .Params "banner"}}has-image{{end}}">
+    <div class="index__img">
+      <img src="" alt="">
+    </div>
+    <div class="index__content">
+      <h2 class="index__title"><a href="{{ .URL }}">{{ .Title }}</a></h2>
+      <span class="date">{{ .Date.Format "2006-01-01" }}</span>
+      {{.Summary}}
+      <a href="{{ .URL }}">Continue reading</a>
+    </div>
+  </article>
+  {{ end }}
 {{ partial "footer.html" . }}
