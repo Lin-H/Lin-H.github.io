@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>内滚动 | Lin-H&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="内滚动,scroll,vue,自定义滚动条">
+  
+  <meta name="description" content="内滚动是一种布局，将传统的网页改造成类似于桌面软件的布局。像现在的酷我音乐盒的主体界面就是一个内滚动布局QQ音乐也是，将浏览器的滚动条用overflow: hidden隐藏，再用HTML和CSS画一个滚动条出来，通过JavaScript来处理滚动事件。这么做的好处一是增强用户体验，网页能有客户端的体验；二是可以自定义滚动条。下面我是用Vue做了个内滚动组件，用来简单介绍内滚动的实现。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内滚动">
+<meta property="og:url" content="http://lin-h.com/2015/12/27/inner-scroll/index.html">
+<meta property="og:site_name" content="Lin-H's Blog">
+<meta property="og:description" content="内滚动是一种布局，将传统的网页改造成类似于桌面软件的布局。像现在的酷我音乐盒的主体界面就是一个内滚动布局QQ音乐也是，将浏览器的滚动条用overflow: hidden隐藏，再用HTML和CSS画一个滚动条出来，通过JavaScript来处理滚动事件。这么做的好处一是增强用户体验，网页能有客户端的体验；二是可以自定义滚动条。下面我是用Vue做了个内滚动组件，用来简单介绍内滚动的实现。">
+<meta property="og:updated_time" content="2016-01-15T08:05:38.852Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内滚动">
+<meta name="twitter:description" content="内滚动是一种布局，将传统的网页改造成类似于桌面软件的布局。像现在的酷我音乐盒的主体界面就是一个内滚动布局QQ音乐也是，将浏览器的滚动条用overflow: hidden隐藏，再用HTML和CSS画一个滚动条出来，通过JavaScript来处理滚动事件。这么做的好处一是增强用户体验，网页能有客户端的体验；二是可以自定义滚动条。下面我是用Vue做了个内滚动组件，用来简单介绍内滚动的实现。">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' media="none" onload="if(media!='all')media='all'" type='text/css'>
+ <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" media="none" onload="if(media!='all')media='all'" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72700853-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">Lin-H&#39;s Blog</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://linhsblog-10013469.image.myqcloud.com/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://lin-h.com"></form>
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+        <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lin-h.com"></form>
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://linhsblog-10013469.image.myqcloud.com/css/images/avatar.png">
+      <h2 id="name">Lin-H</h2>
+      <h3 id="title">Web Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Guangzhou, China</span>
+      <a id="follow" href="https://github.com/Lin-H/">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        9
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        12
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="http://github.com/Lin-H" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/u/2605326267" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="/7黑林" target="_blank" title="weibo_name"><i class="fa fa-weibo_name"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-inner-scroll" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      
+	
+		<img src="http://linhsblog-10013469.image.myqcloud.com/images/inner-scroll.png" class="article-banner">
+	
+
+
+
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      内滚动
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/12/27/inner-scroll/">
+      <time datetime="2015-12-27T05:44:45.000Z" itemprop="datePublished">2015-12-27</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+          
+          <div class="article-date">
+            <span id="busuanzi_container_page_pv" style="display: none">
+              <i class="fa fa-eye"></i>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          </div>
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>内滚动是一种布局，将传统的网页改造成类似于桌面软件的布局。像现在的酷我音乐盒的主体界面就是一个内滚动布局QQ音乐也是，将浏览器的滚动条用<code>overflow: hidden</code>隐藏，再用HTML和CSS画一个滚动条出来，通过JavaScript来处理滚动事件。这么做的好处一是增强用户体验，网页能有客户端的体验；二是可以自定义滚动条。下面我是用Vue做了个内滚动组件，用来简单介绍内滚动的实现。</p>
+<a id="more"></a>
+<p>使用例子(省去了部分标签和代码)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">style</span>=<span class="value">"height: 200px;position: relative"</span> <span class="attribute">class</span>=<span class="value">"scroll-view"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">scroll</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"scroll-panel"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>1<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>2<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>3<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>4<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>5<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>6<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>7<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>8<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>9<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>10<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">scroll</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">        Vue.component(<span class="string">'scroll'</span>, scroll);</span><br><span class="line">        <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">'body'</span></span><br><span class="line">        &#125;);</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>scroll-view</code>是滚动条的视窗就是能看到的部分，需要设置<code>position</code>为<code>relative</code>或<code>absolute</code>，<code>scroll-panel</code>是滚动的内容。使用时将需要滚动的内容放入自定义标签<code>scroll</code>内即可</p>
+<p>当时写这个内滚动组件的时候参考了<code>jQuery</code>的插件<code>jscrollpanel</code>。在HTML结构上类似，并做了简化。使用两个div包裹滚动的内容，使用CSS的<code>top</code>来实现滚动，再添加两个div用于自定义滚动条</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    template: <span class="string">`</span><br><span class="line">    &lt;div class="vue-scroll"&gt;</span><br><span class="line">        &lt;div class="v-scroll-panel" :style="&#123;top: scrollPanelTop + 'px'&#125;"&gt;</span><br><span class="line">            &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="v-scroll-bar" v-show="isShow"&gt;</span><br><span class="line">        &lt;div class="v-scroll-block" @mousedown="dragStart" :style="&#123;top: scrollBlockTop + 'px', height: scrollBlockHeight + 'px'&#125;" :class="&#123;dragging: dragInfo.dragging&#125;" @mousemove="dragging"&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    `</span>,</span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            scrollBlockTop: <span class="number">0</span>,<span class="comment">//滑块距离顶部高度</span></span><br><span class="line">            dragInfo: &#123;</span><br><span class="line">                dragging: <span class="literal">false</span>,</span><br><span class="line">                Y: <span class="number">0</span></span><br><span class="line">            &#125;,</span><br><span class="line">            scrollableHeight: <span class="number">0</span>,<span class="comment">//滑动视窗高度</span></span><br><span class="line">            scrollPanelHeight: <span class="number">0</span><span class="comment">//滑动区域高度</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">        scrollBlockHeight() &#123;<span class="comment">//滑动块长度</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.scrollableHeight * <span class="keyword">this</span>.scrollableHeight / <span class="keyword">this</span>.scrollPanelHeight;</span><br><span class="line">        &#125;,</span><br><span class="line">        scrollPanelTop() &#123;<span class="comment">//实现滚动</span></span><br><span class="line">            <span class="keyword">return</span> -~~(<span class="keyword">this</span>.scrollBlockTop * <span class="keyword">this</span>.scrollPanelHeight / <span class="keyword">this</span>.scrollableHeight);</span><br><span class="line">        &#125;,</span><br><span class="line">        isShow() &#123;<span class="comment">//滚动内容超出视窗范围时显示滚动条</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.scrollableHeight &lt; <span class="keyword">this</span>.scrollPanelHeight;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    ready() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$el.parentNode.style.overflow = <span class="string">'hidden'</span>;</span><br><span class="line">        <span class="keyword">this</span>.scrollPanelHeight = <span class="keyword">this</span>.$el.nextElementSibling.clientHeight;</span><br><span class="line">        <span class="keyword">this</span>.scrollableHeight = <span class="keyword">this</span>.$el.parentNode.clientHeight;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.isShow) &#123;</span><br><span class="line">            <span class="keyword">this</span>.$el.parentNode.onwheel = (e) =&gt; &#123;</span><br><span class="line">                <span class="keyword">let</span> cal = <span class="keyword">this</span>.scrollBlockTop + -e.wheelDeltaY / <span class="number">4</span> * <span class="keyword">this</span>.scrollableHeight / <span class="keyword">this</span>.scrollPanelHeight;</span><br><span class="line">                <span class="comment">//限制滚动块滚动范围</span></span><br><span class="line">                <span class="keyword">if</span> (cal &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    cal = <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cal &gt;= <span class="keyword">this</span>.scrollableHeight - <span class="keyword">this</span>.scrollBlockHeight) &#123;</span><br><span class="line">                    cal = <span class="keyword">this</span>.scrollableHeight - <span class="keyword">this</span>.scrollBlockHeight;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">this</span>.scrollBlockTop = cal;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        dragStart(e) &#123;</span><br><span class="line">            <span class="keyword">this</span>.dragInfo.dragging = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">this</span>.dragInfo.Y = e.clientY + <span class="built_in">document</span>.body.scrollTop - <span class="keyword">this</span>.scrollBlockTop;</span><br><span class="line">            <span class="comment">//添加document事件，是为了能使拖动滑块时鼠标离开滚动区域也能拖动滑块</span></span><br><span class="line">            <span class="built_in">document</span>.addEventListener(<span class="string">'mousemove'</span>, <span class="keyword">this</span>.dragging.bind(<span class="keyword">this</span>));</span><br><span class="line">            <span class="built_in">document</span>.addEventListener(<span class="string">'mouseup'</span>, <span class="keyword">this</span>.dragEnd.bind(<span class="keyword">this</span>));</span><br><span class="line">        &#125;,</span><br><span class="line">        dragging(e) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="keyword">this</span>.dragInfo.dragging) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">let</span> cal = e.clientY + <span class="built_in">document</span>.body.scrollTop - <span class="keyword">this</span>.dragInfo.Y;</span><br><span class="line">            <span class="keyword">if</span> (cal &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                cal = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cal &gt;= <span class="keyword">this</span>.scrollableHeight - <span class="keyword">this</span>.scrollBlockHeight) &#123;</span><br><span class="line">                cal = <span class="keyword">this</span>.scrollableHeight - <span class="keyword">this</span>.scrollBlockHeight;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">this</span>.scrollBlockTop = cal;</span><br><span class="line">        &#125;,</span><br><span class="line">        dragEnd() &#123;</span><br><span class="line">            <span class="keyword">this</span>.dragInfo.dragging = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    events: &#123;</span><br><span class="line">        resize() &#123;</span><br><span class="line">            <span class="keyword">this</span>.scrollPanelHeight = <span class="keyword">this</span>.$el.nextElementSibling.clientHeight;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    watch: &#123;</span><br><span class="line">        <span class="string">'dragInfo.dragging'</span>: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!val) &#123;</span><br><span class="line">                <span class="built_in">document</span>.removeEventListener(<span class="string">'mousemove'</span>, <span class="keyword">this</span>.dragging.bind(<span class="keyword">this</span>));</span><br><span class="line">                <span class="built_in">document</span>.removeEventListener(<span class="string">'mouseup'</span>, <span class="keyword">this</span>.dragEnd.bind(<span class="keyword">this</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>首先是计算滑块的长度，其实滚动条可以看成是缩小的浏览器窗口，滑块就是当前浏览器窗口在整个页面中的位置，所以只需要按照比例设置。<code>scrollPanelHeight / scrollableHeight</code>等于 <code>滚动条长度/滑块长度</code>。在滚动时，滚动的距离也是通过这个比例来决定。在处理鼠标滚动事件时,需要注意浏览器兼容，<code>IE</code>,<code>Firefox</code>和<code>Chrome</code>都不一样。将<code>scroll-panel</code>的<code>top</code>属性设置为负值，来实现向下滚动的效果。下面是一个用上面代码实现的一个例子,请使用<code>Chrome</code>或<code>webkit</code>内核浏览器查看</p>
+
+<div style="height: 200px;position: relative;background-color: #f1f1f1;" class="scroll-view">
+    <scroll>
+        <div class="scroll-panel" style="background-color: #f1f1f1;">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+            <p>10</p>
+        </div>
+    </scroll>
+</div>
+<script src="./scroll" type="text/javascript"></script>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lin-h.com/2015/12/27/inner-scroll/" data-id="cijofw1rv000ko4551zabpe65" class="article-share-link">Share</a>
+      
+        <a href="http://lin-h.com/2015/12/27/inner-scroll/#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/20/json-web-token/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Json Web Token身份认证
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/19/try-angular2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">体验Angular2</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="http://lin-h.com/2015/12/27/inner-scroll/" data-title="内滚动" data-url="http://lin-h.com/2015/12/27/inner-scroll/">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+      </div>
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">recents</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/01/20/json-web-token/" class="thumbnail">
+  
+    <span style="background-image:url(http://linhsblog-10013469.image.myqcloud.com/images/jwt-diagram.png)" alt="Json Web Token身份认证" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Node-js/">Node.js</a></p>
+              <p class="item-title"><a href="/2016/01/20/json-web-token/" class="title">Json Web Token身份认证</a></p>
+              <p class="item-date"><time datetime="2016-01-20T14:31:33.285Z" itemprop="datePublished">2016-01-20</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/12/27/inner-scroll/" class="thumbnail">
+  
+    <span style="background-image:url(http://linhsblog-10013469.image.myqcloud.com/images/inner-scroll.png)" alt="内滚动" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Javascript/">Javascript</a></p>
+              <p class="item-title"><a href="/2015/12/27/inner-scroll/" class="title">内滚动</a></p>
+              <p class="item-date"><time datetime="2015-12-27T05:44:45.000Z" itemprop="datePublished">2015-12-27</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/12/19/try-angular2/" class="thumbnail">
+  
+    <span style="background-image:url(http://linhsblog-10013469.image.myqcloud.com/images/angular2.jpg)" alt="体验Angular2" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Javascript/">Javascript</a></p>
+              <p class="item-title"><a href="/2015/12/19/try-angular2/" class="title">体验Angular2</a></p>
+              <p class="item-date"><time datetime="2015-12-19T14:42:59.000Z" itemprop="datePublished">2015-12-19</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/12/12/2015-november-summary/" class="thumbnail">
+  
+    <span style="background-image:url(http://linhsblog-10013469.image.myqcloud.com/images/november.png)" alt="广州11月份实习" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Others/">Others</a></p>
+              <p class="item-title"><a href="/2015/12/12/2015-november-summary/" class="title">广州11月份实习</a></p>
+              <p class="item-date"><time datetime="2015-12-12T15:16:37.000Z" itemprop="datePublished">2015-12-12</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/11/11/css3-animation/" class="thumbnail">
+  
+    <span style="background-image:url(http://linhsblog-10013469.image.myqcloud.com/images/twitter-bird-sprite.png)" alt="CSS3 Animation" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/CSS/">CSS</a></p>
+              <p class="item-title"><a href="/2015/11/11/css3-animation/" class="title">CSS3 Animation</a></p>
+              <p class="item-date"><time datetime="2015-11-11T13:22:45.000Z" itemprop="datePublished">2015-11-11</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jekyll/">jekyll</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular2/">Angular2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/">Rust</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tag cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Angular2/" style="font-size: 10px;">Angular2</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 - 2016 Lin-H<br>
+      <span id="busuanzi_container_site_pv" style='display:none'><span id="busuanzi_value_site_pv"></span> Views</span><br/>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <span id='cnzz_stat_icon_1257359120'></span>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"lin-h"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+ <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<link rel="stylesheet" href="//apps.bdimg.com/libs/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+<script src="//apps.bdimg.com/libs/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+<script src="/js/script.js" type="text/javascript"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257359120%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+</body>
+</html>

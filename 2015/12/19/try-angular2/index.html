@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>体验Angular2 | Lin-H&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Angular2,angular">
+  
+  <meta name="description" content="前几天，Angular2终于发布了beta版本，API基本稳定了，我觉得是时候体验一下了。所以我决定用Angular2做一个提示框组件来试试。来看看新的Angular有什么优缺点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="体验Angular2">
+<meta property="og:url" content="http://lin-h.com/2015/12/19/try-angular2/index.html">
+<meta property="og:site_name" content="Lin-H's Blog">
+<meta property="og:description" content="前几天，Angular2终于发布了beta版本，API基本稳定了，我觉得是时候体验一下了。所以我决定用Angular2做一个提示框组件来试试。来看看新的Angular有什么优缺点。">
+<meta property="og:updated_time" content="2016-01-20T14:33:30.561Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="体验Angular2">
+<meta name="twitter:description" content="前几天，Angular2终于发布了beta版本，API基本稳定了，我觉得是时候体验一下了。所以我决定用Angular2做一个提示框组件来试试。来看看新的Angular有什么优缺点。">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' media="none" onload="if(media!='all')media='all'" type='text/css'>
+ <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" media="none" onload="if(media!='all')media='all'" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72700853-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">Lin-H&#39;s Blog</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://linhsblog-10013469.image.myqcloud.com/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://lin-h.com"></form>
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+        <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lin-h.com"></form>
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://linhsblog-10013469.image.myqcloud.com/css/images/avatar.png">
+      <h2 id="name">Lin-H</h2>
+      <h3 id="title">Web Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Guangzhou, China</span>
+      <a id="follow" href="https://github.com/Lin-H/">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        9
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        12
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="http://github.com/Lin-H" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/u/2605326267" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="/7黑林" target="_blank" title="weibo_name"><i class="fa fa-weibo_name"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-try-angular2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      
+	
+		<img src="http://linhsblog-10013469.image.myqcloud.com/images/angular2.jpg" class="article-banner">
+	
+
+
+
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      体验Angular2
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/12/19/try-angular2/">
+      <time datetime="2015-12-19T14:42:59.000Z" itemprop="datePublished">2015-12-19</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+          
+          <div class="article-date">
+            <span id="busuanzi_container_page_pv" style="display: none">
+              <i class="fa fa-eye"></i>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          </div>
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>前几天，<code>Angular2</code>终于发布了beta版本，API基本稳定了，我觉得是时候体验一下了。所以我决定用<code>Angular2</code>做一个提示框组件来试试。来看看新的<code>Angular</code>有什么优缺点。</p>
+<a id="more"></a>
+<h2 id="安装">安装</h2>
+<p>根据官方的<a href="https://angular.io/docs/ts/latest/quickstart.html" target="_blank" rel="external">5 MIN QUICKSTART</a>教程可以很快地搭建起开发环境。不得不说，<code>Angular2</code>的依赖还真多，虽然有些是为了兼容其他浏览器的，但真正的主体部分也不小还需要依赖<code>rxjs</code>。我这里使用的是<code>Typescript</code>来编写，需要对<code>Typescript</code>的编译器配置一下，全都按照官方的来就行。当然也可以选择<code>ES5</code>或<code>ES6</code>。</p>
+<p>使用<code>npm install</code>安装完成后再运行<code>npm start</code>就会自动编译运行了，有改动的时候会自动刷新页面，很方便。</p>
+<h2 id="提示框组件">提示框组件</h2>
+<p>为了简单起见，我直接以提示框组件为根节点启动,并添加一个按钮来显示提示框</p>
+<p><code>app.component.ts</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;Component&#125; <span class="keyword">from</span> <span class="string">'angular2/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'tip'</span>,</span><br><span class="line">    template: <span class="string">`&lt;div class="tip" [ngStyle]="&#123;'display': isShow?'block':'none', 'opacity': opacity&#125;"&gt;</span><br><span class="line">        &lt;div class="content"&gt;</span><br><span class="line">            &lt;p&gt;&#123;&#123;text&#125;&#125;&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;button (click)="show()"&gt;show&lt;/button&gt;`</span>,</span><br><span class="line">    styles: [<span class="string">`.tip &#123;</span><br><span class="line">            position: fixed;</span><br><span class="line">            top: 30px;</span><br><span class="line">            left: 400px;</span><br><span class="line">            background-color: #ccc;</span><br><span class="line">            border-radius: 4px;</span><br><span class="line">            transition: opacity .4s ease;</span><br><span class="line">        &#125;</span><br><span class="line">        .content &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        .content p &#123;</span><br><span class="line">            margin: 10px 6px;</span><br><span class="line">        &#125;`</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">TipComponent</span> </span>&#123;</span><br><span class="line">    public text: <span class="built_in">String</span>;</span><br><span class="line">    private isShow: <span class="built_in">Boolean</span> = <span class="literal">false</span>;</span><br><span class="line">    private opacity: <span class="built_in">Number</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    show(text: <span class="built_in">String</span> = <span class="string">"This is default text"</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.text = text;</span><br><span class="line">        <span class="keyword">this</span>.isShow = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">let</span> self = <span class="keyword">this</span>;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            self.opacity = <span class="number">1</span>;</span><br><span class="line">        &#125;, <span class="number">10</span>);</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            self.opacity = <span class="number">0</span>;</span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                self.isShow = <span class="literal">false</span>;</span><br><span class="line">            &#125;, <span class="number">400</span>);</span><br><span class="line">        &#125;, <span class="number">2000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>boot.ts</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;bootstrap&#125;    from <span class="string">'angular2/platform/browser'</span></span><br><span class="line"><span class="keyword">import</span> &#123;TipComponent&#125; from <span class="string">'./app.component'</span></span><br><span class="line"></span><br><span class="line">bootstrap(TipComponent);</span><br></pre></td></tr></table></figure>
+<p><code>index.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>Angular 2 QuickStart<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 1. Load libraries --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"node_modules/angular2/bundles/angular2-polyfills.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"node_modules/systemjs/dist/system.src.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"node_modules/rxjs/bundles/Rx.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"node_modules/angular2/bundles/angular2.dev.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 2. Configure SystemJS --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">		System.config(&#123;</span><br><span class="line">        packages: &#123;</span><br><span class="line">          app: &#123;</span><br><span class="line">            format: <span class="string">'register'</span>,</span><br><span class="line">            defaultExtension: <span class="string">'js'</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      System.import(<span class="string">'app/boot'</span>)</span><br><span class="line">            .then(<span class="literal">null</span>, <span class="built_in">console</span>.error.bind(<span class="built_in">console</span>));</span><br><span class="line">	</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 3. Display the application --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">tip</span>&gt;</span><span class="tag">&lt;/<span class="title">tip</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>以上就是代码，还是比较简单的，但可能是<code>Angular2</code>刚公测，文档还不完善，有些功能不知道该用什么函数。</p>
+<p>提示框组件的功能，点击按钮后就弹出一个提示框，传入text变量来改变显示的文本。这个组件的话我是用<code>Vue</code>来做的，显示和消失的时候都会有过渡动画，这里我的过渡属性是<code>opacity</code>，第一个问题来了，一开始提示框<code>display: none; opacity: 0</code>，要显示的时候将<code>display</code>改为<code>block</code>，<code>opacity</code>改为<code>1</code>以触发过渡效果，如果两个属性同时修改不会有过渡效果出现，需要用<code>setTimeout</code>来延迟<code>opacity</code>属性的修改，保证<code>display</code>已经被修改为<code>block</code>，这样才会有过渡效果。同样的在提示框消失时修改顺序要倒过来，先改<code>opacity</code>再改<code>display</code>。简而言之就是在为隐藏元素添加过渡效果的时候，需要自己手动处理，<code>Vue</code>的话就不需要，通过<code>v-show</code>和<code>transition</code>属性就能轻松添加过渡效果，不过我认为在正式版本<code>Angular2</code>应该会添加类似的功能。</p>
+<p>另一个问题就是弹出的提示框需要水平居中，因为提示框的内容是变化的，所以每次显示的时候都需要计算<code>left</code>来达到居中效果。在<code>Vue</code>中可以通过<code>this.$el</code>来获取提示框的DOM，但在<code>Angular2</code>中我就不知道该怎么做了，翻了一遍官方文档，暂时没找到相关的api。</p>
+<p>除此之外，类似<code>Vue</code>的<code>&lt;slot&gt;</code>内容分发功能，我在<code>Angular2</code>中找到了类似的<code>&lt;ng-content&gt;</code>但并不是我想要的效果，而且在文档中也找不到。本来是想作个内滚动组件的，在<code>Vue</code>中使用<code>&lt;slot&gt;</code>很容易做出内滚动组件。</p>
+<p>总得来说，这一次尝试，就现在的<code>Angular2</code>版本来说并没有让我感觉强大，期待正式2.0版本能使功能、文档都完善。另一个就是<code>Angular2</code>的体积很大，毕竟包含了很多功能，这在网页载入速度上就会有劣势了，所以我觉得就现在的<code>Angular2</code>来说，比较适合用来开发大型的，企业级的网页应用，或者直接嵌入软件客户端中。但毕竟没有成熟，能否像<code>Angular1</code>那样成功很难说，因为与其他框架对比之下我觉得<code>Vue</code>和<code>React</code>的方案更优秀。看来短期之内我还是先专注与<code>Vue</code>和<code>React</code>吧 :)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lin-h.com/2015/12/19/try-angular2/" data-id="cijofw1r20003o455umugrw5j" class="article-share-link">Share</a>
+      
+        <a href="http://lin-h.com/2015/12/19/try-angular2/#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular2/">Angular2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/27/inner-scroll/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          内滚动
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/12/2015-november-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">广州11月份实习</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="http://lin-h.com/2015/12/19/try-angular2/" data-title="体验Angular2" data-url="http://lin-h.com/2015/12/19/try-angular2/">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+      </div>
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">recents</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/01/20/json-web-token/" class="thumbnail">
+  
+    <span style="background-image:url(http://linhsblog-10013469.image.myqcloud.com/images/jwt-diagram.png)" alt="Json Web Token身份认证" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Node-js/">Node.js</a></p>
+              <p class="item-title"><a href="/2016/01/20/json-web-token/" class="title">Json Web Token身份认证</a></p>
+              <p class="item-date"><time datetime="2016-01-20T14:31:33.285Z" itemprop="datePublished">2016-01-20</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/12/27/inner-scroll/" class="thumbnail">
+  
+    <span style="background-image:url(http://linhsblog-10013469.image.myqcloud.com/images/inner-scroll.png)" alt="内滚动" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Javascript/">Javascript</a></p>
+              <p class="item-title"><a href="/2015/12/27/inner-scroll/" class="title">内滚动</a></p>
+              <p class="item-date"><time datetime="2015-12-27T05:44:45.000Z" itemprop="datePublished">2015-12-27</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/12/19/try-angular2/" class="thumbnail">
+  
+    <span style="background-image:url(http://linhsblog-10013469.image.myqcloud.com/images/angular2.jpg)" alt="体验Angular2" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Javascript/">Javascript</a></p>
+              <p class="item-title"><a href="/2015/12/19/try-angular2/" class="title">体验Angular2</a></p>
+              <p class="item-date"><time datetime="2015-12-19T14:42:59.000Z" itemprop="datePublished">2015-12-19</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/12/12/2015-november-summary/" class="thumbnail">
+  
+    <span style="background-image:url(http://linhsblog-10013469.image.myqcloud.com/images/november.png)" alt="广州11月份实习" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Others/">Others</a></p>
+              <p class="item-title"><a href="/2015/12/12/2015-november-summary/" class="title">广州11月份实习</a></p>
+              <p class="item-date"><time datetime="2015-12-12T15:16:37.000Z" itemprop="datePublished">2015-12-12</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/11/11/css3-animation/" class="thumbnail">
+  
+    <span style="background-image:url(http://linhsblog-10013469.image.myqcloud.com/images/twitter-bird-sprite.png)" alt="CSS3 Animation" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/CSS/">CSS</a></p>
+              <p class="item-title"><a href="/2015/11/11/css3-animation/" class="title">CSS3 Animation</a></p>
+              <p class="item-date"><time datetime="2015-11-11T13:22:45.000Z" itemprop="datePublished">2015-11-11</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jekyll/">jekyll</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular2/">Angular2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/">Rust</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tag cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Angular2/" style="font-size: 10px;">Angular2</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 - 2016 Lin-H<br>
+      <span id="busuanzi_container_site_pv" style='display:none'><span id="busuanzi_value_site_pv"></span> Views</span><br/>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <span id='cnzz_stat_icon_1257359120'></span>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"lin-h"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+ <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<link rel="stylesheet" href="//apps.bdimg.com/libs/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+<script src="//apps.bdimg.com/libs/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+<script src="/js/script.js" type="text/javascript"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257359120%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+</body>
+</html>
