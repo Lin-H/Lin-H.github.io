@@ -2,7 +2,8 @@
 layout: post
 title:  "使用Jekyll在Github上搭建个人Blog"
 date:   2015-04-09 20:32:46
-categories: jekyll
+categories: 
+- Jekyll
 keywords: "个人博客,jekyll,github,教程,使用,搭建,blog"
 tag:
 - Blog
@@ -10,7 +11,7 @@ updated: 2015-05-18 22:32:46
 banner: http://linhsblog-10013469.image.myqcloud.com/images/jekyll.png
 ---
 拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。`Jekyll`就是一款生成静态页面(HTML文件)的工具，`Jekyll`是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就能搭建出一个Blog来，但如果你还懂得网站前端的知识如`HTML`，`CSS`，`Javascript`的话，你就能完全自定义你自己的Blog。
-<!-- more -->
+<!--more-->
 现在先把`Jekyll`的运行环境搭建好。因为`Jekyll`是Ruby编写的，所以必须先安装Ruby的运行环境。
 
 ## 安装Ruby和Jekyll

@@ -3,7 +3,8 @@ layout: post
 title: CSS3 Animation
 date: 2015-11-11 21:22:45
 last_modified_at: 
-category: CSS
+categories: 
+- CSS
 tag:
 - css3
 keywords: "css3,animation"
@@ -13,7 +14,7 @@ banner: http://linhsblog-10013469.image.myqcloud.com/images/twitter-bird-sprite.
 ## CSS3 动画
 
 CSS3 动画不需要写一行代码，简单的动画仅需要定义一个`@keyframes`并设置基本的参数就能动了。对比使用`Javascript`编写的动画，CSS3 动画更简单也更高效，使用`sprite`还能做出gif图片的效果。也可以搭配[`SVG`](https://developer.mozilla.org/en-US/docs/Web/SVG)使用。
-<!-- more -->
+<!--more-->
 动画一般是由多个不同的图片不断快速切换一张图片叫做一帧，在CSS中也一样，只不过不必须使用图片。而是使用`@keyframes`来定义一帧所要显示的“图片”。
 
 ### @keyframes

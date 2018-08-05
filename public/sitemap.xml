@@ -3,13 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/2016/01/json-web-token/</loc>
+    <lastmod>2016-01-20T22:38:56+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/12/inner-scroll/</loc>
+    <lastmod>2015-12-27T13:44:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/12/try-angular2/</loc>
+    <lastmod>2015-12-19T22:42:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/12/2015-november-summary/</loc>
+    <lastmod>2015-12-12T23:16:37+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/11/css3-animation/</loc>
+    <lastmod>2015-11-11T21:22:45+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2015/10/guangzhou-intership/</loc>
     <lastmod>2015-10-07T18:36:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2013/10/%E4%B8%AD%E6%96%87%E6%B8%AC%E8%A9%A6/</loc>
-    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
+    <loc>/2015/06/git-undo-operation/</loc>
+    <lastmod>2015-06-14T12:32:48+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/05/rust-quick-guide/</loc>
+    <lastmod>2015-05-28T18:05:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/04/build-personal-blog-with-jekyll-on-github/</loc>
+    <lastmod>2015-04-09T20:32:46+00:00</lastmod>
   </url>
   
   <url>
@@ -23,38 +58,61 @@
   </url>
   
   <url>
-    <loc>/tags/chinese/</loc>
-    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
+    <loc>/categories/css/</loc>
+    <lastmod>2015-11-11T21:22:45+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/features/</loc>
-    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
+    <loc>/categories/git/</loc>
+    <lastmod>2015-06-14T12:32:48+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/javascript/</loc>
+    <lastmod>2015-12-27T13:44:45+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/jekyll/</loc>
+    <lastmod>2015-04-09T20:32:46+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2015-10-07T18:36:00+00:00</lastmod>
+    <lastmod>2016-01-20T22:38:56+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/node.js/</loc>
+    <lastmod>2016-01-20T22:38:56+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/others/</loc>
+    <lastmod>2015-12-12T23:16:37+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2015-10-07T18:36:00+00:00</lastmod>
+    <lastmod>2016-01-20T22:38:56+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/rust/</loc>
+    <lastmod>2015-05-28T18:05:44+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/tranquilpeak/</loc>
-    <lastmod>2013-10-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,10 +1,11 @@
 ---
 title: 广州实习
 date: 2015-10-07 18:36:00
-category: Others
+categories: 
+- Others
 tag:
-- node.js
-- life
+- Node.js
+- Life
 keywords: "intership,note,广州,实习,node.js,javascript"
 last_modified_at: 2015-11-02 23:47:58
 // banner: http://linhsblog-10013469.image.myqcloud.com/images/guangzhou.jpg

@@ -1,6 +1,8 @@
+---
 title: 内滚动
 date: 2015-12-27 13:44:45
-categories: Javascript
+categories: 
+- Javascript
 tag: 
 - Javascript
 - Vue
@@ -9,7 +11,7 @@ banner: http://linhsblog-10013469.image.myqcloud.com/images/inner-scroll.png
 ---
 
 内滚动是一种布局，将传统的网页改造成类似于桌面软件的布局。像现在的酷我音乐盒的主体界面就是一个内滚动布局QQ音乐也是，将浏览器的滚动条用`overflow: hidden`隐藏，再用HTML和CSS画一个滚动条出来，通过JavaScript来处理滚动事件。这么做的好处一是增强用户体验，网页能有客户端的体验；二是可以自定义滚动条。下面我是用Vue做了个内滚动组件，用来简单介绍内滚动的实现。
-<!-- more  -->
+<!--more-->
 使用例子(省去了部分标签和代码)
 ```html
 <body>

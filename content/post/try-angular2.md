@@ -1,5 +1,7 @@
+---
 title: 体验Angular2
-categories: Javascript
+categories: 
+- Javascript
 tag:
 - Javascript
 - Angular2
@@ -9,7 +11,7 @@ banner: http://linhsblog-10013469.image.myqcloud.com/images/angular2.jpg
 ---
 
 前几天，`Angular2`终于发布了beta版本，API基本稳定了，我觉得是时候体验一下了。所以我决定用`Angular2`做一个提示框组件来试试。来看看新的`Angular`有什么优缺点。
-<!-- more -->
+<!--more-->
 ## 安装
 
 根据官方的[5 MIN QUICKSTART](https://angular.io/docs/ts/latest/quickstart.html)教程可以很快地搭建起开发环境。不得不说，`Angular2`的依赖还真多，虽然有些是为了兼容其他浏览器的，但真正的主体部分也不小还需要依赖`rxjs`。我这里使用的是`Typescript`来编写，需要对`Typescript`的编译器配置一下，全都按照官方的来就行。当然也可以选择`ES5`或`ES6`。

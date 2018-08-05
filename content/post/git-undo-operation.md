@@ -1,10 +1,11 @@
 ---
 layout: post
 title: Git的各种撤销操作
-category: git
+categories: 
+- Git
 keywords: "git,undo,撤销"
 tag:
-- git
+- Git
 date: 2015-06-14 12:32:48
 last_modified_at: 2015-06-14 12:32:48
 banner: http://linhsblog-10013469.image.myqcloud.com/images/git.png
@@ -18,7 +19,7 @@ banner: http://linhsblog-10013469.image.myqcloud.com/images/git.png
 ```
 git revert <SHA>
 ```
-<!-- more -->
+<!--more-->
 `git revert`会创建一个新的`commit`，其中的修改与`<SHA>`的`commit`相反，以此来达到撤销之前操作的目的。
 
 ### 修改commit信息

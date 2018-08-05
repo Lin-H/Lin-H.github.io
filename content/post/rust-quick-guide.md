@@ -2,7 +2,8 @@
 layout: post
 title: Rust快速入门
 date: 2015-05-28 18:05:44
-category: Rust
+categories: 
+- Rust
 keywords: "Rust,快速入门,入门,quick,guide"
 tag: 
 - Rust
@@ -12,7 +13,9 @@ banner: http://linhsblog-10013469.image.myqcloud.com/images/rust-icon.png
 ## Rust简介
 
 `Rust`是一种编译语言，与`C`和`Go`一样编译后生成的是二进制文件。`Rust`专注于`安全`，`速度`，`并发`。并且不需要垃圾回收器，这也让`Rust`在某些情况下比其他语言更好用。比如与其他语言混合编写嵌入其中、编写底层软件，驱动或操作系统。`Rust`在编译期间会将语法错误和不安全因素最大程度地找出来，从而避免在程序运行时出现问题。`Rust`语言可以胜任三个软件层次的开发。并且在今年5月15号发布了第一个1.0.0正式版本。
-<!-- more -->
+
+<!--more-->
+
 - (底层)系统底层开发：裸金属(bare metal)、操作系统(OS)、内核(kernel)、内核模块(mod)等 ( [rustboot](https://github.com/charliesome/rustboot), [rustos](https://github.com/ryanra/RustOS), [barebones](https://github.com/thepowersgang/rust-barebones-kernel))
 
 - (中层)系统应用开发：虚拟机(VM)、容器(Container)、数据库/游戏/Web/Ftp/Dns服务器、浏览器引擎、模拟器等 ([Servo浏览器引擎](https://github.com/servo/servo), [Piston游戏引擎](https://github.com/PistonDevelopers/piston), [Hyper](https://github.com/hyperium/hyper) HTTP服务器, [SprocketNES](https://github.com/pcwalton/sprocketnes) NES模拟器, [LlamaDB](https://github.com/nukep/llamadb)数据库)

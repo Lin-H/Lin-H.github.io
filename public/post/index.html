@@ -15,8 +15,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.44">
-    <meta name="theme" content="Tranquilpeak 0.3.1-BETA">
+    <meta name="generator" content="Hugo 0.44 with theme Tranquilpeak 0.4.3-BETA">
     <title>Posts</title>
     <meta name="author" content="Lin-H">
     <meta name="keywords" content="">
@@ -53,13 +52,12 @@
     
 
     
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" />
-    <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" />
-    <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-ewe4ze9yaae6anhbfztctmf6qxlyodats3yv3mm9sm3ed2efkwvuttg91exi.min.css" />
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
     
     
 
@@ -156,18 +154,20 @@
     </a>
   </li>
 
+
     </ul>
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://github.com/lin-h">
+      <a class="sidebar-button-link " href="/https://github.com/lin-h">
     
       <i class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
   </li>
+
 
     </ul>
     <ul class="sidebar-buttons">
@@ -181,6 +181,7 @@
       <span class="sidebar-button-desc">RSS</span>
     </a>
   </li>
+
 
     </ul>
   </div>
@@ -212,28 +213,333 @@
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="/2016/01/json-web-token/">
+          Json Web Token身份认证
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2016-01-20T22:38:56Z">
+        
+  一月 20, 2016
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/node.js">Node.js</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>用户身份认证一般有5种方式</p>
+
+<ul>
+<li><p>HTTP Basic authentication<br/>
+在发送请求时在HTTP头中加入<code>authentication</code>字段，将用<code>Base64</code>编码的用户名和密码作为值，每次发送请求的时候都要发送用户名和密码，实现比较简单。</p></li>
+
+<li><p>Cookies<br/>
+向后台发送用户名和密码，在用户名和密码通过验证后，保存返回的<code>Cookie</code>作为用户已经登录的凭证，每次请求时附带这个<code>Cookie</code></p></li>
+
+<li><p>Signatures<br/>
+用户拿到服务器给的私钥，在发送请求前，将整个请求使用私钥来加密，发送的将是一串加密信息，此方式只适用于API</p></li>
+
+<li><p>One-Time Passwords<br/>
+一次一密，每次登录时使用不同的密码，一般由服务端通过邮件将密码发给用户，这种登录方式比较繁琐</p></li>
+
+<li><p>JSON Web Token<br/>
+用户发送按照约定，向服务端发送<code>Header</code>、<code>Payload</code>和<code>Signature</code>，并包含认证信息(密码)，验证通过后服务端返回一个<code>token</code>，之后用户使用该<code>token</code>作为登录凭证，适合于移动端和api</p></li>
+</ul>
+
+<p></p>
+      <p>
+        <a href="/2016/01/json-web-token/" class="postShorten-excerpt_link link">阅读全文</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="/2015/12/inner-scroll/">
+          内滚动
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2015-12-27T13:44:45Z">
+        
+  十二月 27, 2015
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/javascript">Javascript</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>内滚动是一种布局，将传统的网页改造成类似于桌面软件的布局。像现在的酷我音乐盒的主体界面就是一个内滚动布局QQ音乐也是，将浏览器的滚动条用<code>overflow: hidden</code>隐藏，再用HTML和CSS画一个滚动条出来，通过JavaScript来处理滚动事件。这么做的好处一是增强用户体验，网页能有客户端的体验；二是可以自定义滚动条。下面我是用Vue做了个内滚动组件，用来简单介绍内滚动的实现。
+
+使用例子(省去了部分标签和代码)</p>
+      <p>
+        <a href="/2015/12/inner-scroll/" class="postShorten-excerpt_link link">阅读全文</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="/2015/12/try-angular2/">
+          体验Angular2
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2015-12-19T22:42:59Z">
+        
+  十二月 19, 2015
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/javascript">Javascript</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>前几天，<code>Angular2</code>终于发布了beta版本，API基本稳定了，我觉得是时候体验一下了。所以我决定用<code>Angular2</code>做一个提示框组件来试试。来看看新的<code>Angular</code>有什么优缺点。
+</p>
+      <p>
+        <a href="/2015/12/try-angular2/" class="postShorten-excerpt_link link">阅读全文</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="/2015/12/2015-november-summary/">
+          广州11月份实习
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2015-12-12T23:16:37Z">
+        
+  十二月 12, 2015
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/others">Others</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>2015年11月份，仍在广州实习。9月份时候的实习做的是Node.js开发，现在是Javascript工程师，也就是前端了。工作的内容也不难，但接触到的东西还是很有收获的。了解到公司的内部结构，使用的技术，真实的产品。尤其是使用浏览器内核来开发软件，解决了我好几年前关于软件开发的疑惑。还有就是MVVM框架Vue.js的使用，这个是主要内容了。</p>
+
+<p></p>
+      <p>
+        <a href="/2015/12/2015-november-summary/" class="postShorten-excerpt_link link">阅读全文</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="/2015/11/css3-animation/">
+          CSS3 Animation
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2015-11-11T21:22:45Z">
+        
+  十一月 11, 2015
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/css">CSS</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <h2 id="css3-动画">CSS3 动画</h2>
+
+<p>CSS3 动画不需要写一行代码，简单的动画仅需要定义一个<code>@keyframes</code>并设置基本的参数就能动了。对比使用<code>Javascript</code>编写的动画，CSS3 动画更简单也更高效，使用<code>sprite</code>还能做出gif图片的效果。也可以搭配<a href="https://developer.mozilla.org/en-US/docs/Web/SVG"><code>SVG</code></a>使用。
+
+动画一般是由多个不同的图片不断快速切换一张图片叫做一帧，在CSS中也一样，只不过不必须使用图片。而是使用<code>@keyframes</code>来定义一帧所要显示的“图片”。</p>
+      <p>
+        <a href="/2015/11/css3-animation/" class="postShorten-excerpt_link link">阅读全文</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="/2015/10/guangzhou-intership/">
           广州实习
         </a>
       </h1>
-      <div class="postShorten-meta post-meta">
-  
-    <time itemprop="datePublished" datetime="2015-10-07T18:36:00Z">
       
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2015-10-07T18:36:00Z">
+        
   十月 7, 2015
 
-    </time>
+      </time>
+    
+    
   
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="/categories/others">Others</a>
+    
   
 
-</div>
+  </div>
 
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>从19月份开始在广州实习，主要从事<code>Node.js</code>的开发，使用<code>MongoDB</code>数据库，<code>Express</code>框架。在后台主要提供的是<code>RESTful</code>的接口，前端使用<code>Angular</code>框架进行数据整合。以下做一个简单的总结。(部分代码来自于<a href="https://www.npmjs.com">npmjs.org</a>)
+</p>
       <p>
-        从9月份开始在广州实习，主要从事<code>Node.js</code>的开发，使用<code>MongoDB</code>数据库，<code>Express</code>框架。在后台主要提供的是<code>RESTful</code>的接口，前端使用<code>Angular</code>框架进行数据整合。以下做一个简单的总结。(部分代码来自于<a href="https://www.npmjs.com">npmjs.org</a>)
-
-        <br>
         <a href="/2015/10/guangzhou-intership/" class="postShorten-excerpt_link link">阅读全文</a>
         
       </p>
@@ -246,64 +552,82 @@
             
   
     
+      
+        
+      
+    
   
 
 
   
 
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
   <div class="postShorten-wrap">
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="/2013/10/%E4%B8%AD%E6%96%87%E6%B8%AC%E8%A9%A6/">
-          中文測試
+        <a class="link-unstyled" href="/2015/06/git-undo-operation/">
+          Git的各种撤销操作
         </a>
       </h1>
-      <div class="postShorten-meta post-meta">
-  
-    <time itemprop="datePublished" datetime="2013-10-02T00:00:00Z">
       
-  十月 2, 2013
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2015-06-14T12:32:48Z">
+        
+  六月 14, 2015
 
-    </time>
-  
-  
+      </time>
+    
+    
   
   
     <span>发布在</span>
     
-      <a class="category-link" href="/categories/tranquilpeak">tranquilpeak</a>, 
-    
-      <a class="category-link" href="/categories/features">features</a>
+      <a class="category-link" href="/categories/git">Git</a>
     
   
 
-
-</div>
+  </div>
 
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>
-        This is a chinese test post to show you how chinese is displayed.
+      <p>使用版本控制工具<code>Git</code>最大的好处就是，发生错误操作、修改后可以恢复到原来最后一次正确的状态</p>
 
-        <br>
-        <a href="/2013/10/%E4%B8%AD%E6%96%87%E6%B8%AC%E8%A9%A6/" class="postShorten-excerpt_link link">阅读全文</a>
+<h3 id="撤销git-push操作">撤销git push操作</h3>
+
+<p>运行<code>git push</code>后，会将新的<code>commit</code>提交到远程仓库。可以使用<code>git revert</code>来撤销操作</p>
+
+<pre><code>git revert &lt;SHA&gt;
+</code></pre>
+      <p>
+        <a href="/2015/06/git-undo-operation/" class="postShorten-excerpt_link link">阅读全文</a>
         
       </p>
     </div>
   </div>
   
-    <a href="/2013/10/%E4%B8%AD%E6%96%87%E6%B8%AC%E8%A9%A6/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="//d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg"/>
-      </div>
-    </a>
-  
 </article>
 
           
           
+  <div class="pagination-bar">
+    <ul class="pagination">
+      
+        
+        
+          <li class="pagination-next">
+            <a class="btn btn--default btn--small" href="/post/page/2/">
+              <span>下一页</span>
+              <i class="fa fa-angle-right text-base icon-ml"></i>
+            </a>
+          </li>
+        
+      
+      <li class="pagination-number">第 1 页 共 2 页</li>
+    </ul>
+  </div>
+
 
         </section>
         <footer id="footer" class="main-content-wrap">
@@ -348,7 +672,7 @@
   <div class="modal">
     <div class="modal-header">
       <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
         <span class="searchby-algolia-text text-color-light text-small">by</span>
         <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
       </a>
@@ -366,6 +690,119 @@
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="/2016/01/json-web-token/">
+                <h3 class="media-heading">Json Web Token身份认证</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2016
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>用户身份认证一般有5种方式</p>
+
+<ul>
+<li><p>HTTP Basic authentication<br/>
+在发送请求时在HTTP头中加入<code>authentication</code>字段，将用<code>Base64</code>编码的用户名和密码作为值，每次发送请求的时候都要发送用户名和密码，实现比较简单。</p></li>
+
+<li><p>Cookies<br/>
+向后台发送用户名和密码，在用户名和密码通过验证后，保存返回的<code>Cookie</code>作为用户已经登录的凭证，每次请求时附带这个<code>Cookie</code></p></li>
+
+<li><p>Signatures<br/>
+用户拿到服务器给的私钥，在发送请求前，将整个请求使用私钥来加密，发送的将是一串加密信息，此方式只适用于API</p></li>
+
+<li><p>One-Time Passwords<br/>
+一次一密，每次登录时使用不同的密码，一般由服务端通过邮件将密码发给用户，这种登录方式比较繁琐</p></li>
+
+<li><p>JSON Web Token<br/>
+用户发送按照约定，向服务端发送<code>Header</code>、<code>Payload</code>和<code>Signature</code>，并包含认证信息(密码)，验证通过后服务端返回一个<code>token</code>，之后用户使用该<code>token</code>作为登录凭证，适合于移动端和api</p></li>
+</ul>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2015/12/inner-scroll/">
+                <h3 class="media-heading">内滚动</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>内滚动是一种布局，将传统的网页改造成类似于桌面软件的布局。像现在的酷我音乐盒的主体界面就是一个内滚动布局QQ音乐也是，将浏览器的滚动条用<code>overflow: hidden</code>隐藏，再用HTML和CSS画一个滚动条出来，通过JavaScript来处理滚动事件。这么做的好处一是增强用户体验，网页能有客户端的体验；二是可以自定义滚动条。下面我是用Vue做了个内滚动组件，用来简单介绍内滚动的实现。
+
+使用例子(省去了部分标签和代码)</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2015/12/try-angular2/">
+                <h3 class="media-heading">体验Angular2</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>前几天，<code>Angular2</code>终于发布了beta版本，API基本稳定了，我觉得是时候体验一下了。所以我决定用<code>Angular2</code>做一个提示框组件来试试。来看看新的<code>Angular</code>有什么优缺点。
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2015/12/2015-november-summary/">
+                <h3 class="media-heading">广州11月份实习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>2015年11月份，仍在广州实习。9月份时候的实习做的是Node.js开发，现在是Javascript工程师，也就是前端了。工作的内容也不难，但接触到的东西还是很有收获的。了解到公司的内部结构，使用的技术，真实的产品。尤其是使用浏览器内核来开发软件，解决了我好几年前关于软件开发的疑惑。还有就是MVVM框架Vue.js的使用，这个是主要内容了。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2015/11/css3-animation/">
+                <h3 class="media-heading">CSS3 Animation</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><h2 id="css3-动画">CSS3 动画</h2>
+
+<p>CSS3 动画不需要写一行代码，简单的动画仅需要定义一个<code>@keyframes</code>并设置基本的参数就能动了。对比使用<code>Javascript</code>编写的动画，CSS3 动画更简单也更高效，使用<code>sprite</code>还能做出gif图片的效果。也可以搭配<a href="https://developer.mozilla.org/en-US/docs/Web/SVG"><code>SVG</code></a>使用。
+
+动画一般是由多个不同的图片不断快速切换一张图片叫做一帧，在CSS中也一样，只不过不必须使用图片。而是使用<code>@keyframes</code>来定义一帧所要显示的“图片”。</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="/2015/10/guangzhou-intership/">
                 <h3 class="media-heading">广州实习</h3>
               </a>
@@ -374,7 +811,7 @@
                   Oct 10, 2015
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>从9月份开始在广州实习，主要从事<code>Node.js</code>的开发，使用<code>MongoDB</code>数据库，<code>Express</code>框架。在后台主要提供的是<code>RESTful</code>的接口，前端使用<code>Angular</code>框架进行数据整合。以下做一个简单的总结。(部分代码来自于<a href="https://www.npmjs.com">npmjs.org</a>)
+              <div class="media-content hide-xs font-merryweather"><p>从19月份开始在广州实习，主要从事<code>Node.js</code>的开发，使用<code>MongoDB</code>数据库，<code>Express</code>框架。在后台主要提供的是<code>RESTful</code>的接口，前端使用<code>Angular</code>框架进行数据整合。以下做一个简单的总结。(部分代码来自于<a href="https://www.npmjs.com">npmjs.org</a>)
 </p></div>
             </div>
             <div style="clear:both;"></div>
@@ -384,16 +821,22 @@
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="/2013/10/%E4%B8%AD%E6%96%87%E6%B8%AC%E8%A9%A6/">
-                <h3 class="media-heading">中文測試</h3>
+              <a class="link-unstyled" href="/2015/06/git-undo-operation/">
+                <h3 class="media-heading">Git的各种撤销操作</h3>
               </a>
               <span class="media-meta">
                 <span class="media-date text-small">
-                  Oct 10, 2013
+                  Jun 6, 2015
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>This is a chinese test post to show you how chinese is displayed.
-</p></div>
+              <div class="media-content hide-xs font-merryweather"><p>使用版本控制工具<code>Git</code>最大的好处就是，发生错误操作、修改后可以恢复到原来最后一次正确的状态</p>
+
+<h3 id="撤销git-push操作">撤销git push操作</h3>
+
+<p>运行<code>git push</code>后，会将新的<code>commit</code>提交到远程仓库。可以使用<code>git revert</code>来撤销操作</p>
+
+<pre><code>git revert &lt;SHA&gt;
+</code></pre></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -402,15 +845,38 @@
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="/post/">
-                <h3 class="media-heading">Posts</h3>
+              <a class="link-unstyled" href="/2015/05/rust-quick-guide/">
+                <h3 class="media-heading">Rust快速入门</h3>
               </a>
               <span class="media-meta">
                 <span class="media-date text-small">
-                  Oct 10, 2015
+                  May 5, 2015
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"></div>
+              <div class="media-content hide-xs font-merryweather"><h2 id="rust简介">Rust简介</h2>
+
+<p><code>Rust</code>是一种编译语言，与<code>C</code>和<code>Go</code>一样编译后生成的是二进制文件。<code>Rust</code>专注于<code>安全</code>，<code>速度</code>，<code>并发</code>。并且不需要垃圾回收器，这也让<code>Rust</code>在某些情况下比其他语言更好用。比如与其他语言混合编写嵌入其中、编写底层软件，驱动或操作系统。<code>Rust</code>在编译期间会将语法错误和不安全因素最大程度地找出来，从而避免在程序运行时出现问题。<code>Rust</code>语言可以胜任三个软件层次的开发。并且在今年5月15号发布了第一个1.0.0正式版本。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2015/04/build-personal-blog-with-jekyll-on-github/">
+                <h3 class="media-heading">使用Jekyll在Github上搭建个人Blog</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>拥有自己的个人Blog可以把自己学到的技术，想法、经历分享出来，也可以用来写日记。远比QQ空间有意思多了，尤其是对于程序员来说，可以随意折腾。<code>Jekyll</code>就是一款生成静态页面(HTML文件)的工具，<code>Jekyll</code>是用Ruby编写的。但使用者不需要掌握Ruby，只需要在控制台(terminal)中输入几条简单的命令就能搭建出一个Blog来，但如果你还懂得网站前端的知识如<code>HTML</code>，<code>CSS</code>，<code>Javascript</code>的话，你就能完全自定义你自己的Blog。
+
+现在先把<code>Jekyll</code>的运行环境搭建好。因为<code>Jekyll</code>是Ruby编写的，所以必须先安装Ruby的运行环境。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -423,7 +889,7 @@
          data-message-zero=""
          data-message-one=""
          data-message-other="">
-         3 posts found
+         9 posts found
       </p>
     </div>
   </div>
@@ -436,15 +902,13 @@
 
 
     
-<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="//cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.js"></script>
-<script src="//cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-cm8rbm47qqnaayfznkmevsptucf9kfkuq7uzbkwihpdzhf5snhfrq83ajmv5.min.js"></script>
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
 
 
 
