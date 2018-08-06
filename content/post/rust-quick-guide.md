@@ -5,7 +5,7 @@ date: 2015-05-28 18:05:44
 categories: 
 - Rust
 keywords: "Rust,快速入门,入门,quick,guide"
-tag: 
+tags: 
 - Rust
 last_modified_at: 2015-09-29 23:40:28
 banner: http://linhsblog-10013469.image.myqcloud.com/images/rust-icon.png

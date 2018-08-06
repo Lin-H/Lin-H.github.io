@@ -5,7 +5,7 @@ date:   2015-04-09 20:32:46
 categories: 
 - Jekyll
 keywords: "个人博客,jekyll,github,教程,使用,搭建,blog"
-tag:
+tags:
 - Blog
 updated: 2015-05-18 22:32:46
 banner: http://linhsblog-10013469.image.myqcloud.com/images/jekyll.png

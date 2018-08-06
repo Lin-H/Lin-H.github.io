@@ -1,6 +1,6 @@
 ---
 title: Json Web Token身份认证
-tag:
+tags:
 - Node.js
 categories: 
 - Node.js
@@ -35,6 +35,17 @@ banner: http://linhsblog-10013469.image.myqcloud.com/images/jwt-diagram.png
 - 生成的密文短，密文可以包含所有用户信息，认证过期时间或用户权限等自定义信息
 - 适合用于手机应用和单页面应用的身份认证
 - 使用灵活，一旦取得了`JWT`，可以通过POST方式或添加入HTTP头中发送
+
+{{< tabbed-codeblock example http://example.com >}}
+    <!-- tab js -->
+        var test = 'test';
+    <!-- endtab -->
+    <!-- tab css -->
+        .btn {
+            color: red;
+        }
+    <!-- endtab -->
+{{< /tabbed-codeblock >}}
 
 ### JWT结构
 

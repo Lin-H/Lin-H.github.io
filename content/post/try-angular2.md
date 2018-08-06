@@ -2,7 +2,7 @@
 title: 体验Angular2
 categories: 
 - Javascript
-tag:
+tags:
 - Javascript
 - Angular2
 date: 2015-12-19 22:42:59

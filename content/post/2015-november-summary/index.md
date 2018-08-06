@@ -2,7 +2,7 @@
 title: 广州11月份实习
 categories:
 - Others
-tag:
+tags:
   - life
 date: 2015-12-12 23:16:37
 keywords: "广州,实习,Vue,Electron"

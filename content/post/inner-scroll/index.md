@@ -3,7 +3,7 @@ title: 内滚动
 date: 2015-12-27 13:44:45
 categories: 
 - Javascript
-tag: 
+tags: 
 - Javascript
 - Vue
 keywords: "内滚动,scroll,vue,自定义滚动条"

@@ -3,7 +3,7 @@ title: 广州实习
 date: 2015-10-07 18:36:00
 categories: 
 - Others
-tag:
+tags:
 - Node.js
 - Life
 keywords: "intership,note,广州,实习,node.js,javascript"

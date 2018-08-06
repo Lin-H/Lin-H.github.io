@@ -17,9 +17,9 @@ languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 title = "Lin-H's Blog"
 theme = "tranquilpeak"
-disqusShortname = "Lin-H"
+# disqusShortname = "Lin-H"
 # googleAnalytics = "UA-123-45"
-paginate = 7
+paginate = 8
 canonifyurls = true
 
 [permalinks]
@@ -34,7 +34,7 @@ canonifyurls = true
   name = "Lin-H"
   bio = "keep learning"
   job = "Web Developer"
-  location = "China"
+  location = "China Guangzhou"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   # gravatarEmail = "lh04667649@gmail.com"
   # Your profile picture
@@ -47,31 +47,31 @@ canonifyurls = true
 
 # Menu Configuration
 [[menu.main]]
-  weight = 0
+  weight = 1
   identifier = "home"
   name = "Home"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
   url = "/"
 [[menu.main]]
-  weight = 1
+  weight = 10
   identifier = "categories"
   name = "Categories"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
   url = "/categories"
 [[menu.main]]
-  weight = 2
+  weight = 20
   identifier = "tags"
   name = "Tags"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-tags\"></i>"
   url = "/tags"
 [[menu.main]]
-  weight = 3
+  weight = 30
   identifier = "archives"
   name = "Archives"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-archive\"></i>"
   url = "/archives"
 [[menu.main]]
-  weight = 4
+  weight = 40
   identifier = "about"
   name = "About"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
@@ -106,6 +106,10 @@ canonifyurls = true
 
   # Global keywords configuration. Following keywords will be add to every pages
   # keywords = ["development", "next-gen"]
+
+  # Syntax highlighter, possible choice between: "highlight.js" (recommanded) and "prism.js" (experimental)
+  # You can comment it to disable syntax highlighting
+  syntaxHighlighter = "highlight.js"
 
   # Hide sidebar on all article page to let article take full width to improve reading, and enjoy wide images and cover images. (true: enable, false: disable)
   clearReading = true
@@ -171,6 +175,10 @@ canonifyurls = true
   # Custom JS. Put here your custom JS files. They are loaded after the theme JS;
   # they have to be referred from static root. Example
   # customJS = ["js/foo.js"]
+
+  # Display `Next` on left side of the pagination, and `Prev` on right side one.
+  # If you set this value to `true`, these positions swap.
+  swapPaginator = true
 
   [params.header.rightLink]
     class = ""

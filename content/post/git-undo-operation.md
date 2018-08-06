@@ -4,7 +4,7 @@ title: Git的各种撤销操作
 categories: 
 - Git
 keywords: "git,undo,撤销"
-tag:
+tags:
 - Git
 date: 2015-06-14 12:32:48
 last_modified_at: 2015-06-14 12:32:48
