@@ -6,14 +6,14 @@
           <li class="pagination-prev">
             <a class="btn btn--default btn--small" href="{{ .Paginator.Prev.URL }}">
               <i class="fa fa-angle-left text-base icon-mr"></i>
-              <span>{{ i18n "pagination.older_posts" }}</span>
+              <span>{{ i18n "pagination.newer_posts" }}</span>
             </a>
           </li>
         {{ end }}
         {{ if .Paginator.HasNext }}
           <li class="pagination-next">
             <a class="btn btn--default btn--small" href="{{ .Paginator.Next.URL }}">
-              <span>{{ i18n "pagination.newer_posts" }}</span>
+              <span>{{ i18n "pagination.older_posts" }}</span>
               <i class="fa fa-angle-right text-base icon-ml"></i>
             </a>
           </li>

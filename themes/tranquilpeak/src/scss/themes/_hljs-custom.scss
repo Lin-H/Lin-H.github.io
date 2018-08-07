@@ -8,44 +8,131 @@
 // 5. Remove `hljs-` of all CSS class name. E.g : `.hljs-comment` becomes `.comment`
 // 6. Comment line 61 (`'themes/tranquilpeak',`) of `source/_css/tranquilpeak.scss` file
 // 7. Run `grunt buildProd` to build the theme and see the result
-/*
+
 // Default code block
+$background-color: #f8f8f8;
+$color: #333;
+
 pre > code {
-    background: ;
-    color: ;
+    background: $background-color;
+    color: $color;
 }
 
 // Default inline code
 code {
-    background-color: ;
+    background-color: $background-color;
 }
 
 // Tabbed code block tab
 // If your theme is dark then use a lighter background
 // to see clearly which tab is active
 .codeblock--tabbed figcaption .tab.active {
-    background: ;
-    color: ;
+    background: $background-color;
+    color: $color;
 }
+
 
 // highlight code block
 figure.highlight,
 .codeblock {
-    background: ;
-    color: ;
+    background: $background-color;
+    color: $color;
 
     figcaption {
-        background: ;
-        color: ;
+        background: $background-color;
+        color: $color;
     }
     .gutter {
-        background: ;
-        border-right-color: ;
+        background: $background-color;
+        border-right-color: $color;
         .line {
-            color: ;
+            color: $color;
         }
     }
     // PUT YOUR THEME HERE
+    .comment,
+    .quote {
+      color: #998;
+      font-style: italic;
+    }
 
+    .keyword,
+    .selector-tag,
+    .subst {
+      color: #333;
+      font-weight: bold;
+    }
+
+    .number,
+    .literal,
+    .variable,
+    .template-variable,
+    .tag .attr {
+      color: #008080;
+    }
+
+    .string,
+    .doctag {
+      color: #d14;
+    }
+
+    .title,
+    .section,
+    .selector-id {
+      color: #900;
+      font-weight: bold;
+    }
+
+    .subst {
+      font-weight: normal;
+    }
+
+    .type,
+    .class .title {
+      color: #458;
+      font-weight: bold;
+    }
+
+    .tag,
+    .name,
+    .attribute {
+      color: #000080;
+      font-weight: normal;
+    }
+
+    .regexp,
+    .link {
+      color: #009926;
+    }
+
+    .symbol,
+    .bullet {
+      color: #990073;
+    }
+
+    .built_in,
+    .builtin-name {
+      color: #0086b3;
+    }
+
+    .meta {
+      color: #999;
+      font-weight: bold;
+    }
+
+    .deletion {
+      background: #fdd;
+    }
+
+    .addition {
+      background: #dfd;
+    }
+
+    .emphasis {
+      font-style: italic;
+    }
+
+    .strong {
+      font-weight: bold;
+    }
 }
-*/

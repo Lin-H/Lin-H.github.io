@@ -12,6 +12,7 @@
         content:    "";
     }
     &:after {
+        display: block !important;
         z-index:          map-get($z-indexes, c-tooltip);
         padding:          8px;
         // Fixed width of tooltip
@@ -22,6 +23,7 @@
         font-size:        0.93em;
         line-height:      $line-height-base;
         border-radius:    5px;
+        border-bottom: 0;
     }
     &:before,
     &:after {

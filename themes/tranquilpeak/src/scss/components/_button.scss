@@ -16,6 +16,13 @@
     }
 }
 
+a.btn {
+    display: inline;
+    &::after {
+        display: none;
+    }
+}
+
 // Disabled button
 .btn--disabled,
 .btn--disabled:hover {

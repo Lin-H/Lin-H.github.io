@@ -16,4 +16,10 @@ a.link-unstyled {
 }
 a.fancybox {
     cursor: zoom-in !important;
+    &::after {
+        display: none;
+    }
+}
+a.fancybox-item::after {
+    display: none;
 }

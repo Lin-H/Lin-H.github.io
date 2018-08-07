@@ -12,6 +12,10 @@ a.tag,
     margin-bottom:  7px;
 }
 
+a.tag::after {
+    display: none;
+}
+
 // Colors variant
 a.tag--default,
 .tag--default {

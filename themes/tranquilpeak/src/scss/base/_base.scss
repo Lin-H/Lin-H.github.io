@@ -71,6 +71,8 @@ dl {
 }
 
 a {
+    display: inline-block;
+    position: relative;
     &,
     &:hover,
     &:active,
@@ -81,7 +83,20 @@ a {
     }
     &:hover {
         color:           map-get($colors, link);
-        text-decoration: underline;
+        text-decoration: none;
+    }
+    &::after {
+        transition: transform .25s ease-in-out;
+        display: block;
+        content: '';
+        width: 100%;
+        border-bottom: 2px solid;
+        transform: scaleX(0);
+        position: absolute;
+        bottom: 0;
+    }
+    &:hover::after {
+        transform: scaleX(1);
     }
 }
 
@@ -146,7 +161,11 @@ code {
     font-family:      map-get($font-families, 'code');
     font-weight:      400;
     background-color: map-get($highlight, 'background');
-    padding:          0 10px;
+    padding:          2px 4px;
+    line-height: 1;
+    border-bottom: 1px solid #d8dee9;
+    vertical-align: text-top;
+    border-radius: 4px 4px 0 0;
 }
 
 acronym,

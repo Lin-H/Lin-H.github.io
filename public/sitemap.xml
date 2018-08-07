@@ -48,7 +48,24 @@
   </url>
   
   <url>
+    <loc>/2014/10/tags-plugins-showcase/</loc>
+    <lastmod>2014-10-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/angular2/</loc>
+    <lastmod>2015-12-19T22:42:59+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/archives/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/blog/</loc>
+    <lastmod>2015-04-09T20:32:46+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -64,8 +81,26 @@
   </url>
   
   <url>
+    <loc>/tags/css3/</loc>
+    <lastmod>2015-11-11T21:22:45+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/git/</loc>
+    <lastmod>2015-06-14T12:32:48+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/categories/git/</loc>
     <lastmod>2015-06-14T12:32:48+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/javascript/</loc>
+    <lastmod>2015-12-27T13:44:45+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -82,7 +117,19 @@
   </url>
   
   <url>
+    <loc>/tags/life/</loc>
+    <lastmod>2015-12-12T23:16:37+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/</loc>
+    <lastmod>2016-01-20T22:38:56+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/node.js/</loc>
     <lastmod>2016-01-20T22:38:56+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -106,13 +153,38 @@
   </url>
   
   <url>
+    <loc>/tags/rust/</loc>
+    <lastmod>2015-05-28T18:05:44+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/categories/rust/</loc>
     <lastmod>2015-05-28T18:05:44+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>/tags/tag-plugins/</loc>
+    <lastmod>2014-10-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
+    <lastmod>2015-12-19T22:42:59+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/test/</loc>
+    <lastmod>2014-10-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/vue/</loc>
+    <lastmod>2015-12-27T13:44:45+00:00</lastmod>
     <priority>0</priority>
   </url>
   

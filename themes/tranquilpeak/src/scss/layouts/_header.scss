@@ -41,6 +41,9 @@
             height:        30px;
             border-radius: 15px;
         }
+        &::after {
+            display: none;
+        }
     }
     .header-right-icon {
         position: absolute;
