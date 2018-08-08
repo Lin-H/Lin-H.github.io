@@ -2,4 +2,10 @@
   <span class="copyrights">
     &copy; {{ now.Format "2006" }} {{ with .Site.Params.footer.copyright }}{{ . | safeHTML }}{{ else }}{{ with .Site.Author.name }}{{ . }}{{ else }}{{ with .Site.Title }}{{ . }}{{ end }}{{ end }}{{ end }}. {{ i18n "footer.all_rights_reserved" }}
   </span>
+  <!-- cnzz统计代码 -->
+  {{ with .Site.Params }}
+    {{ if (isset . "cnzz") }}
+      <span id="cnzz_stat_icon_{{ .cnzz }}"></span>
+    {{ end }}
+  {{ end }}
 </footer>

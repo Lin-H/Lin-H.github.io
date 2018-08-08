@@ -139,7 +139,8 @@ export default {
 
 首先是计算滑块的长度，其实滚动条可以看成是缩小的浏览器窗口，滑块就是当前浏览器窗口在整个页面中的位置，所以只需要按照比例设置。`scrollPanelHeight / scrollableHeight`等于 `滚动条长度/滑块长度`。在滚动时，滚动的距离也是通过这个比例来决定。在处理鼠标滚动事件时,需要注意浏览器兼容，`IE`,`Firefox`和`Chrome`都不一样。将`scroll-panel`的`top`属性设置为负值，来实现向下滚动的效果。下面是一个用上面代码实现的一个例子,请使用`Chrome`或`webkit`内核浏览器查看
 
-{% raw %}
+想要性能好一点的话，可以把样式的`top`换成`transform`
+
 <div style="height: 200px;position: relative;background-color: #f1f1f1;" class="scroll-view">
     <scroll>
         <div class="scroll-panel" style="background-color: #f1f1f1;">
@@ -156,5 +157,4 @@ export default {
         </div>
     </scroll>
 </div>
-<script src="./scroll" type="text/javascript"></script>
-{% endraw %}
+<script src="./scroll.js" type="text/javascript"></script>

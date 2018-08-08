@@ -48,11 +48,6 @@
   </url>
   
   <url>
-    <loc>/2014/10/tags-plugins-showcase/</loc>
-    <lastmod>2014-10-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/angular2/</loc>
     <lastmod>2015-12-19T22:42:59+00:00</lastmod>
     <priority>0</priority>
@@ -165,20 +160,8 @@
   </url>
   
   <url>
-    <loc>/tags/tag-plugins/</loc>
-    <lastmod>2014-10-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/tags/</loc>
     <lastmod>2015-12-19T22:42:59+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/test/</loc>
-    <lastmod>2014-10-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

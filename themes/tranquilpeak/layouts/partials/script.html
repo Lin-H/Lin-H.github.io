@@ -8,7 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 <!--EXTERNAL SCRIPTS END-->
 <!--SCRIPTS-->
-<script src="/js/script-c2aewgrpar215tva2f1saku79jrobyjmcr4xln1jkzuxg4ksgz6h5vrqgiy1.min.js"></script>
+<script src="/js/script-zi0ae105ebr1xropdo8z2yt2y2tgwoi31tdfyldvmirfapiqohcebuob5pyf.min.js"></script>
 <!--SCRIPTS END-->
 {{ range .Site.Params.customJS }}
   {{ if isset . "src" }}
@@ -67,5 +67,11 @@ $(document).ready(function() {
       var algoliaClient = algoliasearch('{{ .appId }}', '{{ .apiKey }}');
       var algoliaIndex = algoliaClient.initIndex('{{ .indexName }}');
     </script>
+  {{ end }}
+{{ end }}
+<!-- cnzz统计代码 -->
+{{ with .Site.Params }}
+  {{ if (isset . "cnzz") }}
+    <script src="http://s95.cnzz.com/z_stat.php?id={{ .cnzz }}&show=pic" type="text/javascript"></script>
   {{ end }}
 {{ end }}
