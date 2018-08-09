@@ -1,5 +1,5 @@
 {{ with .Site.Params.coverImage }}
-  {{ if (in . "://") }}
+  {{ if (in . "//") }}
     {{ $cover := . }}
     <div id="cover" style="background-image:url('{{ $cover | absURL }}');"></div>
   {{ else }}

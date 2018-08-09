@@ -1,5 +1,13 @@
 # Blog
 
+## 命令
+
+生成博客
+
+```sh
+hugo --cleanDestinationDir
+```
+
 ## 一些操作记录
 
 添加子目录，建立与git项目的关联
@@ -28,3 +36,13 @@ $git subtree add --prefix=theme theme master --squash
 示例
 
 $git subtree push --prefix=theme theme master
+
+### tip
+
+腾讯万象优图地址
+
+http://linhsblog-10013469.image.myqcloud.com
+
+推送主题到git
+
+git subtree push --prefix=themes/tranquilpeak theme master
