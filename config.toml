@@ -1,0 +1,31 @@
+# The URL the site will be built for
+base_url = "https://lin-h.com"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+theme = "zulma"
+title = "Lin-H's Blog"
+description = "Lin-H的个人Blog，记录自己的想法，分享技术、经验。"
+default_language = "en"
+taxonomies = [
+  {name = "categories"},
+  {name = "tags", paginate_by = 5, rss = true},
+  {name = "authors", rss = true},
+]
+[extra]
+# Put all your custom variables here
+zulma_menu = [
+    {url = "$BASE_URL/categories", name = "Categories"},
+    {url = "$BASE_URL/tags", name = "Tags"}
+]
+zulma_brand = {text = "Home"} # image = "$BASE_URL/images/bulma.png"
+zulma_title = "　"
+zulma_theme = "flatly"
